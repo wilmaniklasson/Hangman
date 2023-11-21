@@ -1,0 +1,10 @@
+{
+    "type": "module",
+    "name": "lab-1",
+    "version": "1.0.0",
+    "description": "lab-1",
+    "main": "script.js",
+    "keywords": ["modules", "functions"],
+    "license": "ISC"
+  }
+  
