@@ -7,4 +7,54 @@
 body {
 	/* stuff here */
 	background-color: rgb(182, 182, 182);
+	font-size: clamp(0.75rem, 1vw + 1rem, 4rem);
+}
+
+button {
+	height: 2rem;
+	width: 8rem;
+	background: orange;
+	border: 1px solid black;
+	border-radius: 1rem;
+}
+
+.button-row {
+	display: flex;
+	gap: 10px;
+}
+
+.main-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0.65rem;
+	width: 100vw;
+	height: 100vh;
+	padding: 4rem;
+}
+
+.game-content {
+	border-radius: 1rem;
+	background: rgba(0, 0, 0, 0.082);
+	border: 1px solid black;
+}
+
+.start-view-container {
+	width: 1005;
+	height: 100%;
+}
+.score-view-container {
+	width: 1005;
+	height: 100%;
+}
+.game-view-container {
+	width: 1005;
+	height: 100%;
+}
+
+.hanging-man {
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 25%;
 }
