@@ -1,13 +1,17 @@
 * {
-	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
 }
 
 body {
-	/* stuff here */
+	box-sizing: border-box;
 	background-color: rgb(182, 182, 182);
-	font-size: clamp(0.75rem, 1vw + 1rem, 4rem);
+}
+
+h1 {
+	padding: 1rem;
+	font-size: clamp(2rem, 12vw + 1rem, 2rem);
+	text-align: center;
 }
 
 button {
@@ -18,43 +22,103 @@ button {
 	border-radius: 1rem;
 }
 
-.button-row {
+.top-section {
 	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.button-row {
+	padding: 1rem;
+	display: flex;
+	width: 90%;
 	gap: 10px;
 }
 
 .main-container {
 	display: flex;
 	flex-direction: column;
-	gap: 0.65rem;
-	width: 100vw;
-	height: 100vh;
+	height: 99vh;
+	margin: 0 auto;
+
+	/* delete this when testing is done */
+	/* border: 4px dotted black; */
+}
+
+.game-container {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	/* flex-grow: 1; */
+	padding: min(3vw, 4rem);
+
+	/* delete this when testing is done */
+	/* border: 2px solid green; */
+}
+
+.image-content {
+	display: flex;
+
+	/* delete this when testing is done */
+	/* border: 4px dotted rgba(223, 9, 9, 0.3); */
+}
+.gameplay-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: Space-evenly;
+	width: 100%;
+
+	/* delete this when testing is done */
+	/* border: 4px dotted rgba(223, 9, 9, 0.3);  */
+}
+
+.guess-content {
+	/* delete this when testing is done */
+	/* border: 2px dotted purple; */
 	padding: 4rem;
 }
 
-.game-content {
-	border-radius: 1rem;
-	background: rgba(0, 0, 0, 0.082);
-	border: 1px solid black;
-}
-
 .start-view-container {
-	width: 1005;
+	width: 100%;
 	height: 100%;
 }
 .score-view-container {
-	width: 1005;
+	width: 100%;
 	height: 100%;
 }
 .game-view-container {
-	width: 1005;
+	width: 100%;
 	height: 100%;
 }
 
-.hanging-man {
-	margin: 0 auto;
+
+.logo {
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 25%;
+	flex-direction: row;
+	min-width: 200px;
+	max-width: 350px;
+	
+	/* max-width: 80%; */
 }
+
+@media (max-width: 1140px) {
+	.logo {
+		flex-direction: column-reverse;
+		width: 280px;
+	}
+}
+
+@media (min-width: 680px) {
+	.game-container {
+		flex-direction: row;
+	}
+}
+
+@media (max-width: 420px) {
+	.image-content {
+		width: 50%;
+	}
+}
+ /*  TODO: Handle smol display.
