@@ -1,13 +1,20 @@
 const userNameInput = document.querySelector('#user-name-input');
-const startGame = document.querySelector('#start-game');
+const btnStartGame = document.querySelector('#start-game');
+const startViewSection = document.querySelector('.start-view-section');         
+const gameViewSection = document.querySelector('.game-view-section');          
+const scoreViewSection = document.querySelector('.score-view-section');   
 const userInputObject = {};
 
-startGame.addEventListener('click', function(event) {
+btnStartGame.addEventListener('click', function(event) {
     event.preventDefault();
     saveInput();
     console.log(userInputObject);
 
     localStorage.setItem('userName', userInputObject.userName);
+
+    startViewSection.classList.add('hidden');
+    gameViewSection.classList.remove('hidden');         // show game view
+    scoreViewSection.classList.add('hidden');
 });
 
 function saveInput() {
@@ -16,4 +23,3 @@ function saveInput() {
 }
 
 /* const storedUserName = localStorage.getItem('userName'); */
-
