@@ -1,29 +1,35 @@
-/*const btnStartView = document.getElementById("btn-start-view");
 
-btnStartView.addEventListener("click", doStuff);
+const toggle = document.querySelector('#toggle');
 
-console.log('HI');
-console.log(btnStartView);
+const startViewSection = document.querySelector('.start-view-section');         // state 0
+const gameViewSection = document.querySelector('.game-view-section');           // state 1
+const scoreViewSection = document.querySelector('.score-view-section');         // state 2
 
-function doStuff() {
-	console.log('WE DID STUFF!');
-}*/
+let btnState = 0;
+toggle.addEventListener('click', () => {
 
-// script.js
+    if(btnState === 0){
 
-const sections = document.querySelectorAll('.game-content div');
+        startViewSection.classList.remove('hidden');        //show start view
+        gameViewSection.classList.add('hidden'); 
+        scoreViewSection.classList.add('hidden'); 
+		btnState ++;
+    }
 
-function showSection(sectionId) {
-    // Göm alla sektioner
-    const sections = document.querySelectorAll('.game-content div');
-    sections.forEach(section => {
-        section.classList.add('hidden');
-    });
+    else if(btnState === 1){
 
-    // Visa den valda sektionen
-    document.getElementById(sectionId).classList.remove('hidden');
-}
+        startViewSection.classList.add('hidden');
+        gameViewSection.classList.remove('hidden');         // show game view
+        scoreViewSection.classList.add('hidden');
+        btnState ++;
+    }
 
+    else {
+		startViewSection.classList.add('hidden');
+        gameViewSection.classList.add('hidden');
+        scoreViewSection.classList.remove('hidden');        // show score view
+        
+		btnState = 0;
+	}
 
-
-
+});

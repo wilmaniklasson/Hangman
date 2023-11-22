@@ -14,7 +14,7 @@ h1 {
 	text-align: center;
 }
 
-button {
+.btn {
 	height: 2rem;
 	width: 8rem;
 	background: orange;
@@ -71,7 +71,7 @@ button {
 	width: 100%;
 
 	/* delete this when testing is done */
-	/* border: 4px dotted rgba(223, 9, 9, 0.3);  */
+	border: 4px dotted rgba(223, 9, 9, 0.3); 
 }
 
 .guess-content {
@@ -83,6 +83,7 @@ button {
 .start-view-container {
 	width: 100%;
 	height: 100%;
+	border: 1ps solid black;
 }
 .score-view-container {
 	width: 100%;
@@ -104,16 +105,16 @@ button {
     display: none;
 }
 
-#start-view-section {
-    background-color: #ffeeba;
+.start-view-section {
+    background-color: #957a29;
 }
 
-#game-view-section {
-    background-color: #d4edda;
+.game-view-section {
+    background-color: #09b731;
 }
 
-#score-view-section {
-    background-color: #b8daff;
+.score-view-section {
+    background-color: #1b5da4;
 }
 
 .logo {

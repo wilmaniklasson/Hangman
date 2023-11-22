@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="css/main-styles.css" />
-		<script src="./js/script.js" type="module"></script>
+		<script src="./js/script.js" defer type="module"></script>
 
 		<title>Hangman javascript</title>
 	</head>
@@ -14,17 +14,16 @@
 			<header class="top-section">
 				<h1>Hangman</h1>
 				<nav class="button-row">
-					<button class="start-view" id="btn-start-view" onclick="showSection('start-view-section')">Start View</button>
-					<button class="game-view" id="btn-game-view" onclick="showSection('game-view-section')">Game View</button>
-					<button class="score-view" id="btn-score-view" onclick="showSection('score-view-section')">Score View</button>
+					<button class="btn" id="toggle">Toggle Views</button>
+	
 				</nav>
 			</header>
 			<div class="game-container">
 				<section class="image-content" id="image-content">
-					<div class="logo">
+					 <div class="logo">
 						<img src="resources/images/hangman.svg" />
 						<img src="resources/images/hangman_text.svg" />
-					</div>
+					</div> 
 					<!-- This is the hanging man figure that we will toggle programmatically. -->
 					<!-- <figure class="hanging-man">
 						<svg
@@ -72,9 +71,9 @@
 						</figure> -->
 				</section>
 				<section class="game-content">
-					<div id="start-view-section" class="hidden">Content for Start Page</div>
-					<div id="game-view-section" class="hidden">Content for Game</div>
-					<div id="score-view-section" class="hidden">Content for See Results</div>
+					<div class="start-view-section hidden">Content for Start Page</div>
+					<div class="game-view-section hidden">Content for Game</div>
+					<div class="score-view-section hidden">Content for See Results</div>
 					<div class="guess-content">Letters guessed goes here</div>
 					The _ _ _ _ _ _ section here
 				</section>
