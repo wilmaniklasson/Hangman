@@ -63,7 +63,7 @@ button {
 	/* delete this when testing is done */
 	/* border: 4px dotted rgba(223, 9, 9, 0.3); */
 }
-.gameplay-container {
+.game-content {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
