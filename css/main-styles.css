@@ -94,6 +94,28 @@ button {
 }
 
 
+
+
+
+  
+/* hidden divs */
+
+.hidden {
+    display: none;
+}
+
+#start-view-section {
+    background-color: #ffeeba;
+}
+
+#game-view-section {
+    background-color: #d4edda;
+}
+
+#score-view-section {
+    background-color: #b8daff;
+}
+
 .logo {
 	display: flex;
 	flex-direction: row;

@@ -14,9 +14,9 @@
 			<header class="top-section">
 				<h1>Hangman</h1>
 				<nav class="button-row">
-					<button class="start-view" id="btn-start-view">Start View</button>
-					<button class="score-view" id="btn-score-view">Score View</button>
-					<button class="game-view" id="btn-game-view">Game View</button>
+					<button class="start-view" id="btn-start-view" onclick="showSection('start-view-section')">Start View</button>
+					<button class="game-view" id="btn-game-view" onclick="showSection('game-view-section')">Game View</button>
+					<button class="score-view" id="btn-score-view" onclick="showSection('score-view-section')">Score View</button>
 				</nav>
 			</header>
 			<div class="game-container">
@@ -72,6 +72,9 @@
 						</figure> -->
 				</section>
 				<section class="game-content">
+					<div id="start-view-section" class="hidden">Content for Start Page</div>
+					<div id="game-view-section" class="hidden">Content for Game</div>
+					<div id="score-view-section" class="hidden">Content for See Results</div>
 					<div class="guess-content">Letters guessed goes here</div>
 					The _ _ _ _ _ _ section here
 				</section>
