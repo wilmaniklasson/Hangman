@@ -76,7 +76,16 @@
 						</figure>
 				</section>
 				<section class="game-content">
-					<div class="start-view-section hidden">Content for Start Page</div>
+					<div class="start-view-section hidden">
+					<form>
+						<h2>Welcome to Hangman!</h2>
+						<p class="hangman-info">Here's your chance to unravel the secrets of words. The game involves guessing letters in a hidden word. Initially, each letter is a mystery, but your skillful guesses will reveal clues to the true identity of the word. Can you crack the code and avoid hanging the man?</p>
+
+						<label id="label-user-name-input" for="user-name-input">User name:</label>
+            			<input type="text" id="user-name-input" name="user-name-input" required>
+						<button id="start-game">Start Game</button>
+					</form>
+					</div>
 					<div class="game-view-section hidden">Content for Game
 						<div class="guess-content">Letters guessed goes here</div>
 					The _ _ _ _ _ _ section here
