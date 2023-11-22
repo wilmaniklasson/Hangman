@@ -6,6 +6,8 @@ const gameViewSection = document.querySelector('.game-view-section');           
 const scoreViewSection = document.querySelector('.score-view-section');         // state 2
 
 let btnState = 0;
+startViewSection.classList.remove('hidden'); 
+
 toggle.addEventListener('click', () => {
 
     if(btnState === 0){
