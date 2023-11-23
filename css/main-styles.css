@@ -143,5 +143,38 @@ h1 {
 	height: 50%;
 	}
 }
+
+/* Modal box */
+#Modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 5px;
+	font-size: 20px;
+	min-width: 200px;
+  }
+  
+  .close-btn {
+	position: absolute;
+	top: -1px;
+	right: 6px;
+	font-size: 25px;
+	cursor: pointer;
+  }
+
+  /* Designen ska vara funktionell och responsiv. (Ner till 350px sidbredd.)*/
  /*  TODO: Handle smol display.
 /*https://coolors.co/palette/264653-2a9d8f-e9c46a-f4a261-e76f51*/
