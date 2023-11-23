@@ -22,7 +22,9 @@ function updateScore (score) {
 	}
 	
 	// uppdaterar dom
-	function updateDisplay (data) 
+	function updateDisplay (data) {
+		
+	}
 
 	
 
