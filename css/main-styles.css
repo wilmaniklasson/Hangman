@@ -99,7 +99,7 @@ h1 {
 }
 
 .game-view-section {
-	background-color: rgba(157, 156, 156, 0.818);
+	background-color: rgba(0, 0, 0, 0.501);
     padding: 20px;
     border-radius: 10px;
     text-align: center;
@@ -108,7 +108,7 @@ h1 {
 }
 
 .score-view-section {
-	background-color: rgb(157, 156, 156);
+	background-color: rgba(0, 0, 0, 0.501);
     padding: 20px;
     border-radius: 10px;
     text-align: center;
@@ -144,3 +144,4 @@ h1 {
 	}
 }
  /*  TODO: Handle smol display.
+/*https://coolors.co/palette/264653-2a9d8f-e9c46a-f4a261-e76f51*/
