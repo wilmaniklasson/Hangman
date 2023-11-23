@@ -20,7 +20,6 @@
 		<div class="main-container">
 			<!-- Hanging Man -->
 			<header class="top-section">
-				<h1>Hangman</h1>
 				<nav class="button-row">
 					<button class="btn" id="toggle">Toggle Views</button>
 	
@@ -76,7 +75,17 @@
 						</figure>
 				</section>
 				<section class="game-content">
-					<div class="start-view-section hidden">Content for Start Page</div>
+					<div class="start-view-section hidden">
+					<form>
+						<h2>Welcome to Hangman!</h2>
+						<p class="hangman-info">Uncover word secrets by guessing hidden letters. Each letter is initially a mystery, but skillful guesses reveal clues to the word's true identity. Can you crack the code and save the man from hanging?</p>
+
+						<label id="label-user-name-input" for="user-name-input">Enter your name:</label>
+						<input type="text" id="user-name-input" name="user-name-input" placeholder="Username" required>
+						<button type="submit" id="start-game">Start Game</button>
+
+					</form>
+					</div>
 					<div class="game-view-section hidden">Content for Game
 						<div class="guess-content">Letters guessed goes here</div>
 					The _ _ _ _ _ _ section here

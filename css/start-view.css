@@ -1,0 +1,47 @@
+
+
+form {
+    margin-top: 20px;
+    color: whitesmoke;
+    font-family: Arial
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+.hangman-info {
+    font-size: 1.2rem;
+    margin-bottom: 9em;
+}
+
+label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+#user-name-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+#start-game {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: orange;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+
+#start-game:hover {
+    background-color: rgba(247, 129, 19, 0.844);
+}
+
+
+
