@@ -35,3 +35,62 @@ toggle.addEventListener('click', () => {
 	}
 
 });
+
+
+
+
+    
+    const menu = document.querySelector('#menu');
+    const openMenuBtn = document.querySelector('#openMenuBtn');
+    const closeMenuBtn = document.querySelector('#closeMenuBtn');
+  
+    // Open the menu
+    openMenuBtn.addEventListener('click', function () {
+      menu.style.display = 'block';
+    });
+
+// "Escape" stäng och öpna meny
+document.addEventListener('keydown', function (event) {
+    
+    if (event.key === 'Escape') {
+      if (menu.style.display === 'block') {
+        menu.style.display = 'none';
+      } else {
+        menu.style.display = 'block';
+      }
+    }
+  });
+  
+    // Close the menu
+    closeMenuBtn.addEventListener('click', function () {
+      menu.style.display = 'none';
+    });
+  
+    // Close the menu if the user clicks outside of it
+    window.addEventListener('click', function (event) {
+      if (event.target == menu) {
+        menu.style.display = 'none';
+      }
+    });
+
+
+    const NewGameBtn = document.querySelector('#NewGameBtn');
+    NewGameBtn.addEventListener('click', function () {
+        menu.style.display = 'none';
+        startViewSection.classList.remove('hidden');        //show start view
+        gameViewSection.classList.add('hidden'); 
+        scoreViewSection.classList.add('hidden'); 
+      });
+
+
+      const ScoreboardBtn = document.querySelector('#ScoreboardBtn');
+      ScoreboardBtn.addEventListener('click', function () {
+        menu.style.display = 'none';
+        startViewSection.classList.add('hidden');
+        gameViewSection.classList.add('hidden');
+        scoreViewSection.classList.remove('hidden');        // show score view
+      });
+
+
+   
+  

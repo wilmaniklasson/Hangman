@@ -21,24 +21,35 @@
             <!-- Hanging Man -->
             <header class="top-section">
                 <nav class="button-row">
+                    <button id="openMenuBtn"></button>
+        
+
                     <button class="btn" id="toggle">Toggle Views</button>
-                </nav>
+                </nav>               
+                <div id="menu" class="menu">
+                    <div id="menu-content" class="menu-content">
+                        <button id="closeMenuBtn">&times;</button> 
+                        <button id="NewGameBtn">New Game</button>
+                        <button id="ScoreboardBtn">Scoreboard</button>
+                    </div>
+                </div>
+
+                <div id="Modal">
+                    <div id="modal-content" class="modal-content">
+                        <button id="closeModalBtn" class="close-modal-btn">&times;</button>
+                        <p>Please enter your username:</p>
+                    </div>
+                </div>
+
             </header>
             <div class="game-container">
+				
                 <section class="image-content" id="image-content">
-                    <div id="Modal">
-                        <div class="modal-content">
-                            <span id="closeModalBtn" class="meny-close-btn"
-                                >&times;</span
-                            >
-                            <p>Please enter your username:</p>
-                        </div>
-                    </div>
                     <!-- This is the hanging man figure that we will toggle programmatically. -->
                     <figure class="hanging-man">
                         <svg
-                            width="100%"
-                            height="100%"
+                            width="80%"
+                            height="80%"
                             viewBox="0 0 501 565"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
