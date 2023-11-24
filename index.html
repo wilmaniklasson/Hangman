@@ -22,13 +22,12 @@
             <header class="top-section">
                 <nav class="button-row">
                     <button id="openMenuBtn"></button>
-        
 
                     <button class="btn" id="toggle">Toggle Views</button>
-                </nav>               
+                </nav>
                 <div id="menu" class="menu">
                     <div id="menu-content" class="menu-content">
-                        <button id="closeMenuBtn">&times;</button> 
+                        <button id="closeMenuBtn">&times;</button>
                         <button id="NewGameBtn">New Game</button>
                         <button id="ScoreboardBtn">Scoreboard</button>
                     </div>
@@ -36,17 +35,34 @@
 
                 <div id="Modal">
                     <div id="modal-content" class="modal-content">
-                        <button id="closeModalBtn" class="close-modal-btn">&times;</button>
+                        <button id="closeModalBtn" class="close-modal-btn">
+                            &times;
+                        </button>
                         <p>Please enter your username:</p>
                     </div>
                 </div>
-
             </header>
             <div class="game-container">
-				
                 <section class="image-content" id="image-content">
+                    <section class="game-over hidden">
+                        <h2 class="win hidden">
+                            Congratulations! You've successfully conquered the
+                            game.
+                        </h2>
+                        <h2 class="lost hidden">
+                            You lost. Better luck next time!
+                        </h2>
+                        <p>
+                            Här finns det två klasser som berättar om du vinnit
+                            eller förlorat.
+                        </p>
+
+                        <p>[Vinst/Förlust]</p>
+                        <p>[Det hemliga ordet]</p>
+                        <p>[Antalet gissningar]</p>
+                    </section>
                     <!-- This is the hanging man figure that we will toggle programmatically. -->
-                    <figure class="hanging-man">
+                    <figure class="hanging-man hidden">
                         <svg
                             width="80%"
                             height="80%"
@@ -98,6 +114,7 @@
                         </svg>
                     </figure>
                 </section>
+
                 <section class="game-content">
                     <div class="start-view-section hidden">
                         <form>
@@ -135,10 +152,25 @@
                         The _ _ _ _ _ _ section here
                     </div>
                     <div class="score-view-section hidden">
-                        <h1 class="scoreboard-title">Scoreboard</h1>
-                        <div class="scoreboard"></div>
-                        <div id="resultDiv">Resultatet:</div>
-                        <div class="userInfo"></div>
+                        <table id="scoreboard">
+                            <button id="sortBtn">Sort</button>
+                            <thead>
+                                <tr>
+                                    <th id="nameHeader">Name</th>
+                                    <th id="resultHeader">Result</th>
+                                    <th id="dateHeader">Date</th>
+                                    <th id="timeHeader">Time</th>
+                                    <th id="correctHeader">
+                                        Number of Correct Guesses
+                                    </th>
+                                    <th id="wordsHeader">Number of Words</th>
+                                    <th id="incorrectHeader">
+                                        Number of Incorrect Guesses
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="scoreboardBody"></tbody>
+                        </table>
                     </div>
                 </section>
             </div>

@@ -13,6 +13,7 @@ win: null,
 Lost: null,
 date: null,
 time: null,
+correct: null,
 wordLength: null, 
 numberOfFailedGuesses: null
 };     
