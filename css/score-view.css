@@ -1,4 +1,10 @@
-scoreboard{
+.scoreboard {
     margin-top: 20px;
     color: whitesmoke;
+}
+
+tr {
+	display: flex;
+	border: 2px solid black;
+	flex-direction: column;
 }
