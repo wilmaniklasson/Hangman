@@ -3,9 +3,7 @@ import { words } from './svenska-ord.js';
 
 // display containers
 const gameViewSection = document.querySelector('.game-view-section');
-const guessContainer = document.querySelector('.guess-content');
 const letterContainer = document.createElement('div');
-const uData = JSON.parse(localStorage.getItem('userObject'));
 const numberOfLetters = 10;
 const currentWord = pickNewWord(numberOfLetters);
 
@@ -15,7 +13,6 @@ let visibleWord = Array(currentWord.length).fill('_'); // initialize with unders
 
 // gameplay variables
 let wordContainer = createNewElement('div', 'word-container');
-let word = createNewElement('div', 'word');
 
 
 // ------------------------------------------------------------------------ //
@@ -39,6 +36,7 @@ function renderAlphabet(alfabetet) {
 
 		// add the event listener to the character
 		character.addEventListener('click', function () {
+			this.remove();
 			handleGuess(character);
 			renderWord(visibleWord);
 		});
