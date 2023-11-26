@@ -36,17 +36,22 @@ function renderAlphabet(alfabetet) {
 		let textNode = document.createTextNode(char.toUpperCase());
 		character.appendChild(textNode);
 		letterContainer.appendChild(character);
-	}
 
-	gameViewSection.append(letterContainer);
+		// add the event listener to the character
+		character.addEventListener('click', function () {
+			handleGuess(character);
+			renderWord(visibleWord);
+		});
+
+		gameViewSection.append(letterContainer);
+	}
 }
 
-
-function renderWord(currentWord) {
+function renderWord(visibleWord) {
 
 	let wordContainer = createNewElement('div', 'word-container');
 	// loop through each char in currentWord, append the text node to our newly created element
-	for (let char of currentWord) {
+	for (let char of visibleWord) {
 
 		let word = createNewElement('div', 'word');
 		let textNode = document.createTextNode(char.toUpperCase());
@@ -55,8 +60,24 @@ function renderWord(currentWord) {
 	}
 
 	gameViewSection.append(wordContainer);
+
 }
 
+
+function handleGuess(character) {
+
+	// this is the char we click on, since this is being triggered by the event listener
+	let guessedChar = character.innerText;
+
+	for (let char of currentWord) {
+
+		if (char.toUpperCase() === guessedChar.toUpperCase()) {
+			visibleWord += char;
+		}
+	}
+	renderWord(visibleWord);
+
+}
 
 // helper functions
 function createNewElement(typeOfElement, className) {
@@ -80,6 +101,7 @@ function pickNewWord(numberOfLetters) {
 	// then return the word that we got from the array
 	return currentWordList[newWord];
 }
+
 
 
 
@@ -166,30 +188,7 @@ and then when exiting the loop we append those to the word container
 
 // }
 
-// function guess() {
-
-
-// 		if (char.toUpperCase() === input.toUpperCase()) {
-// 			visibleWord += char;
-// 			textNode = document.createTextNode(char.toUpperCase());
-// 		}
-// 		else {
-// 			visibleWord += '_';
-// 			textNode = document.createTextNode('_');
-// 		}
-
-// 		console.log('visibleWord: ' + visibleWord);
-
-// 		//
-// 		let guessed = document.createElement('div');
-// 		guessed.className = 'word';
-// 		guessed.appendChild(textNode);
-// 		guessContent.appendChild(guessed);
-// 	}
-
-// 	guessContainer.append(guessContent);
-// }
 
 
 
-// }
+
