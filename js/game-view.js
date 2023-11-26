@@ -5,26 +5,26 @@ import { words } from './svenska-ord.js';
 const gameViewSection = document.querySelector('.game-view-section');
 const guessContainer = document.querySelector('.guess-content');
 const letterContainer = document.createElement('div');
-letterContainer.className = 'letter-container';
-
-
-// gameplay variables
-let visibleWord = '';
-let input = 'A';
-
 const uData = JSON.parse(localStorage.getItem('userObject'));
 const numberOfLetters = 10;
 const currentWord = pickNewWord(numberOfLetters);
+
+letterContainer.className = 'letter-container';
+
+let visibleWord = Array(currentWord.length).fill('_'); // initialize with underscores
+
+// gameplay variables
+let wordContainer = createNewElement('div', 'word-container');
+let word = createNewElement('div', 'word');
 
 
 // ------------------------------------------------------------------------ //
 
 // game loop
 renderAlphabet(alfabetet);
-renderWord(currentWord);
-
+renderWord(visibleWord);
+console.log(currentWord);
 // game logic functions
-
 function renderAlphabet(alfabetet) {
 
 	let letterContainer = createNewElement('div', 'letter-container');
@@ -49,34 +49,40 @@ function renderAlphabet(alfabetet) {
 
 function renderWord(visibleWord) {
 
-	let wordContainer = createNewElement('div', 'word-container');
-	// loop through each char in currentWord, append the text node to our newly created element
-	for (let char of visibleWord) {
-
-		let word = createNewElement('div', 'word');
-		let textNode = document.createTextNode(char.toUpperCase());
-		word.appendChild(textNode);
-		wordContainer.appendChild(word);
+	// Every time this runs we need to clear the previous wordContainer so we don't render double words
+	while (wordContainer.firstChild) {
+		wordContainer.removeChild(wordContainer.firstChild);
 	}
 
-	gameViewSection.append(wordContainer);
+	// 
+	for (let char of visibleWord) {
+		let charElement = createNewElement('div', 'character');
+		let textNode = document.createTextNode(char.toUpperCase());
+		charElement.appendChild(textNode);
+		wordContainer.appendChild(charElement);
+	}
 
+	// Append the wordContainer to gameViewSection
+	gameViewSection.append(wordContainer);
 }
 
-
 function handleGuess(character) {
-
-	// this is the char we click on, since this is being triggered by the event listener
 	let guessedChar = character.innerText;
+	let newVisibleWord = '';
 
-	for (let char of currentWord) {
+	for (let i = 0; i < currentWord.length; i++) {
 
-		if (char.toUpperCase() === guessedChar.toUpperCase()) {
-			visibleWord += char;
+		if (currentWord[i].toUpperCase() === guessedChar.toUpperCase()) {
+			newVisibleWord += currentWord[i].toUpperCase();
+		}
+
+		else {
+			newVisibleWord += visibleWord[i]; // update temporary word
 		}
 	}
-	renderWord(visibleWord);
 
+	visibleWord = newVisibleWord; // update visible word with temporary word
+	renderWord(visibleWord);
 }
 
 // helper functions
@@ -187,7 +193,6 @@ and then when exiting the loop we append those to the word container
 // 	guessContainer.append(guessContent);
 
 // }
-
 
 
 
