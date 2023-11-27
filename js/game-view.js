@@ -65,7 +65,7 @@ function renderWord(visibleWord) {
 
 	// 
 	for (let char of visibleWord) {
-		let charElement = createNewElement('div', 'character');
+		let charElement = createNewElement('div', 'character-word');
 		let textNode = document.createTextNode(char.toUpperCase());
 		charElement.appendChild(textNode);
 		wordContainer.appendChild(charElement);
