@@ -1,55 +1,56 @@
 //hämtar element
 const startViewSection = document.querySelector('.start-view-section');
 const userNameInput = document.querySelector('#user-name-input');
-const btnStartGame = document.querySelector('#start-game')
+const btnStartGame = document.querySelector('#start-game');
 const gameViewSection = document.querySelector('.game-view-section');
 const scoreViewSection = document.querySelector('.score-view-section');
-const modal = document.querySelector('#Modal'); 
- 
+const modal = document.querySelector('#Modal');
+
 //Skapar ett objet för användar info
 const userObject = {
-userName: null,
-win: null,
-Lost: null,
-date: null,
-time: null,
-correct: null,
-wordLength: null, 
-numberOfFailedGuesses: null
-};     
+	userName: null,
+	win: null,
+	Lost: null,
+	date: null,
+	time: null,
+	correct: null,
+	wordLength: null,
+	numberOfFailedGuesses: null
+};
 
 
-btnStartGame.addEventListener('click', function(event) {
-    event.preventDefault();
-    userObject.userName = userNameInput.value;
-    
-    if (userObject.userName) {
-        startViewSection.classList.add('hidden');
-        gameViewSection.classList.remove('hidden'); // Visa spelvyn
-        scoreViewSection.classList.add('hidden');
-        console.log(userObject);
-    } else {
-        modal.style.display = 'block';
-    }
-    
+btnStartGame.addEventListener('click', function (event) {
+	event.preventDefault();
+	userObject.userName = userNameInput.value;
+
+	if (userObject.userName) {
+		startViewSection.classList.add('hidden');
+		gameViewSection.classList.remove('hidden'); // Visa spelvyn
+		scoreViewSection.classList.add('hidden');
+		gameViewSection.style.display = 'flex'; // switch display to flex on game load (which we can't do initially because then we have a display, overriding display: none; from the class hidden)
+		console.log(userObject);
+	} else {
+		modal.style.display = 'block';
+	}
+
 });
 
 
 //Låter användaren klicka utaför modal rutan för att stänga rutan.
 const openModalBtn = document.getElementById('openModalBtn');
-window.addEventListener('click', function(event) {
-    if (event.target == modal) {
-        modal.style.display = 'none';
-    }
+window.addEventListener('click', function (event) {
+	if (event.target == modal) {
+		modal.style.display = 'none';
+	}
 });
 
 //funktion för att stänga modal med "X"
 const closeModalBtn = document.getElementById('closeModalBtn');
-closeModalBtn.addEventListener('click', function() {
-    modal.style.display = 'none';
+closeModalBtn.addEventListener('click', function () {
+	modal.style.display = 'none';
 });
 
-localStorage.setItem('userObject', JSON.stringify(userObject)); 
+localStorage.setItem('userObject', JSON.stringify(userObject));
 
 
 
@@ -57,7 +58,7 @@ localStorage.setItem('userObject', JSON.stringify(userObject));
 
 
 /* Så här hämtar vi och skickar upp värden till localStorage */
-//hämta localStorage   
+//hämta localStorage
 /* userObject = JSON.parse(localStorage.getItem('userObject')) || {}; /*
 
 //ändra värderna

@@ -95,7 +95,17 @@ h1 {
 	height: 100%;
 }
 
+.letter-container {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+}
+
 .game-view-section {
+	/* display: flex; */
+	flex-direction: column;
+	justify-content: center;
 	background-color: rgba(0, 0, 0, 0.501);
 	padding: 20px;
 	border-radius: 10px;
