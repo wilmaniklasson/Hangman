@@ -102,12 +102,12 @@ function handleGuess(character) {
 
 function renderHangingMan() {
 	if (match) {
+		// rita ut gubben
 
 		console.log('WE ARE PRINTING STUFF YOLO');
 		console.log('match is: ' + match);
 	}
 }
-// rita ut gubben
 
 
 

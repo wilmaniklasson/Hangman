@@ -6,7 +6,7 @@
 
 body {
 	box-sizing: border-box;
-	background-color: #2A9D8F;
+	background-color: #2a9d8f;
 }
 
 h1 {
@@ -25,7 +25,7 @@ h1 {
 .btn {
 	padding: 10px;
 	font-size: 16px;
-	background-color: #E9C46A;
+	background-color: #e9c46a;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
@@ -61,7 +61,7 @@ h1 {
 	background-color: #fff;
 	border-radius: 20px;
 	padding: 2em 0em;
-	border: 5px solid #E9C46A;
+	border: 5px solid #e9c46a;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -86,32 +86,31 @@ h1 {
 }
 
 .start-view-section {
-    background-color: #264653;
+	background-color: #264653;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.57);
-    padding: 20px;
-    border-radius: 20px;
-    text-align: center;
-	width: 100%; 
-	height: 100%; 
+	padding: 20px;
+	border-radius: 20px;
+	text-align: center;
+	width: 100%;
+	height: 100%;
 }
 
 .game-view-section {
 	background-color: rgba(0, 0, 0, 0.501);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-	width: 100%; 
-	height: 100%; 
-	
+	padding: 20px;
+	border-radius: 10px;
+	text-align: center;
+	width: 100%;
+	height: 100%;
 }
 
 .score-view-section {
 	background-color: rgba(0, 0, 0, 0.459);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-	width: 100%; 
-	height: 100%; 
+	padding: 20px;
+	border-radius: 10px;
+	text-align: center;
+	width: 100%;
+	height: 100%;
 	overflow: auto;
 	margin-bottom: 5em;
 }
@@ -138,131 +137,125 @@ h1 {
 	}
 }
 
-@media (max-width: 420px) {
+/* @media (max-width: 420px) {
 	.image-content {
 	
 	}
-}
+} */
 
 #Modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
 #modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 40px 20px;
-    font-size: 20px;
-    min-width: 200px;
-	border: 5px solid #E76F51;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #fff;
+	padding: 40px 20px;
+	font-size: 20px;
+	min-width: 200px;
+	border: 5px solid #e76f51;
 	border-radius: 10px;
 }
 
 #closeModalBtn {
-    color: #aaa;
-    position: absolute;
-    top: 0px;
-    right: 10px;
-    font-size: 40px;
-    font-weight: bold;
+	color: #aaa;
+	position: absolute;
+	top: 0px;
+	right: 10px;
+	font-size: 40px;
+	font-weight: bold;
 	border: none;
 	background-color: transparent;
-	
 }
 
 /* Style menu */
 #menu {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
 #menu-content {
-    background-color: #fefefe;
-    margin: 15% auto;
+	background-color: #fefefe;
+	margin: 15% auto;
 	padding: 40px 10px 10px;
-    border: 1px solid #888;
-    max-width: 300px;
-    border-radius: 18px;
-    position: relative;
+	border: 1px solid #888;
+	max-width: 300px;
+	border-radius: 18px;
+	position: relative;
 }
-#openMenuBtn{
-	background-image: url('/resources/images/menu2.png');
-	background-size: cover; 
+#openMenuBtn {
+	background-image: url("/resources/images/menu2.png");
+	background-size: cover;
 	border: none;
 	background-color: transparent;
 	font-size: 18px;
 }
 
-
 #closeMenuBtn {
-    color: #aaa;
-    position: absolute;
-    top: 1px;
-    right: 10px;
-    font-size: 40px;
-    font-weight: bold;
+	color: #aaa;
+	position: absolute;
+	top: 1px;
+	right: 10px;
+	font-size: 40px;
+	font-weight: bold;
 	border: none;
 	background-color: transparent;
 }
 #closeModalBtn:hover,
-#closeMenuBtn:hover{
-    color: rgb(115, 113, 113);
+#closeMenuBtn:hover {
+	color: rgb(115, 113, 113);
 	transform: scale(1.1);
-	cursor: pointer; 
-    
+	cursor: pointer;
 }
 
 /* Style for menu buttons */
 #NewGameBtn,
 #ScoreboardBtn {
-    display: block;
-    margin: 10px 0;
-    padding: 10px;
-    width: 100%;
-    font-size: 16px;
-    background-color: #E9C46A;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+	display: block;
+	margin: 10px 0;
+	padding: 10px;
+	width: 100%;
+	font-size: 16px;
+	background-color: #e9c46a;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
 }
 
 #NewGameBtn:hover,
 #ScoreboardBtn:hover {
-    background-color: #ebbb43;
-	cursor: pointer; 
+	background-color: #ebbb43;
+	cursor: pointer;
 }
 
 /* Style for open menu button */
 #openMenuBtn {
-    cursor: pointer;
+	cursor: pointer;
 	width: 3em;
 	height: 3em;
 }
 
 #openMenuBtn:hover {
 	transform: scale(1.1);
-	cursor: pointer; 
+	cursor: pointer;
 }
 
-
-
-  
-  /* Designen ska vara funktionell och responsiv. (Ner till 350px sidbredd.)*/
- /*  TODO: Handle smol display.
+/* Designen ska vara funktionell och responsiv. (Ner till 350px sidbredd.)*/
+/*  TODO: Handle smol display.
 /*https://coolors.co/palette/264653-2a9d8f-e9c46a-f4a261-e76f51*/
