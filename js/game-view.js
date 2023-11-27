@@ -4,13 +4,14 @@ import { words } from './svenska-ord.js';
 // display containers
 const gameViewSection = document.querySelector('.game-view-section');
 const hangingMan = document.querySelector('.hanging-man');
-const hangmanBody = ['ground', 'scaffold', 'legs', 'arms', 'body', 'head']
+const hangmanBody = ['#ground', '#scaffold', '#legs', '#arms', '#body', '#head'];
 
 const letterContainer = document.createElement('div');
 const numberOfLetters = 10;
 const currentWord = pickNewWord(numberOfLetters);
 
 letterContainer.className = 'letter-container';
+let svgElement = document.querySelector('.hanging-man');
 
 let visibleWord = Array(currentWord.length).fill('_'); // initialize with underscores
 let incorrectGuesses = 0;
@@ -25,6 +26,7 @@ let wordContainer = createNewElement('div', 'word-container');
 renderAlphabet(alfabetet);
 renderWord(visibleWord);
 console.log(currentWord);
+console.log(hangingMan);
 // game logic functions
 function renderAlphabet(alfabetet) {
 
@@ -48,51 +50,6 @@ function renderAlphabet(alfabetet) {
 		gameViewSection.append(letterContainer);
 	}
 }
-/*
-function renderHangingMan() {
-    let whatToHang = hangmanBody.shift();
-    console.log(whatToHang);
-
-    // Check if there's an element with the given ID
-    let element = document.getElementById(whatToHang);
-
-    if (element) {
-        // If the element exists, append it to the hangingMan container
-        hangingMan.appendChild(element.cloneNode(true));
-    } 
-	else {
-        console.error(`Element with ID '${whatToHang}' not found.`);
-    }
-}*/
-function renderHangingMan() {
-    let whatToHang = hangmanBody.shift();
-    console.log(whatToHang);
-
-    let element = document.getElementById(whatToHang);
-
-    if (element) {
-        hangingMan.appendChild(element.cloneNode(true));
-    } else {
-        console.error(`Element with ID '${whatToHang}' not found.`);
-    }
-}
-
-// Funktion för att hantera felaktiga gissningar
-// function handleIncorrectGuess() {
-//     if (incorrectGuesses < hangmanBody.length) {
-//         // Skriv ut det aktuella elementet och öka antalet felaktiga gissningar
-//         console.log(hangmanBody[incorrectGuesses]);
-//         incorrectGuesses++;
-//     } else {
-//         console.log("Du har gissat fel för många gånger!");
-//     }
-// }
-
-
-
-	// om gissningen är fel, rita ut första elementet i listan
-// ta bort elemeneten ur listan
-	
 
 function renderWord(visibleWord) {
 
@@ -113,29 +70,46 @@ function renderWord(visibleWord) {
 	gameViewSection.append(wordContainer);
 }
 
+let match = false;
 function handleGuess(character) {
+
+	match = false;
+	// shouldRender = false;
+
 	let guessedChar = character.innerText;
 	let newVisibleWord = '';
-
 	for (let i = 0; i < currentWord.length; i++) {
 
 		if (currentWord[i].toUpperCase() === guessedChar.toUpperCase()) {
 			newVisibleWord += currentWord[i].toUpperCase();
+			match = true;
 			// if correct guess, do fuck all
 		}
 
 		else {
-			newVisibleWord += visibleWord[i]; // update temporary word
-			// if wrong guess, paint picture
-			renderHangingMan();
-			// handleIncorrectGuess();
+			newVisibleWord += visibleWord[i];
 
 		}
 	}
 
+	// console.log(match);
+	renderHangingMan();
+
 	visibleWord = newVisibleWord; // update visible word with temporary word
 	renderWord(visibleWord);
+	return match;
 }
+
+function renderHangingMan() {
+	if (match) {
+
+		console.log('WE ARE PRINTING STUFF YOLO');
+		console.log('match is: ' + match);
+	}
+}
+// rita ut gubben
+
+
 
 // helper functions
 function createNewElement(typeOfElement, className) {
