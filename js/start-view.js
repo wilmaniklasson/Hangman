@@ -8,13 +8,13 @@ const modal = document.querySelector('#Modal');
  
 //Skapar ett objet för användar info
 const userObject = {
-wordLength: null, 
-date: null,
-time: null,
 userName: null,
 win: null,
-nrWin: null,
-nrLost: null,
+Lost: null,
+date: null,
+time: null,
+correct: null,
+wordLength: null, 
 numberOfFailedGuesses: null
 };     
 
