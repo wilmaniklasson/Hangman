@@ -113,26 +113,6 @@ function gameOver(userObject) {
 	// when you suck, ame ends. Do stuff here
 }
 
-function renderHangingMan() {
-	if (match) {
-		hangingMan.classList.remove('hidden');
-		// rita ut gubben
-		let manChildren = document.querySelectorAll('.manChild');
-
-		for (let child of manChildren) {
-			if (child.classList.contains('hidden')) {
-				console.log('This manchild is in hiding');
-			}
-			else {
-				child.classList.add('hidden');
-				console.log('I will present myself');
-			}
-		}
-	}
-}
-
-
-
 // helper functions
 function createNewElement(typeOfElement, className) {
 	let newElement = document.createElement(typeOfElement);
