@@ -2,7 +2,7 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-	font-family: 'Poppins', sans-serif;
+	font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -83,7 +83,16 @@ h1 {
 /*______hidden divs_________ */
 
 .hidden {
+	transition: opacity 1ms, display 1ms;
 	display: none;
+	height: 100%;
+}
+
+.hidden {
+	transition: opacity 1ms, display 1ms;
+	display: none;
+	opacity: 0;
+	height: 0px;
 }
 
 .start-view-section {
