@@ -60,3 +60,4 @@ const userObject = {
   numberOfFailedGuesses: null
   };     
   
+  export { scoreboardData}
