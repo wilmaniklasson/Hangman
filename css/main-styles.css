@@ -82,14 +82,10 @@ h1 {
 
 /*______hidden divs_________ */
 
-.hidden {
-	transition: opacity 1ms, display 1ms;
-	display: none;
-	height: 100%;
-}
+
 
 .hidden {
-	transition: opacity 1ms, display 1ms;
+	transition: opacity 0ms, display 0ms;
 	display: none;
 	opacity: 0;
 	height: 0px;
