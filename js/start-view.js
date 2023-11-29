@@ -5,6 +5,7 @@ const btnStartGame = document.querySelector('#start-game');
 const gameViewSection = document.querySelector('.game-view-section');
 const scoreViewSection = document.querySelector('.score-view-section');
 const modal = document.querySelector('#Modal');
+const difficultyRadios = document.getElementsByName('difficulty');
 
 //Skapar ett objet för användar info
 const userObject = {
@@ -15,25 +16,33 @@ const userObject = {
 	time: null,
 	correct: null,
 	wordLength: null,
-	numberOfFailedGuesses: null
+	numberOfFailedGuesses: null,
+	difficulty: null,
 };
 
 
+// När användaren klickar på Start Game-knappen
 btnStartGame.addEventListener('click', function (event) {
-	event.preventDefault();
-	userObject.userName = userNameInput.value;
+    event.preventDefault();
+    userObject.userName = userNameInput.value;
 
-	if (userObject.userName) {
-		startViewSection.classList.add('hidden');
-		gameViewSection.classList.remove('hidden'); // Visa spelvyn
-		scoreViewSection.classList.add('hidden');
-		gameViewSection.style.display = 'flex'; // switch display to flex on game load (which we can't do initially because then we have a display, overriding display: none; from the class hidden)
-		console.log(userObject);
-	} else {
-		modal.style.display = 'block';
-	}
+    // Lägg till svårighetsgrad i användarobjektet baserat på användarens val
+    userObject.difficulty = document.querySelector('input[name="difficulty"]:checked').value;
 
+    if (userObject.userName && userObject.difficulty) {
+        // Sparar användarobjektet i localStorage
+        localStorage.setItem('userObject', JSON.stringify(userObject));
+
+        startViewSection.classList.add('hidden');
+        gameViewSection.classList.remove('hidden');
+        scoreViewSection.classList.add('hidden');
+        gameViewSection.style.display = 'flex';
+        console.log(userObject);
+    } else {
+        modal.style.display = 'block';
+    }
 });
+
 
 
 //Låter användaren klicka utaför modal rutan för att stänga rutan.
@@ -50,26 +59,21 @@ closeModalBtn.addEventListener('click', function () {
 	modal.style.display = 'none';
 });
 
-localStorage.setItem('userObject', JSON.stringify(userObject));
 
 
 
 
+/*
 
+// Hämta användarobjektet från localStorage!
 
-/* Så här hämtar vi och skickar upp värden till localStorage */
-//hämta localStorage
-/* userObject = JSON.parse(localStorage.getItem('userObject')) || {}; /*
-
-//ändra värderna
-/* userObject.wordLength = 10; */
-
-// Spara uppdaterad användardata till localStorage
-/* localStorage.setItem('userObject', JSON.stringify(userObject)); */
+let userObject = JSON.parse(localStorage.getItem('userObject'));
 
 
 
-/* To do:
-fixa en module box som kommer upp när man klickar esc och den ska även va en meny i header. Man ska kunna gå till start-view-section game-view-section och score-view-section*/
+// Kontrollera om userObject finns och innehåller svårighetsgraden!
 
+let difficultyLevel = (userObject && userObject.difficulty) ? userObject.difficulty : 'easy';
+let currentWordLength = (difficultyLevel === 'easy') ? 5 : 6;
 
+/*
