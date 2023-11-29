@@ -71,6 +71,13 @@ h1 {
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+
+.image-content img {
+	max-width: 100%;
+	height: auto;
+}
+
+
 .game-content {
 	display: flex;
 	flex-direction: column;
@@ -78,6 +85,7 @@ h1 {
 	justify-content: Space-evenly;
 	width: 100%;
 }
+
 
 .guess-content {
 	/* delete this when testing is done */
