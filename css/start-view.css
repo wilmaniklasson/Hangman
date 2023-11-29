@@ -62,7 +62,7 @@ label {
 	background-color: transparent;
 }
 
-#closeMenuBtn:hover {
+.close-modal-btn:hover{
 	color: rgb(115, 113, 113);
 	transform: scale(1.1);
 	cursor: pointer;
@@ -71,17 +71,14 @@ label {
 #start-game {
     padding: 10px 20px;
     font-size: 1.2rem;
-    background-color: #F4A261;
+	background-color: #e9c46a;
     border: none;
     border-radius: 5px;
     transition: background-color 0.5s ease;
 }
 
 #start-game:hover {
-    background-color: rgb(238, 143, 65);
+    background-color: #ebbb43;
     transform: scale(1.1);
 	cursor: pointer; 
 }
-
-
-
