@@ -2,10 +2,10 @@
 	display: flex;
 	transition: 150ms;
 	transform: scale(1);
-	margin: 0;
+	/* margin: 0 auto; */
 	padding: 2rem;
-	flex-direction: row;
-	align-items: center;
+	/* flex-direction: row; */
+	/* align-items: center; */
 	justify-content: center;
 
 	/* width: 100vh; */
@@ -42,7 +42,6 @@
 .character-word {
 	font-weight: bold;
 	display: flex;
-	justify-content: center;
 	align-items: center;
 	margin: 0.45rem;
 	border: 1px solid rgb(226, 220, 220);
@@ -56,17 +55,21 @@
 
 .character {
 	font-weight: bold;
-	display: flex;
+	/* display: flex; */
 	justify-content: center;
 	align-items: center;
 	color: rgb(39, 37, 37);
-	border-radius: 10px;
-	padding: 10px;
+
+	border-radius: 1rem;
+	padding: 0.2rem;
 	font-size: 1.25rem;
 	text-align: center;
-	border: 2px solid rgb(49, 48, 48);
-	background: rgb(82, 201, 141);
+	border: 0.12rem solid rgb(49, 48, 48);
+	background: linear-gradient(rgba(81, 220, 146, 0.457), rgba(83, 201, 20, 0.418));
+	/* background: rgb(82, 201, 141); */	/* background: rgb(220, 21, 41); */
 	box-shadow: 0px 0px 8px rgba(212, 209, 209, 0.363);
+	text-shadow: 1px 0px 1px rgba(17, 16, 16, 0.363);
+	text-shadow: px 1px 1px rgba(17, 16, 16, 0.363);
 }
 
 .character:hover {
@@ -78,17 +81,6 @@
 	transition: 150ms;
 	transform: scale(1.25);
 	box-shadow: 0px 0px 10px #d6d4d3;
-}
-
-.currentWord {
-	text-align: center;
-	color: red;
-	text-shadow: 0px 0px 1px black;
-	/* width: 50%; */
-	/* height: 50%; */
-	border: 1px solid black;
-	box-shadow: 0px 0px 12px black;
-	font-size: 2rem;
 }
 
 @mediaquery (min < 768px) {
