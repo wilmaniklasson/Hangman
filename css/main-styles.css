@@ -63,6 +63,7 @@ h1 {
 } 
 
 #openMenuBtn {
+	margin-left: 1.5em;
     padding: 10px 20px;
     font-size: 1.2rem;
     background-color: #e9c46a;
@@ -226,8 +227,8 @@ h1 {
 .logo {
 	display: flex;
 	flex-direction: row;
-	min-width: 200px;
-	max-width: 350px;
+	min-width: 190px;
+	max-width: 310px;
 
 	/* max-width: 80%; */
 }
