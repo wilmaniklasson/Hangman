@@ -7,12 +7,11 @@ const gameViewSection = document.querySelector('.game-view-section');
 const hangingMan = document.querySelector('.hanging-man');
 const hangmanBody = ['#ground', '#scaffold', '#legs', '#arms', '#body', '#head'];
 
-const letterContainer = document.createElement('div');
+// const letterContainer = document.createElement('div');
 const numberOfLetters = 10;
 const currentWord = pickNewWord(numberOfLetters);
 // const newUserObject = localStorage.getItem('newUserObject')
 
-letterContainer.className = 'letter-container';
 let svgElement = document.querySelector('.hanging-man');
 
 let visibleWord = Array(currentWord.length).fill('_'); // initialize with underscores
@@ -21,6 +20,8 @@ let match = false;
 
 // gameplay variables
 let wordContainer = createNewElement('div', 'word-container');
+let letterContainer = createNewElement('div', 'letter-container');
+letterContainer.className = 'letter-container';
 
 
 // ------------------------------------------------------------------------ //
@@ -31,15 +32,21 @@ newGame(newUserObject);
 
 // game logic functions
 export function newGame(newUserObject) {
-	renderAlphabet(alfabetet);
+
+	renderAlphabet(alfabetet, letterContainer);
 	renderWord(visibleWord);
 	console.log(currentWord);
 	console.log('New Game started with difficulty level: ' + newUserObject.difficulty);
 }
 
-function renderAlphabet(alfabetet) {
+function renderAlphabet(alfabetet, letterContainer) {
 
-	let letterContainer = createNewElement('div', 'letter-container');
+
+	// we first need to wipe the alphabet container clean whenever we make a new game
+	while (letterContainer.firstChild) {
+		console.log('removing child' + letterContainer.firstChild);
+		letterContainer.removeChild(letterContainer.firstChild);
+	}
 
 	// loop through each char in currentWord, append the text node to our newly created element
 	for (let char of alfabetet) {
@@ -59,8 +66,8 @@ function renderAlphabet(alfabetet) {
 			renderWord(visibleWord);
 		});
 
-		gameViewSection.append(letterContainer);
 	}
+	gameViewSection.append(letterContainer);
 }
 
 function renderWord(visibleWord) {

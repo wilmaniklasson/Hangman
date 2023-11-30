@@ -32,6 +32,9 @@ btnStartGame.addEventListener('click', function (event) {
 		difficulty: null
 	};
 
+	newGame(newUserObject);
+
+
 	newUserObject.userName = document.querySelector('#user-name-input').value;
 	newUserObject.difficulty = document.querySelector('input[name="difficulty"]:checked').value;
 
@@ -42,8 +45,8 @@ btnStartGame.addEventListener('click', function (event) {
 
 	if (localStorage.getItem('userObjectsArray')) {
 		userObjectsArray = JSON.parse(localStorage.getItem('userObjectsArray'));
-	} else { 
-		userObjectsArray = []; 
+	} else {
+		userObjectsArray = [];
 	}
 
 	if (newUserObject.userName && newUserObject.difficulty) {
