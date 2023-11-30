@@ -1,4 +1,6 @@
-const scoreboardLista = [
+// Lista på testdata
+
+const scoreboardData = [
     { name: "Alice", result: "Win", date: "2023-11-23", time: "14:30", correct: 3, words: 3, incorrect: 2 },
     { name: "Bob", result: "Loss", date: "2023-11-22", time: "19:45", correct: 1, words: 2, incorrect: 9 },
     { name: "Charlie", result: "Win", date: "2023-11-20", time: "10:15", correct: 4, words: 4, incorrect: 1 },
@@ -13,44 +15,79 @@ const scoreboardLista = [
   { name: "Liam", result: "Loss", date: "2023-11-11", time: "15:45", correct: 3, words: 5, incorrect: 9 },
   { name: "Isabel", result: "Win", date: "2023-11-14", time: "18:00", correct: 4, words: 4, incorrect: 1 },
   { name: "Jack", result: "Loss", date: "2023-11-13", time: "22:15", correct: 2, words: 3, incorrect: 9 },
-  { name: "Karen", result: "Win", date: "2023-11-12", time: "09:30", correct: 2, words: 2, incorrect: 0 },
+  { name: "Kmaren", result: "Win", date: "2023-11-10", time: "09:38", correct: 2, words: 2, incorrect: 0 },
   { name: "Liam", result: "Loss", date: "2023-11-11", time: "15:45", correct: 3, words: 5, incorrect: 9 },
+  { name: "Laren", result: "Win", date: "2023-11-12", time: "08:30", correct: 2, words: 2, incorrect: 0 },
 
   ];
+// function renderScoreboard(data) {
+// 	const scoreboardBody = document.getElementById('scoreboardBody')
 
-  const scoreboardData = document.querySelector('scoreboardData')
-  // Sort the scoreboard data by the number of correct words in descending order
-//   scoreboardData.sort((a, b) => a.incorrect - b.incorrect);
+// 	data.forEach(score => {
+// 		addToScoreboard(score)
+// 	});
+// }
+// document.addEventListener('DOMContentLoaded', () => {
+// const sortTimeBtn = document.getElementById('sortTimeBtn');	
 
-  // Display only the top 10 scores
-//   const top10Scores = scoreboardData.slice(0, 8);
+// sortTimeBtn.addEventListener('click', () => {
+// const sortedData = toSorted(scoreboardData, 'time');		 
+// 	  renderScoreboard(sortedData);
+// });
+// })
+// 	function toSorted(data, sortBy = 'time') {
+// 		return data.slice().sort((a, b) => {
+// 		  if (sortBy === 'mistakes' || sortBy !== 'time') {
+// 			const incorrectComparison = a.incorrect - b.incorrect;
+// 			if (incorrectComparison !== 0) {
+// 			  return incorrectComparison;
+// 			}
+// 		  } else if (sortBy === 'time') {
+// 			const aDateTime = new Date(`${a.date} ${a.time}`);
+// 			const bDateTime = new Date(`${b.date} ${b.time}`);
+// 			return aDateTime - bDateTime;
+// 		  }
+// 		});
+// 	  }	
 
-  // Function to add a row to the scoreboard
-//   function addToScoreboard(user) {
-//     const row = document.createElement("tr");
+  const scoreboardDataList = document.querySelector('scoreboardData')
+//   Sorterar antalet minst fel
+  scoreboardData.sort((a, b) => {
+	const incorrectComparison = a.incorrect - b.incorrect;
+	if (incorrectComparison !== 0) {
+		return incorrectComparison
+	}
 
-//     for (const key in user) {
-//       if (user.hasOwnProperty(key)) {
-//         const cell = document.createElement("td");
-//         cell.textContent = user[key];
-//         row.appendChild(cell);
-//       }
-//     }
+	
 
-//     document.querySelector("#scoreboardBody").appendChild(row);
-//   }
+// Här sorterar vi etfer tid och datum om antalet fel är samma.	
+const aDateTime = new Date(`${a.date}  ${a.time}`);
+const bDateTime = new Date(`${b.date}  ${b.time}`);
+return aDateTime - bDateTime;
+});
+//   Här väljer vi hur många som ska vara med på topplistan
+  const top10Scores = scoreboardData.slice(0, 10);
 
-  // Add the top 10 scores to the scoreboard
-//   top10Scores.forEach(score => {
-//     addToScoreboard(score);
-//   });
+//   Denna funktion lägger till rader till columner i scoreboarden
+  function addToScoreboard(user) {
+    const row = document.createElement("tr");
 
+// Här skapas celler med innehållet från userObject
+    for (const key in user) {
+      if (user.hasOwnProperty(key)) {
+        const cell = document.createElement("td");
+        cell.textContent = user[key];
+        row.appendChild(cell);
+      }
+    }
 
-//   /i första hand stigande på antal gissningar
+    document.querySelector("#scoreboardBody").appendChild(row);
+  }
 
- 
-//   , i andra hand fallande på datum och tid för omgången. Man ska kunna växla till att visa omgångarna sorterade i fallande ordning på datum och tid./
-
+//   Här loopar det igenom listan med resultat och lägger till dom bästa, om inte resultatet är bättre än någon på scoreboarden gör den inget synligt.
+  top10Scores.forEach(score => {
+    addToScoreboard(score);
+  });
 
 
 //Skapar ett objet för användar info
@@ -65,4 +102,3 @@ const userObject = {
   numberOfFailedGuesses: null
   };     
   
-  export { scoreboardData}
