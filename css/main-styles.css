@@ -213,7 +213,6 @@ h1 {
 }
 
 .score-view-section {
-	background-color: rgba(0, 0, 0, 0.459);
 	padding: 20px;
 	border-radius: 10px;
 	text-align: center;
@@ -221,6 +220,7 @@ h1 {
 	height: 100%;
 	overflow: auto;
 	margin-bottom: 5em;
+	margin-right: 2em;
 }
 /*_______________________*/
 .logo {

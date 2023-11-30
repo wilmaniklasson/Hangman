@@ -13,9 +13,16 @@ const difficultyRadios = document.getElementsByName('difficulty');
 
 let currentDate = new Date();
 
+const logo = document.querySelector('#logo');
+const gameOverView = document.querySelector('.game-over-view');
 
 // Skapa en array för att hålla reda på användarobjekten
 let userObjectsArray = [];
+
+    gameViewSection.style.display = 'none';
+    scoreViewSection.style.display = 'none';
+    gameOverView.style.display = 'none'
+
 // När användaren klickar på Start Game-knappen
 btnStartGame.addEventListener('click', function (event) {
 	event.preventDefault();
@@ -56,15 +63,14 @@ btnStartGame.addEventListener('click', function (event) {
 		// Sparar användarobjektarrayen i localStorage
 		localStorage.setItem('userObjectsArray', JSON.stringify(userObjectsArray));
 
-		startViewSection.classList.add('hidden');
-		gameViewSection.classList.remove('hidden');
-		scoreViewSection.classList.add('hidden');
-		gameViewSection.style.display = 'flex';
-
-		// newGame(newUserObject);
-	} else {
-		modal.style.display = 'block';
-	}
+        startViewSection.style.display = 'none';
+        gameViewSection.style.display = 'block';
+        logo.style.display = 'none';
+        hangingMan.classList.remove('hidden');
+        newGame();
+    } else {
+        modal.style.display = 'block';
+    }
 });
 
 
