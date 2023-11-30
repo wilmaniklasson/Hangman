@@ -1,2 +1,1 @@
-import { scoreboardData } from "./score-view";
-
+import { scoreboardData } from "./score-view.js";
