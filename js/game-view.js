@@ -112,22 +112,33 @@ function handleGuess(character) {
 		incorrectGuesses++;
 		console.log("incorrect guesses: " + incorrectGuesses);
 
-		if (incorrectGuesses === 6) {
-			gameOver(newUserObject);
-		}
+
 	}
 
 	visibleWord = newVisibleWord;
 	renderWord(visibleWord);
+	updateGameState(newUserObject);
 }
-export function gameOver(newUserObject) {
-	incorrectGuesses = 0;
-	// startViewSection.classList.add('hidden');
-	gameViewSection.classList.add("hidden");
-	scoreViewSection.classList.remove("hidden");
-	console.log("Game over");
+export function updateGameState(newUserObject) {
+	// we get the user in local storage (we probably shouldn't do it like this, in case we have billions of users though)
+	//  and store it in a variable
+	let userObjectsArray = JSON.parse(localStorage.getItem('userObjectsArray'));
+	let currentUser = userObjectsArray.find(user => user.userName === newUserObject.userName);
 
-	// when you suck, ame ends. Do stuff here
+	if (!visibleWord.includes('_')) {
+		gameViewSection.classList.add("hidden");
+		scoreViewSection.classList.remove("hidden");
+		console.log("You won!");
+		currentUser.win++;
+	}
+	else if (incorrectGuesses >= 6) {
+		gameViewSection.classList.add("hidden");
+		scoreViewSection.classList.remove("hidden");
+		console.log("You loose!");
+		currentUser.lost++;
+	}
+	//  then we store it again on local storage
+	localStorage.setItem('userObjectsArray', JSON.stringify(userObjectsArray));
 }
 
 // helper functions

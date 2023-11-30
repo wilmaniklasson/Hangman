@@ -1,4 +1,4 @@
-import { newGame, gameOver } from './game-view.js';
+import { newGame, updateGameState } from './game-view.js';
 
 export let newUserObject = {};
 
