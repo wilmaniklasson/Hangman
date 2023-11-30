@@ -1,3 +1,7 @@
+import { newGame, gameOver } from './game-view.js';
+
+export let  newUserObject = {};
+
 //hämtar element
 const startViewSection = document.querySelector('.start-view-section');
 const userNameInput = document.querySelector('#user-name-input');
@@ -12,39 +16,39 @@ let userObjectsArray = [];
 
 // När användaren klickar på Start Game-knappen
 btnStartGame.addEventListener('click', function (event) {
-    event.preventDefault();
+	event.preventDefault();
 
-    const newUserObject = {
-        userName: null,
-        win: null,
-        lost: null,
-        date: null,
-        time: null,
-        correct: null,
-        wordLength: null,
-        numberOfFailedGuesses: null,
-        difficulty: null,
-    };
+	newUserObject = {
+		userName: null,
+		win: null,
+		lost: null,
+		date: null,
+		time: null,
+		correct: null,
+		wordLength: null,
+		numberOfFailedGuesses: null,
+		difficulty: null,
+	};
 
-    newUserObject.userName = userNameInput.value;
-    newUserObject.difficulty = document.querySelector('input[name="difficulty"]:checked').value;
+	newUserObject.userName = userNameInput.value;
+	newUserObject.difficulty = document.querySelector('input[name="difficulty"]:checked').value;
 
-    if (newUserObject.userName && newUserObject.difficulty) {
-        // Lägg till det nya användarobjektet i arrayen
-        userObjectsArray.push(newUserObject);
+	if (newUserObject.userName && newUserObject.difficulty) {
+		// Lägg till det nya användarobjektet i arrayen
+		userObjectsArray.push(newUserObject);
 
-        // Sparar användarobjektarrayen i localStorage
-        localStorage.setItem('userObjectsArray', JSON.stringify(userObjectsArray));
+		// Sparar användarobjektarrayen i localStorage
+		localStorage.setItem('userObjectsArray', JSON.stringify(userObjectsArray));
 
-        startViewSection.classList.add('hidden');
-        gameViewSection.classList.remove('hidden');
-        scoreViewSection.classList.add('hidden');
-        gameViewSection.style.display = 'flex';
-        
-        newGame();
-    } else {
-        modal.style.display = 'block';
-    }
+		startViewSection.classList.add('hidden');
+		gameViewSection.classList.remove('hidden');
+		scoreViewSection.classList.add('hidden');
+		gameViewSection.style.display = 'flex';
+
+		// newGame(newUserObject);
+	} else {
+		modal.style.display = 'block';
+	}
 });
 
 

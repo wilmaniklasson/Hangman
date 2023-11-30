@@ -1,5 +1,6 @@
 import { alfabetet } from './svenska-ord.js';
 import { words } from './svenska-ord.js';
+import { newUserObject } from './start-view.js';
 
 // display containers
 const gameViewSection = document.querySelector('.game-view-section');
@@ -9,7 +10,7 @@ const hangmanBody = ['#ground', '#scaffold', '#legs', '#arms', '#body', '#head']
 const letterContainer = document.createElement('div');
 const numberOfLetters = 10;
 const currentWord = pickNewWord(numberOfLetters);
-const userObject = localStorage.getItem('userObject');
+// const newUserObject = localStorage.getItem('newUserObject')
 
 letterContainer.className = 'letter-container';
 let svgElement = document.querySelector('.hanging-man');
@@ -25,15 +26,15 @@ let wordContainer = createNewElement('div', 'word-container');
 // ------------------------------------------------------------------------ //
 
 // game loop
-newGame(userObject);
 
+newGame(newUserObject);
 
 // game logic functions
-export function newGame(userObject) {
+export function newGame(newUserObject) {
 	renderAlphabet(alfabetet);
 	renderWord(visibleWord);
 	console.log(currentWord);
-	console.log('New Game started with difficulty level: ' + userObject.difficulty);
+	console.log('New Game started with difficulty level: ' + newUserObject.difficulty);
 }
 
 function renderAlphabet(alfabetet) {
@@ -109,13 +110,13 @@ function handleGuess(character) {
 	}
 
 	else {
-		gameOver(userObject);
+		gameOver(newUserObject);
 	}
 
 	visibleWord = newVisibleWord;
 	renderWord(visibleWord);
 }
-export function gameOver(userObject) {
+export function gameOver(newUserObject) {
 
 	// when you suck, ame ends. Do stuff here
 }
