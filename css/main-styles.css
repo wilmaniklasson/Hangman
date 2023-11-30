@@ -5,6 +5,7 @@
 	font-family: "Poppins", sans-serif;
 	scrollbar-width: none; /* Firefox */
 	-ms-overflow-style: none; /* IE and Edge */
+	font-size: min(10px, 2rem);
 }
 
 /* Hiding scroll for IE and firefox */
@@ -60,24 +61,23 @@ h1 {
 	max-width: 300px;
 	border-radius: 18px;
 	position: relative;
-} 
+}
 
 #openMenuBtn {
 	margin-left: 1.5em;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    background-color: #e9c46a;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.5s ease;
-	
+	padding: 10px 20px;
+	font-size: 1.2rem;
+	background-color: #e9c46a;
+	border: none;
+	border-radius: 5px;
+	transition: background-color 0.5s ease;
 }
 
 #openMenuBtn:hover {
-    background-color: #ebbb43;
+	background-color: #ebbb43;
 	cursor: pointer;
-    transform: scale(1.1);
-	cursor: pointer; 
+	transform: scale(1.1);
+	cursor: pointer;
 }
 
 #closeMenuBtn {
@@ -96,7 +96,6 @@ h1 {
 	transform: scale(1.1);
 	cursor: pointer;
 }
-  
 
 /* Style for menu buttons */
 #NewGameBtn,
@@ -120,7 +119,6 @@ h1 {
 
 /* Style for open menu button */
 
-
 #openMenuBtn:hover {
 	transform: scale(1.1);
 	cursor: pointer;
@@ -136,7 +134,10 @@ h1 {
 .game-container {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-evenly;
+	max-width: 90rem;
 	gap: 1rem;
+	margin: 0 auto;
 	flex-grow: 1;
 	padding: min(3vw, 4rem);
 }
@@ -149,25 +150,23 @@ h1 {
 	background-color: #fff;
 	border-radius: 20px;
 	padding: 2em 0em;
-	border: 5px solid #F4A261;
+	border: 5px solid #f4a261;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-
 .image-content img {
 	max-width: 100%;
-	height: auto;
+	flex: 1;
+	/* height:  */
 }
-
 
 .game-content {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: Space-evenly;
+	justify-content: space-evenly;
 	width: 100%;
 }
-
 
 .guess-content {
 	/* delete this when testing is done */
@@ -202,7 +201,7 @@ h1 {
 }
 
 .game-view-section {
-	/* display: flex; */
+	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	background-color: rgba(0, 0, 0, 0.501);
@@ -210,7 +209,7 @@ h1 {
 	border-radius: 10px;
 	text-align: center;
 	width: 100%;
-	height: 100%;
+	flex: 1;
 }
 
 .score-view-section {
@@ -233,11 +232,17 @@ h1 {
 	/* max-width: 80%; */
 }
 /*_______________________________*/
-@media (max-width: 1140px) {
+/* @media (max-width: 1140px) {
 	.logo {
 		flex-direction: column-reverse;
 		width: 280px;
 	}
+} */
+
+img,
+.hanging-man {
+	height: 100%;
+	margin: 0 auto;
 }
 
 @media (min-width: 680px) {
@@ -246,14 +251,11 @@ h1 {
 	}
 }
 
-/* @media (max-width: 420px) {
+@media (max-width: 680px) {
 	.image-content {
-	
+		height: 25%;
 	}
-} */
-
-
-
+}
 
 /* Designen ska vara funktionell och responsiv. (Ner till 350px sidbredd.)*/
 /*  TODO: Handle smol display.
