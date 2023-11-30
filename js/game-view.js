@@ -100,10 +100,10 @@ function handleGuess(character) {
 		// Get the SVG part to show
 		let svgPartId = hangmanBody[incorrectGuesses];
 		let svgPart = document.querySelector(svgPartId);
-		console.log('incorrect guesses: ' + incorrectGuesses);
+		// console.log('incorrect guesses: ' + incorrectGuesses);
 		// Make the SVG part visible
 		svgPart.classList.remove('hidden');
-		console.log('class removed: ' + svgPartId);
+		// console.log('class removed: ' + svgPartId);
 
 		// Increment the counter
 		incorrectGuesses++;
@@ -117,6 +117,8 @@ function handleGuess(character) {
 	renderWord(visibleWord);
 }
 export function gameOver(newUserObject) {
+
+	console.log('Game over');
 
 	// when you suck, ame ends. Do stuff here
 }

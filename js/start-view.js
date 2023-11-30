@@ -1,6 +1,6 @@
 import { newGame, gameOver } from './game-view.js';
 
-export let  newUserObject = {};
+export let newUserObject = {};
 
 //hämtar element
 const startViewSection = document.querySelector('.start-view-section');
@@ -11,9 +11,11 @@ const scoreViewSection = document.querySelector('.score-view-section');
 const modal = document.querySelector('#Modal');
 const difficultyRadios = document.getElementsByName('difficulty');
 
+let currentDate = new Date();
+
+
 // Skapa en array för att hålla reda på användarobjekten
 let userObjectsArray = [];
-
 // När användaren klickar på Start Game-knappen
 btnStartGame.addEventListener('click', function (event) {
 	event.preventDefault();
@@ -22,16 +24,27 @@ btnStartGame.addEventListener('click', function (event) {
 		userName: null,
 		win: null,
 		lost: null,
-		date: null,
-		time: null,
+		date: currentDate.toLocaleDateString(),
+		time: currentDate.toLocaleTimeString(),
 		correct: null,
 		wordLength: null,
 		numberOfFailedGuesses: null,
-		difficulty: null,
+		difficulty: null
 	};
 
-	newUserObject.userName = userNameInput.value;
+	newUserObject.userName = document.querySelector('#user-name-input').value;
 	newUserObject.difficulty = document.querySelector('input[name="difficulty"]:checked').value;
+
+	// we need to check if the userObjectsArray exists in localStorage
+	//  because it would sometimes wipe the array and we don't want that :)
+	// if it exists we load  it to our userObjectsArray variable before pushing it,
+	//    otherwise  we make a new one.
+
+	if (localStorage.getItem('userObjectsArray')) {
+		userObjectsArray = JSON.parse(localStorage.getItem('userObjectsArray'));
+	} else { 
+		userObjectsArray = []; 
+	}
 
 	if (newUserObject.userName && newUserObject.difficulty) {
 		// Lägg till det nya användarobjektet i arrayen
