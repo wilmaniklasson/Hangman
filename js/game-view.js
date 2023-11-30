@@ -25,11 +25,17 @@ let wordContainer = createNewElement('div', 'word-container');
 // ------------------------------------------------------------------------ //
 
 // game loop
-renderAlphabet(alfabetet);
-renderWord(visibleWord);
-console.log(currentWord);
-console.log(hangingMan);
+newGame(userObject);
+
+
 // game logic functions
+export function newGame(userObject) {
+	renderAlphabet(alfabetet);
+	renderWord(visibleWord);
+	console.log(currentWord);
+	console.log('New Game started with difficulty level: ' + userObject.difficulty);
+}
+
 function renderAlphabet(alfabetet) {
 
 	let letterContainer = createNewElement('div', 'letter-container');
@@ -109,7 +115,8 @@ function handleGuess(character) {
 	visibleWord = newVisibleWord;
 	renderWord(visibleWord);
 }
-function gameOver(userObject) {
+export function gameOver(userObject) {
+
 	// when you suck, ame ends. Do stuff here
 }
 
@@ -134,3 +141,4 @@ function pickNewWord(numberOfLetters) {
 	// then return the word that we got from the array
 	return currentWordList[newWord];
 }
+

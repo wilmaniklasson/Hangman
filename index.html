@@ -29,9 +29,8 @@
             <!-- Hanging Man -->
             <header class="top-section">
                 <nav class="button-row">
-                    <button class="btn" id="openMenuBtn"></button>
-
-                    <button class="btn" id="toggle">Toggle Views</button>
+                    <button type="button" id="openMenuBtn">menu
+                      </button>
                 </nav>
                 <div id="menu" class="menu">
                     <div id="menu-content" class="menu-content">
@@ -52,6 +51,7 @@
             </header>
             <div class="game-container">
                 <section class="image-content" id="image-content">
+                    <img src="resources/images/hangman.svg" id="logo" alt="logo">
                     <section class="game-over hidden">
                         <h2 class="win hidden">
                             Congratulations! You've successfully conquered the
@@ -141,6 +141,7 @@
                                 man from hanging?
                             </p>
 
+
                             <label
                                 id="label-user-name-input"
                                 for="user-name-input"
@@ -153,6 +154,15 @@
                                 placeholder="Username"
                                 required
                             />
+
+                            <div>
+                                <label for="easy">Easy</label>
+                                <input type="radio" id="easy" name="difficulty" value="easy" checked>
+                                
+                                <label for="hard">Hard</label>
+                                <input type="radio" id="hard" name="difficulty" value="hard">
+                            </div>
+                            
                             <button type="submit" id="start-game">
                                 Start Game
                             </button>
