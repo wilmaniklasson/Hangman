@@ -76,4 +76,4 @@ let userObject = JSON.parse(localStorage.getItem('userObject'));
 let difficultyLevel = (userObject && userObject.difficulty) ? userObject.difficulty : 'easy';
 let currentWordLength = (difficultyLevel === 'easy') ? 5 : 6;
 
-/*
+*/
