@@ -48,6 +48,7 @@ NewGameBtn.addEventListener('click', function () {
     gameViewSection.classList.add('hidden');
     scoreViewSection.classList.add('hidden');
     gameOver.classList.add('hidden');
+    logo.style.display = 'block';
 });
 
 const ScoreboardBtn = document.querySelector('#ScoreboardBtn');
@@ -58,4 +59,5 @@ ScoreboardBtn.addEventListener('click', function () {
     gameViewSection.classList.add('hidden');
     scoreViewSection.classList.remove('hidden'); // show score view
     gameOver.classList.add('hidden');
+    logo.style.display = 'none';
 });

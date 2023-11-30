@@ -6,6 +6,8 @@ const gameViewSection = document.querySelector('.game-view-section');
 const scoreViewSection = document.querySelector('.score-view-section');
 const modal = document.querySelector('#Modal');
 const difficultyRadios = document.getElementsByName('difficulty');
+const logo = document.querySelector('#logo');
+
 
 // Skapa en array för att hålla reda på användarobjekten
 let userObjectsArray = [];
@@ -40,6 +42,7 @@ btnStartGame.addEventListener('click', function (event) {
         gameViewSection.classList.remove('hidden');
         scoreViewSection.classList.add('hidden');
         gameViewSection.style.display = 'flex';
+        logo.style.display = 'none';
         
         newGame();
     } else {
