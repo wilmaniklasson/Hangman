@@ -40,7 +40,8 @@ btnStartGame.addEventListener('click', function (event) {
         gameViewSection.classList.remove('hidden');
         scoreViewSection.classList.add('hidden');
         gameViewSection.style.display = 'flex';
-        console.log(newUserObject);
+        
+        newGame();
     } else {
         modal.style.display = 'block';
     }
