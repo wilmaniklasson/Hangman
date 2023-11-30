@@ -52,23 +52,7 @@
             <div class="game-container">
                 <section class="image-content" id="image-content">
                     <img src="resources/images/hangman.svg" id="logo" alt="logo">
-                    <section class="game-over hidden">
-                        <h2 class="win hidden">
-                            Congratulations! You've successfully conquered the
-                            game.
-                        </h2>
-                        <h2 class="lost hidden">
-                            You lost. Better luck next time!
-                        </h2>
-                        <p>
-                            Här finns det två klasser som berättar om du vinnit
-                            eller förlorat.
-                        </p>
 
-                        <p>[Vinst/Förlust]</p>
-                        <p>[Det hemliga ordet]</p>
-                        <p>[Antalet gissningar]</p>
-                    </section>
                     <!-- This is the hanging man figure that we will toggle programmatically. -->
                     <figure class="hanging-man">
                         <svg
@@ -168,8 +152,8 @@
                             </button>
                         </form>
                     </div>
-                    <div class="game-view-section hidden"></div>
-                    <div class="score-view-section hidden">
+                    <div class="game-view-section"></div>
+                    <div class="score-view-section">
                         <table id="scoreboard">
                             <!-- <div>
                                 <p>Sortera efter:</p>
@@ -179,6 +163,19 @@
                                 <button id="sortTimeBtn">Previous games</button>
                             </div> -->
                             <thead>
+                                <section class="game-over-view">
+                                    <h2 class="win ">
+                                        Congratulations! You've successfully conquered the
+                                        game.
+                                    </h2>
+                                    <h2 class="lost">
+                                        You lost. Better luck next time!
+                                    </h2>
+            
+                                    <p>[Vinst/Förlust]</p>
+                                    <p>[Det hemliga ordet]</p>
+                                    <p>[Antalet gissningar]</p>
+                                </section>
                                 <tr>
                                     <th id="nameHeader">Name</th>
                                     <th id="resultHeader">Result</th>
