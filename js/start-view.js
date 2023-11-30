@@ -7,37 +7,40 @@ const scoreViewSection = document.querySelector('.score-view-section');
 const modal = document.querySelector('#Modal');
 const difficultyRadios = document.getElementsByName('difficulty');
 
-//Skapar ett objet för användar info
-const userObject = {
-	userName: null,
-	win: null,
-	Lost: null,
-	date: null,
-	time: null,
-	correct: null,
-	wordLength: null,
-	numberOfFailedGuesses: null,
-	difficulty: null,
-};
-
+// Skapa en array för att hålla reda på användarobjekten
+let userObjectsArray = [];
 
 // När användaren klickar på Start Game-knappen
 btnStartGame.addEventListener('click', function (event) {
     event.preventDefault();
-    userObject.userName = userNameInput.value;
 
-    // Lägg till svårighetsgrad i användarobjektet baserat på användarens val
-    userObject.difficulty = document.querySelector('input[name="difficulty"]:checked').value;
+    const newUserObject = {
+        userName: null,
+        win: null,
+        lost: null,
+        date: null,
+        time: null,
+        correct: null,
+        wordLength: null,
+        numberOfFailedGuesses: null,
+        difficulty: null,
+    };
 
-    if (userObject.userName && userObject.difficulty) {
-        // Sparar användarobjektet i localStorage
-        localStorage.setItem('userObject', JSON.stringify(userObject));
+    newUserObject.userName = userNameInput.value;
+    newUserObject.difficulty = document.querySelector('input[name="difficulty"]:checked').value;
+
+    if (newUserObject.userName && newUserObject.difficulty) {
+        // Lägg till det nya användarobjektet i arrayen
+        userObjectsArray.push(newUserObject);
+
+        // Sparar användarobjektarrayen i localStorage
+        localStorage.setItem('userObjectsArray', JSON.stringify(userObjectsArray));
 
         startViewSection.classList.add('hidden');
         gameViewSection.classList.remove('hidden');
         scoreViewSection.classList.add('hidden');
         gameViewSection.style.display = 'flex';
-        console.log(userObject);
+        console.log(newUserObject);
     } else {
         modal.style.display = 'block';
     }
