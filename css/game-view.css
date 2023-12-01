@@ -33,7 +33,7 @@
 .letter-container {
 	display: grid;
 	/* create as many columns possible as the container allows, at the least 40px wide, share space equally */
-	grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+	grid-template-columns: repeat(10, minmax(20px, 1fr));
 	gap: 14px;
 	border: 5ps dotted orange;
 }

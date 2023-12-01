@@ -5,6 +5,7 @@
 	font-family: "Poppins", sans-serif;
 	scrollbar-width: none; /* Firefox */
 	-ms-overflow-style: none; /* IE and Edge */
+	font-size: min(14px, 24px);
 }
 
 /* Hiding scroll for IE and firefox */
@@ -194,12 +195,6 @@ h1 {
 	height: 100%;
 }
 
-.letter-container {
-	display: flex;
-	flex-direction: column;
-	align-content: center;
-	justify-content: center;
-}
 
 .game-view-section {
 	display: none;
