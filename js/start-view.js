@@ -30,6 +30,7 @@ btnStartGame.addEventListener('click', function (event) {
         wordLength: null,
         numberOfFailedGuesses: null,
         difficulty: null,
+        secretWord: null,
     };
 
     
