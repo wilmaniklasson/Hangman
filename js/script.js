@@ -3,7 +3,9 @@ const startViewSection = document.querySelector('.start-view-section');
 const gameViewSection = document.querySelector('.game-view-section');
 const scoreViewSection = document.querySelector('.score-view-section');
 const hangingMan = document.querySelector('.hanging-man');
-const gameOver = document.querySelector('.game-over');
+const gameOverView = document.querySelector('.game-over-view');
+const logo = document.querySelector('#logo');
+const imageContent = document.querySelector('.image-content');
 
 let btnState = 0;
 startViewSection.classList.remove('hidden');
@@ -43,21 +45,25 @@ window.addEventListener('click', function (event) {
 const NewGameBtn = document.querySelector('#NewGameBtn');
 NewGameBtn.addEventListener('click', function () {
     menu.style.display = 'none';
-    startViewSection.classList.remove('hidden'); //show start view
-    hangingMan.classList.remove('hidden');
-    gameViewSection.classList.add('hidden');
-    scoreViewSection.classList.add('hidden');
-    gameOver.classList.add('hidden');
-    logo.style.display = 'block';
+    startViewSection.style.display = 'block';//show start view
+    logo.style.display = 'block';//show logo
+    gameViewSection.style.display = 'none';
+    scoreViewSection.style.display = 'none';
+    hangingMan.style.display = 'none';
+    gameOverView.style.display = 'none';
+    imageContent.style.display = 'block';
+    
 });
 
 const ScoreboardBtn = document.querySelector('#ScoreboardBtn');
 ScoreboardBtn.addEventListener('click', function () {
     menu.style.display = 'none';
-    startViewSection.classList.add('hidden');
-    hangingMan.classList.add('hidden');
-    gameViewSection.classList.add('hidden');
-    scoreViewSection.classList.remove('hidden'); // show score view
-    gameOver.classList.add('hidden');
+    startViewSection.style.display = 'none';
+    hangingMan.style.display = 'none';
+    gameViewSection.style.display = 'none';
+    scoreViewSection.style.display = 'block'; // show score view
     logo.style.display = 'none';
+    gameOverView.style.display = 'block';
+    imageContent.style.display = 'none';
+
 });
