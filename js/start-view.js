@@ -1,7 +1,4 @@
-import { newGame, updateGameState } from './game-view.js';
-
-export let newUserObject = {};
-
+import { newGame } from './game-view.js';
 //hämtar element
 const startViewSection = document.querySelector('.start-view-section');
 const userNameInput = document.querySelector('#user-name-input');
@@ -15,29 +12,27 @@ let currentDate = new Date();
 
 const logo = document.querySelector('#logo');
 const gameOverView = document.querySelector('.game-over-view');
-
+const hangingMan = document.querySelector('.hanging-man');
 // Skapa en array för att hålla reda på användarobjekten
 let userObjectsArray = [];
 
-    gameViewSection.style.display = 'none';
-    scoreViewSection.style.display = 'none';
-    gameOverView.style.display = 'none'
 
 // När användaren klickar på Start Game-knappen
 btnStartGame.addEventListener('click', function (event) {
 	event.preventDefault();
 
-	newUserObject = {
-		userName: null,
-		win: null,
-		lost: null,
-		date: currentDate.toLocaleDateString(),
-		time: currentDate.toLocaleTimeString(),
-		correct: null,
-		wordLength: null,
-		numberOfFailedGuesses: null,
-		difficulty: null
-	};
+    const newUserObject = {
+        userName: null,
+        win: null,
+        lost: null,
+        date: null,
+        time: null,
+        correct: null,
+        wordLength: null,
+        numberOfFailedGuesses: null,
+        difficulty: null,
+        secretWord: null,
+    };
 
 	newGame(newUserObject);
 
@@ -64,10 +59,11 @@ btnStartGame.addEventListener('click', function (event) {
 		localStorage.setItem('userObjectsArray', JSON.stringify(userObjectsArray));
 
         startViewSection.style.display = 'none';
-        gameViewSection.style.display = 'block';
+        gameViewSection.style.display = 'flex';
         logo.style.display = 'none';
         hangingMan.classList.remove('hidden');
-        newGame();
+        hangingMan.style.display = 'block';
+        /*newGame(newUserObject);*/
     } else {
         modal.style.display = 'block';
     }

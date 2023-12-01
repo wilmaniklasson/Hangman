@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<link rel="stylesheet" href="css/main-styles.css" />
-		<link rel="stylesheet" href="css/start-view.css" />
-		<link rel="stylesheet" href="css/game-view.css" />
-		<link rel="stylesheet" href="css/score-view.css" />
+        <link rel="stylesheet" href="css/main-styles.css" />
+        <link rel="stylesheet" href="css/start-view.css" />
+        <link rel="stylesheet" href="css/game-view.css" />
+        <link rel="stylesheet" href="css/score-view.css" />
 
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&family=Poppins:wght@100;500;700&family=Raleway:wght@400;500;600;700;900&display=swap"
-			rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&family=Poppins:wght@100;500;700&family=Raleway:wght@400;500;600;700;900&display=swap"
+            rel="stylesheet"
+        />
 
-		<script src="./js/script.js" defer type="module"></script>
-		<script src="js/game-view.js" defer type="module"></script>
-		<script src="js/start-view.js" defer type="module"></script>
-		<script src="js/score-view.js" defer type="module"></script>
-		<script src="js/sort.js" defer type="module"></script>
+        <script src="./js/script.js" defer type="module"></script>
+        <script src="js/start-view.js" defer type="module"></script>
+        <script src="js/game-view.js" defer type="module"></script>
+        <script src="js/score-view.js" defer type="module"></script>
+        <script src="js/sort.js" defer type="module"></script>
 
-		<title>Hangman javascript</title>
-	</head>
-	<body>
-		<div class="main-container">
-			<!-- Hanging Man -->
-			<header class="top-section">
-				<nav class="button-row">
-					<button type="button" id="openMenuBtn">menu</button>
-				</nav>
-				<div id="menu" class="menu">
-					<div id="menu-content" class="menu-content">
-						<button id="closeMenuBtn">&times;</button>
-						<button id="NewGameBtn">New Game</button>
-						<button id="ScoreboardBtn">Scoreboard</button>
-					</div>
-				</div>
+        <title>Hangman javascript</title>
+    </head>
+    <body>
+        <div class="main-container">
+            <!-- Hanging Man -->
+            <header class="top-section">
+                <nav class="button-row">
+                    <button type="button" id="openMenuBtn">menu</button>
+                </nav>
+                <div id="menu" class="menu">
+                    <div id="menu-content" class="menu-content">
+                        <button id="closeMenuBtn">&times;</button>
+                        <button id="NewGameBtn">New Game</button>
+                        <button id="ScoreboardBtn">Scoreboard</button>
+                    </div>
+                </div>
 
                 <div id="Modal">
                     <div id="modal-content" class="modal-content">
@@ -49,7 +50,11 @@
             </header>
             <div class="game-container">
                 <section class="image-content" id="image-content">
-                    <img src="resources/images/hangman.svg" id="logo" alt="logo">
+                    <img
+                        src="resources/images/hangman.svg"
+                        id="logo"
+                        alt="logo"
+                    />
 
                     <!-- This is the hanging man figure that we will toggle programmatically. -->
                     <figure class="hanging-man">
@@ -111,32 +116,50 @@
                     </figure>
                 </section>
 
-				<section class="game-content">
-					<div class="start-view-section hidden">
-						<form>
-							<h2>Welcome to Hangman!</h2>
-							<p class="hangman-info">
-								Uncover word secrets by guessing hidden letters. Each letter is initially a mystery, but
-								skillful guesses reveal clues to the word's true identity. Can you crack the code and
-								save the man from hanging?
-							</p>
+                <section class="game-content">
+                    <div class="start-view-section hidden">
+                        <form>
+                            <h2>Welcome to Hangman!</h2>
+                            <p class="hangman-info">
+                                Uncover word secrets by guessing hidden letters.
+                                Each letter is initially a mystery, but skillful
+                                guesses reveal clues to the word's true
+                                identity. Can you crack the code and save the
+                                man from hanging?
+                            </p>
 
-							<label id="label-user-name-input" for="user-name-input">Enter your name:</label>
-							<input
-								type="text"
-								id="user-name-input"
-								name="user-name-input"
-								placeholder="Username"
-								required />
+                            <label
+                                id="label-user-name-input"
+                                for="user-name-input"
+                                >Enter your name:</label
+                            >
+                            <input
+                                type="text"
+                                id="user-name-input"
+                                name="user-name-input"
+                                placeholder="Username"
+                                required
+                            />
 
                             <div class="difficulty-container">
                                 <label for="easy">Easy</label>
-                                <input type="radio" id="easy" name="difficulty" value="easy" checked>
-                                
+                                <input
+                                    type="radio"
+                                    id="easy"
+                                    name="difficulty"
+                                    value="easy"
+                                    checked
+                                />
+
                                 <label for="hard">Hard</label>
-                                <input type="radio" id="hard" name="difficulty" value="hard">
+                                <input
+                                    type="radio"
+                                    id="hard"
+                                    name="difficulty"
+                                    value="hard"
+                                />
                             </div>
-                            
+
                             <button type="submit" id="start-game">
                                 Start Game
                             </button>
@@ -154,14 +177,14 @@
                             </div> -->
                             <thead>
                                 <section class="game-over-view">
-                                    <h2 class="win ">
-                                        Congratulations! You've successfully conquered the
-                                        game.
+                                    <h2 class="win">
+                                        Congratulations! You've successfully
+                                        conquered the game.
                                     </h2>
                                     <h2 class="lost">
                                         You lost. Better luck next time!
                                     </h2>
-            
+
                                     <p>[Vinst/Förlust]</p>
                                     <p>[Det hemliga ordet]</p>
                                     <p>[Antalet gissningar]</p>

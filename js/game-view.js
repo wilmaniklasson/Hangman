@@ -12,7 +12,7 @@ const hangmanBody = ["#ground", "#scaffold", "#legs", "#arms", "#body", "#head"]
 // const letterContainer = document.createElement('div');
 const numberOfLetters = 10;
 const currentWord = pickNewWord(numberOfLetters);
-// const newUserObject = localStorage.getItem('newUserObject')
+const newUserObject = localStorage.getItem('newUserObject');
 
 let svgElement = document.querySelector(".hanging-man");
 
@@ -28,17 +28,16 @@ letterContainer.className = "letter-container";
 // ------------------------------------------------------------------------ //
 
 // game loop
+newGame(newUserObject);
 
 newGame(newUserObject);
 
 // game logic functions
 export function newGame(newUserObject) {
-	incorrectGuesses = 0;
-	renderAlphabet(alfabetet, letterContainer);
+	renderAlphabet(alfabetet);
 	renderWord(visibleWord);
 	console.log(currentWord);
-	console.log("New Game started with difficulty level: " + newUserObject.difficulty);
-	console.log('incorrect guesses: ' + incorrectGuesses);
+	/*console.log('New Game started with difficulty level: ' + newUserObject.difficulty);*/
 }
 
 function renderAlphabet(alfabetet, letterContainer) {
@@ -113,32 +112,17 @@ function handleGuess(character) {
 		console.log("incorrect guesses: " + incorrectGuesses);
 
 
+	else {
+		gameOver(newUserObject);
 	}
 
 	visibleWord = newVisibleWord;
 	renderWord(visibleWord);
 	updateGameState(newUserObject);
 }
-export function updateGameState(newUserObject) {
-	// we get the user in local storage (we probably shouldn't do it like this, in case we have billions of users though)
-	//  and store it in a variable
-	let userObjectsArray = JSON.parse(localStorage.getItem('userObjectsArray'));
-	let currentUser = userObjectsArray.find(user => user.userName === newUserObject.userName);
+export function gameOver(newUserObject) {
 
-	if (!visibleWord.includes('_')) {
-		gameViewSection.classList.add("hidden");
-		scoreViewSection.classList.remove("hidden");
-		console.log("You won!");
-		currentUser.win++;
-	}
-	else if (incorrectGuesses >= 6) {
-		gameViewSection.classList.add("hidden");
-		scoreViewSection.classList.remove("hidden");
-		console.log("You loose!");
-		currentUser.lost++;
-	}
-	//  then we store it again on local storage
-	localStorage.setItem('userObjectsArray', JSON.stringify(userObjectsArray));
+	// when you suck, ame ends. Do stuff here
 }
 
 // helper functions
