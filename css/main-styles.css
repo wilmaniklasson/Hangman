@@ -34,7 +34,7 @@ h1 {
 }
 
 .button-row {
-	padding: 1rem;
+	margin-top: 0.5rem;
 	display: flex;
 	width: 100%;
 	gap: 15px;
@@ -143,19 +143,19 @@ h1 {
 }
 
 .image-content {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	background-color: #fff;
-	border-radius: 20px;
-	padding: 2em 0em;
-	border: 5px solid #F4A261;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /* Ändra riktningen till kolumn */
+    width: 100%;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 2em 0em;
+    border: 5px solid #F4A261;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-
-.image-content img {
+.hanging-man {
 	max-width: 100%;
 	height: auto;
 }
@@ -220,33 +220,37 @@ h1 {
 	margin-right: 2em;
 }
 /*_______________________*/
-.logo {
-	display: flex;
-	flex-direction: row;
-	min-width: 190px;
-	max-width: 310px;
 
-	/* max-width: 80%; */
-}
+
 /*_______________________________*/
-@media (max-width: 1140px) {
-	.logo {
-		flex-direction: column-reverse;
-		width: 280px;
-	}
-}
 
-@media (min-width: 680px) {
+
+@media (min-width: 1000px) {
 	.game-container {
 		flex-direction: row;
 	}
+
 }
 
-/* @media (max-width: 420px) {
-	.image-content {
-	
+
+
+
+@media (max-width: 400px) {
+	.game-view-section {
+		padding: 20px;
+		height: 60vh;
 	}
-} */
+	.image-content {
+		
+		padding: 0.5rem;
+	}
+	.hanging-man{
+		max-width: 70%;
+		height: auto;
+	}
+}
+
+
 
 
 

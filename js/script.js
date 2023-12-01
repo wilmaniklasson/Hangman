@@ -6,6 +6,7 @@ const hangingMan = document.querySelector('.hanging-man');
 const gameOverView = document.querySelector('.game-over-view');
 const logo = document.querySelector('#logo');
 const imageContent = document.querySelector('.image-content');
+const hangmanInfo = document.querySelector('.hangman-info');
 
 let btnState = 0;
 startViewSection.classList.remove('hidden');
@@ -52,6 +53,7 @@ NewGameBtn.addEventListener('click', function () {
     hangingMan.style.display = 'none';
     gameOverView.style.display = 'none';
     imageContent.style.display = 'block';
+    hangmanInfo.style.display = 'block';
     
 });
 
