@@ -8,7 +8,7 @@ const modal = document.querySelector('#Modal');
 const difficultyRadios = document.getElementsByName('difficulty');
 const logo = document.querySelector('#logo');
 const gameOverView = document.querySelector('.game-over-view');
-
+const hangingMan = document.querySelector('.hanging-man');
 // Skapa en array för att hålla reda på användarobjekten
 let userObjectsArray = [];
 
@@ -47,6 +47,7 @@ btnStartGame.addEventListener('click', function (event) {
         gameViewSection.style.display = 'block';
         logo.style.display = 'none';
         hangingMan.classList.remove('hidden');
+        hangingMan.style.display = 'block';
         newGame();
     } else {
         modal.style.display = 'block';
