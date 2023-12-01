@@ -1,3 +1,4 @@
+import { newGame } from './game-view.js';
 //hämtar element
 const startViewSection = document.querySelector('.start-view-section');
 const userNameInput = document.querySelector('#user-name-input');
@@ -12,9 +13,6 @@ const hangingMan = document.querySelector('.hanging-man');
 // Skapa en array för att hålla reda på användarobjekten
 let userObjectsArray = [];
 
-    gameViewSection.style.display = 'none';
-    scoreViewSection.style.display = 'none';
-    gameOverView.style.display = 'none'
 
 // När användaren klickar på Start Game-knappen
 btnStartGame.addEventListener('click', function (event) {
@@ -45,11 +43,11 @@ btnStartGame.addEventListener('click', function (event) {
         localStorage.setItem('userObjectsArray', JSON.stringify(userObjectsArray));
 
         startViewSection.style.display = 'none';
-        gameViewSection.style.display = 'block';
+        gameViewSection.style.display = 'flex';
         logo.style.display = 'none';
         hangingMan.classList.remove('hidden');
         hangingMan.style.display = 'block';
-        newGame();
+        /*newGame(newUserObject);*/
     } else {
         modal.style.display = 'block';
     }

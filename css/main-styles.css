@@ -202,7 +202,7 @@ h1 {
 }
 
 .game-view-section {
-	display: flex;
+	display: none;
 	flex-direction: column;
 	justify-content: center;
 	background-color: rgba(0, 0, 0, 0.501);
@@ -214,6 +214,7 @@ h1 {
 }
 
 .score-view-section {
+	display: none;
 	padding: 20px;
 	border-radius: 10px;
 	text-align: center;

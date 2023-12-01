@@ -41,6 +41,7 @@
 	margin-right: 0.5em;
 }
 .game-over-view {
+  display: none;
   max-width: 500px;
   height: auto;
   margin: auto;
