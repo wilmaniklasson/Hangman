@@ -33,9 +33,10 @@
 .letter-container {
 	display: grid;
 	/* create as many columns possible as the container allows, at the least 40px wide, share space equally */
-	grid-template-columns: repeat(10, minmax(20px, 1fr));
+	grid-template-columns: repeat(4, minmax(20px, 1fr));
 	gap: 14px;
-	border: 5ps dotted orange;
+	border: 5px dotted rgba(255, 166, 0, 0.354);
+	border-radius: 1rem;
 }
 
 .character-word {
@@ -54,6 +55,7 @@
 }
 
 .character {
+	transition: 50ms;
 	font-weight: bold;
 	display: flex;
 	justify-content: center;
@@ -69,12 +71,14 @@
 }
 
 .character:hover {
-	transition: 150ms;
+	transition: 50ms;
 	transform: scale(1.2);
+	background: rgb(178, 232, 205);
+	/* font-weight: 800; */
 }
 
 .character:active {
-	transition: 150ms;
+	transition: 50ms;
 	transform: scale(1.25);
 	box-shadow: 0px 0px 10px #d6d4d3;
 }
@@ -91,7 +95,7 @@
 }
 
 .destroyed {
-	transition: 25ms;
+	transition: 150ms;
 	scale: 1.25;
 	opacity: 0;
 	pointer-events: none;
