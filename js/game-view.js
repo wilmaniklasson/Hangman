@@ -30,6 +30,8 @@ export function newGame(userObject) {
 	currentWord = pickNewWord(numberOfLetters);
 	visibleWord = Array(currentWord.length).fill('_');
 
+	resetHangingMan();
+
 	// we need to clear the game board before we start a new game
 	clearGameBoard();
 
@@ -222,4 +224,12 @@ function clearGameBoard() {
 	while (wordContainer.firstChild) {
 		wordContainer.removeChild(wordContainer.firstChild);
 	}
+}
+
+
+function resetHangingMan() {
+    for (let partId of hangmanBody) {
+        let svgPart = document.querySelector(partId);
+        svgPart.classList.add('hidden');
+    }
 }
