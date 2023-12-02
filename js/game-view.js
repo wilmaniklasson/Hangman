@@ -1,44 +1,69 @@
 import { alfabetet } from './svenska-ord.js';
 import { words } from './svenska-ord.js';
+import { newUserObject } from './start-view.js';
 
 // display containers
 const gameViewSection = document.querySelector('.game-view-section');
-const hangingMan = document.querySelector('.hanging-man');
+const scoreViewSection = document.querySelector('.score-view-section');
+const hangingMan = document.querySelector('.image-content');
 const hangmanBody = ['#ground', '#scaffold', '#legs', '#arms', '#body', '#head'];
 
+// create the letter container, and append it to the gameview
 const letterContainer = document.createElement('div');
-const numberOfLetters = 10;
-const currentWord = pickNewWord(numberOfLetters);
-const newUserObject = localStorage.getItem('newUserObject');
-
 letterContainer.className = 'letter-container';
+gameViewSection.append(letterContainer);
+
+const numberOfLetters = 10;
+let currentWord = '';
+let incorrectGuesses = 0;
+let currentUser;
+let match = false;
+let userObjectsArray;
+let visibleWord = Array(currentWord.length).fill('_'); // initialize with underscores
+
 let svgElement = document.querySelector('.hanging-man');
 
-let visibleWord = Array(currentWord.length).fill('_'); // initialize with underscores
-let incorrectGuesses = 0;
-let match = false;
-
-// gameplay variables
 let wordContainer = createNewElement('div', 'word-container');
 
-
-// ------------------------------------------------------------------------ //
-
-// game loop
-newGame(newUserObject);
-
-
 // game logic functions
-export function newGame(newUserObject) {
+export function newGame(userObject) {
+	currentWord = pickNewWord(numberOfLetters);
+	visibleWord = Array(currentWord.length).fill('_');
+
+	// we need to clear the game board before we start a new game
+	clearGameBoard();
+
+	// Create a new user object if it doesn't exist already
+	if (!currentUser) {
+		currentUser = {
+			userName: newUserObject.userName,
+			win: null,
+			lost: null,
+			date: null,
+			time: null,
+			correct: null,
+			wordLength: null,
+			numberOfFailedGuesses: null,
+			difficulty: null,
+			secretWord: null,
+		};
+	}
+
+	currentUser = userObject;
+	incorrectGuesses = 0;
+
+	currentUser.secretWord = currentWord;
+	currentUser.incorrectGuesses = 0;
+	currentUser.wordLength = currentWord.length;
+
 	renderAlphabet(alfabetet);
 	renderWord(visibleWord);
-	console.log(currentWord);
-	/*console.log('New Game started with difficulty level: ' + newUserObject.difficulty);*/
+	console.log("user secrect word: " + currentUser.secretWord);
 }
 
 function renderAlphabet(alfabetet) {
 
-	let letterContainer = createNewElement('div', 'letter-container');
+	// let letterContainer = createNewElement('div', 'letter-container');
 
 	// loop through each char in currentWord, append the text node to our newly created element
 	for (let char of alfabetet) {
@@ -79,13 +104,14 @@ function renderWord(visibleWord) {
 
 	// Append the wordContainer to gameViewSection
 	gameViewSection.append(wordContainer);
-}
 
+}
 
 function handleGuess(character) {
 	let match = false;
 	let guessedChar = character.innerText;
 	let newVisibleWord = '';
+
 	for (let i = 0; i < currentWord.length; i++) {
 		if (currentWord[i].toUpperCase() === guessedChar.toUpperCase()) {
 			newVisibleWord += currentWord[i].toUpperCase();
@@ -93,7 +119,13 @@ function handleGuess(character) {
 		} else {
 			newVisibleWord += visibleWord[i];
 		}
+
 	}
+
+
+	// we split this because visibleWord is an array, 
+	// so we get an array of characters
+	visibleWord = newVisibleWord.split('');
 
 	if (!match && incorrectGuesses < 6) {
 		// Get the SVG part to show
@@ -106,18 +138,58 @@ function handleGuess(character) {
 
 		// Increment the counter
 		incorrectGuesses++;
+		currentUser.incorrectGuesses = incorrectGuesses;
+		updateGameState();
+		match = false;
 	}
 
 	else {
-		gameOver(newUserObject);
+		updateGameState();
 	}
-
-	visibleWord = newVisibleWord;
 	renderWord(visibleWord);
 }
-export function gameOver(newUserObject) {
+export function updateGameState() {
 
-	// when you suck, ame ends. Do stuff here
+	if (incorrectGuesses === 6) {
+		scoreViewSection.style.display = 'block';
+		gameViewSection.style.display = 'none';
+		hangingMan.style.display = 'none';
+
+		currentUser.lost = true;
+		currentUser.win = false;
+		currentUser.date = new Date().toLocaleDateString();
+		currentUser.time = new Date().toLocaleTimeString();
+
+		// Get userObjectsArray from localStorage
+		updateUserData();
+	}
+
+	if (visibleWord.join('').toUpperCase() === currentWord.toUpperCase()) {
+		scoreViewSection.style.display = 'block';
+		gameViewSection.style.display = 'none';
+		hangingMan.style.display = 'none';
+
+		currentUser.win = true;
+		currentUser.lost = false;
+		currentUser.date = new Date().toLocaleDateString();
+		currentUser.time = new Date().toLocaleTimeString();
+
+		// Get userObjectsArray from localStorage
+		updateUserData();
+
+	}
+}
+
+function updateUserData() {
+	let userObjectsArray = JSON.parse(localStorage.getItem('userObjectsArray'));
+
+	if (!userObjectsArray) {
+		userObjectsArray = [];
+	}
+
+	// Store the updated userObjectsArray back in localStorage
+	userObjectsArray.push(JSON.parse(JSON.stringify(currentUser)));
+	localStorage.setItem('userObjectsArray', JSON.stringify(userObjectsArray));
 }
 
 // helper functions
@@ -142,3 +214,12 @@ function pickNewWord(numberOfLetters) {
 	return currentWordList[newWord];
 }
 
+function clearGameBoard() {
+	while (letterContainer.firstChild) {
+		letterContainer.removeChild(letterContainer.firstChild);
+	}
+
+	while (wordContainer.firstChild) {
+		wordContainer.removeChild(wordContainer.firstChild);
+	}
+}

@@ -17,44 +17,54 @@ const hangmanInfo = document.querySelector('.hangman-info');
 let userObjectsArray = [];
 
 
+export const newUserObject = {
+	userName: null,
+	win: null,
+	lost: null,
+	date: null,
+	time: null,
+	correct: null,
+	wordLength: null,
+	numberOfFailedGuesses: null,
+	difficulty: null,
+	secretWord: null,
+};
 // När användaren klickar på Start Game-knappen
 btnStartGame.addEventListener('click', function (event) {
-    event.preventDefault();
+	event.preventDefault();
 
-    const newUserObject = {
-        userName: null,
-        win: null,
-        lost: null,
-        date: null,
-        time: null,
-        correct: null,
-        wordLength: null,
-        numberOfFailedGuesses: null,
-        difficulty: null,
-        secretWord: null,
-    };
+	newUserObject.userName = userNameInput.value;
+	newUserObject.difficulty = document.querySelector('input[name="difficulty"]:checked').value;
 
-    
-    newUserObject.userName = userNameInput.value;
-    newUserObject.difficulty = document.querySelector('input[name="difficulty"]:checked').value;
+	if (newUserObject.userName && newUserObject.difficulty) {
+		// Lägg till det nya användarobjektet i arrayen
+		userObjectsArray.push(newUserObject);
 
-    if (newUserObject.userName && newUserObject.difficulty) {
-        // Lägg till det nya användarobjektet i arrayen
-        userObjectsArray.push(newUserObject);
+		// if objectsarray is null or undefined, create an empty array
+		if (!userObjectsArray) {
+			userObjectsArray = [];
+		}
+		// Check if newUserObject already exists in userObjectsArray
+		let exists = userObjectsArray.some(userObject => userObject.userName === newUserObject.userName);
 
-        // Sparar användarobjektarrayen i localStorage
-        localStorage.setItem('userObjectsArray', JSON.stringify(userObjectsArray));
+		// if it doesn't we push it to the array to create a new entry (YAY GREAT SUCCESS)
+		if (!exists) {
+			userObjectsArray.push(newUserObject);
+			localStorage.setItem('userObjectsArray', JSON.stringify(userObjectsArray));
+		}
+		// // Sparar användarobjektarrayen i localStorage
+		// localStorage.setItem('userObjectsArray', JSON.stringify(userObjectsArray));
 
-        startViewSection.style.display = 'none';
-        gameViewSection.style.display = 'flex';
-        logo.style.display = 'none';
-        hangingMan.classList.remove('hidden');
-        hangingMan.style.display = 'block';
+		startViewSection.style.display = 'none';
+		gameViewSection.style.display = 'flex';
+		logo.style.display = 'none';
+		hangingMan.classList.remove('hidden');
+		hangingMan.style.display = 'block';
         hangmanInfo.style.display = 'none';
-        /*newGame(newUserObject);*/
-    } else {
-        modal.style.display = 'block';
-    }
+		newGame(newUserObject);
+	} else {
+		modal.style.display = 'block';
+	}
 });
 
 
