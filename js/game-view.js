@@ -125,8 +125,6 @@ function handleGuess(character) {
 		}
 
 	}
-
-
 	// we split this because visibleWord is an array, 
 	// so we get an array of characters
 	visibleWord = newVisibleWord.split('');
@@ -138,6 +136,7 @@ function handleGuess(character) {
 		console.log('incorrect guesses: ' + incorrectGuesses);
 		// Make the SVG part visible
 		svgPart.classList.remove('hidden');
+		svgPart.classList.add('paint');
 		console.log('class removed: ' + svgPartId);
 
 		// Increment the counter
@@ -217,7 +216,7 @@ function createNewElement(typeOfElement, className) {
 
 function pickNewWord(numberOfLetters) {
 
-	// find the ten letter letters from the list by filtering
+	// find the ten letter words from the list by filtering
 	const currentWordList = words.filter(word => word.length === numberOfLetters);
 
 	/* generate random float based on length of currentWordList,
@@ -240,10 +239,10 @@ function clearGameBoard() {
 	}
 }
 
-
 function resetHangingMan() {
 	for (let partId of hangmanBody) {
 		let svgPart = document.querySelector(partId);
 		svgPart.classList.add('hidden');
+		svgPart.classList.remove('paint');
 	}
 }
