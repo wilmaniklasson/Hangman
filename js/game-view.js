@@ -80,7 +80,9 @@ function renderAlphabet(alfabetet) {
 
 		// add the event listener to the character
 		character.addEventListener('click', function () {
-			this.remove();
+			character.classList.add('destroyed');
+			// here we "destroy" the character by applying a random transform
+			destroyWithRandomTransform(character);
 			handleGuess(character);
 			renderWord(visibleWord);
 		});
@@ -182,6 +184,19 @@ export function updateGameState() {
 	}
 }
 
+// helper functions
+function destroyWithRandomTransform(element) {
+	// Generate random rotation and scale values
+	let rotation = (Math.random() * 30) * (Math.random() < 0.5 ? -1 : 1); // Random rotation from -30 to 30 degrees
+	let scaleX = 1 + Math.random() * 0.5; // Random scale for X 
+	let scaleY = 1 + Math.random() * 0.5; // Random scale for Y 
+
+	// Apply the random transform to the element
+	element.style.transform = `rotate(${rotation}deg) scaleX(${scaleX}) scaleY(${scaleY})`;
+	element.style.opacity = 0;
+	element.style.pointerEvents = 'none';
+}
+
 function updateUserData() {
 	let userObjectsArray = JSON.parse(localStorage.getItem('userObjectsArray'));
 
@@ -194,7 +209,6 @@ function updateUserData() {
 	localStorage.setItem('userObjectsArray', JSON.stringify(userObjectsArray));
 }
 
-// helper functions
 function createNewElement(typeOfElement, className) {
 	let newElement = document.createElement(typeOfElement);
 	newElement.className = className;
@@ -228,8 +242,8 @@ function clearGameBoard() {
 
 
 function resetHangingMan() {
-    for (let partId of hangmanBody) {
-        let svgPart = document.querySelector(partId);
-        svgPart.classList.add('hidden');
-    }
+	for (let partId of hangmanBody) {
+		let svgPart = document.querySelector(partId);
+		svgPart.classList.add('hidden');
+	}
 }
