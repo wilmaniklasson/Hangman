@@ -27,13 +27,11 @@ btnStartGame.addEventListener('click', function (event) {
         lost: null,
         date: null,
         time: null,
-        correct: null,
         wordLength: null,
-        numberOfFailedGuesses: null,
+       IncorrectGuesses: null,
         difficulty: null,
         secretWord: null,
     };
-
     
     newUserObject.userName = userNameInput.value;
     newUserObject.difficulty = document.querySelector('input[name="difficulty"]:checked').value;

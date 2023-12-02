@@ -155,44 +155,47 @@
                     <div class="game-view-section"></div>
                     <div class="score-view-section">
                         <table id="scoreboard">
-                            <!-- <div>
-                                <p>Sortera efter:</p>
-                                <button id="sortMistakesBtn">
-                                    Fewest mistakes
-                                </button>
-                                <button id="sortTimeBtn">Previous games</button>
-                            </div> -->
-                            <thead>
+                            <section class="scoreboard">
                                 <section class="game-over-view">
-                                    <h2 class="win ">
-                                        Congratulations! You've successfully conquered the
-                                        game.
+                                    <h2 id="resultMessage" class="win ">
+                                      
                                     </h2>
-                                    <h2 class="lost">
-                                        You lost. Better luck next time!
-                                    </h2>
-            
-                                    <p>[Vinst/Förlust]</p>
-                                    <p>[Det hemliga ordet]</p>
-                                    <p>[Antalet gissningar]</p>
+                                    <p class="result">Result: <span id="result"></span></p>
+                                    <p>Secret Word: <span id="secretWord"></span></p>
+                                    <p>Incorrect Guesses: <span id="incorrectGuesses"></span></p>
+                                  </section>
+                                
+                                <section class="scrollscorbord">
+                                    <div id="sortingDropdown">
+                                        <label for="sortOptions">Select Sorting Option:</label>
+                                        <select id="sortOptions">
+                                            <option value="ascGuesses">Ascending Guesses</option>
+                                            <option value="descGuesses">Descending Guesses</option>
+                                            <option value="ascDate">Ascending Date/Time</option>
+                                            <option value="descDate">Descending Date/Time</option>
+                                        </select>
+                                        <button id="sortBtn">Sort</button>
+                                    </div>
+                                    
+                                        <table>
+                                            
+                                            <thead>
+                                                <tr>
+                                                    <th id="nameHeader" class="scoreboard-header">Name</th>
+                                                    <th id="resultHeader" class="scoreboard-header">Result</th>
+                                                    <th id="dateTimeHeader" class="scoreboard-header">Date/Time</th>
+                                                    <th id="wordsHeader" class="scoreboard-header">Word Length</th>
+                                                    <th id="incorrectHeader" class="scoreboard-header">Fail Guesses</th>
+                                                </tr>
+                                            </thead>
+                            
+                                            <tbody id="scoreboardBody"></tbody>
+                                            
+                                        </table>
+                                    
                                 </section>
-                                <tr>
-                                    <th id="nameHeader">Name</th>
-                                    <th id="resultHeader">Result</th>
-                                    <th id="dateHeader">Date</th>
-                                    <th id="timeHeader">Time</th>
-                                    <th id="correctHeader">
-                                        Number of Correct Guesses
-                                    </th>
-                                    <th id="wordsHeader">Number of Words</th>
-                                    <th id="incorrectHeader">
-                                        Number of Incorrect Guesses
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody id="scoreboardBody"></tbody>
+                            </section>
                         </table>
-                    </div>
                 </section>
             </div>
         </div>
