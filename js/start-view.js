@@ -16,6 +16,15 @@ const hangmanInfo = document.querySelector('.hangman-info');
 // Skapa en array för att hålla reda på användarobjekten
 let userObjectsArray = [];
 
+// Funktion för att ladda användarobjekten från localStorage
+function loadUserObjects() {
+	const storedUserObjects = localStorage.getItem('userObjectsArray');
+	if (storedUserObjects) {
+	  userObjectsArray = JSON.parse(storedUserObjects);
+	}
+  }
+
+
 
 export const newUserObject = {
 	userName: null,
@@ -83,21 +92,3 @@ closeModalBtn.addEventListener('click', function () {
 	modal.style.display = 'none';
 });
 
-
-
-
-
-/*
-
-// Hämta användarobjektet från localStorage!
-
-let userObject = JSON.parse(localStorage.getItem('userObject'));
-
-
-
-// Kontrollera om userObject finns och innehåller svårighetsgraden!
-
-let difficultyLevel = (userObject && userObject.difficulty) ? userObject.difficulty : 'easy';
-let currentWordLength = (difficultyLevel === 'easy') ? 5 : 6;
-
-*/
