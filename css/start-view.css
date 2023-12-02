@@ -1,19 +1,17 @@
-
-
 form {
     margin-top: 20px;
     color: whitesmoke;
-    font-family: Arial
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
 }
 
 h2 {
     margin-bottom: 10px;
 }
 
-.hangman-info {
-    font-size: 1.2rem;
-    margin-bottom: 5em;
-}
+
 
 label {
     display: block;
@@ -29,21 +27,104 @@ label {
     border-radius: 10px;
     box-sizing: border-box;
 }
+#Modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+#modal-content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #fff;
+	padding: 40px 20px;
+	font-size: 20px;
+	min-width: 200px;
+	border: 5px solid #e76f51;
+	border-radius: 10px;
+}
+#closeModalBtn {
+	color: #aaa;
+	position: absolute;
+	top: 0px;
+	right: 10px;
+	font-size: 40px;
+	font-weight: bold;
+	border: none;
+	background-color: transparent;
+}
+
+.close-modal-btn:hover{
+	color: rgb(115, 113, 113);
+	transform: scale(1.1);
+	cursor: pointer;
+}
 
 #start-game {
     padding: 10px 20px;
     font-size: 1.2rem;
-    background-color: #F4A261;
+	background-color: #e9c46a;
     border: none;
     border-radius: 5px;
     transition: background-color 0.5s ease;
 }
 
 #start-game:hover {
-    background-color: rgb(238, 143, 65);
+    background-color: #ebbb43;
     transform: scale(1.1);
 	cursor: pointer; 
 }
 
+.difficulty-container {
+    display: flex;
+    align-items: center; 
+    justify-items: center;
+}
+
+.difficulty-container label {
+    font-size: 20px;
+    margin-right: 5px;
+    margin-bottom: 1em;
+
+}
+.difficulty-container input{
+    margin-right: 10px;
+    margin-bottom: 1em;
+
+}
+#logo {
+    max-width: 250px;
+    height: auto;
+    margin: auto; 
+}
+@media (max-width: 500px) {
+	#logo {
+		max-width: 150px; 
+		height: auto;
+		margin: auto; 
+	}
+
+}
 
 
+.hangman-info {
+    text-align: center;
+	padding: 0rem 1rem 0rem 1rem;
+    
+}
+
+.hangman-info h2 {
+	text-align: center;
+    color: #333; 
+}
+
+.hangman-info p {
+    color: #666;
+    margin-bottom: 10px;
+}

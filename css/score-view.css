@@ -36,4 +36,23 @@
 	border: none;
   border-radius: 5px 5px 0px 0px ;
 	cursor: pointer;
+	/* border: 2px solid rgba(255, 255, 255, 0.795); */
+	color: white;
+	margin-right: 0.5em;
+}
+.game-over-view {
+  display: none;
+  max-width: 500px;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 2em;
+  border: 5px solid #F4A261;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1em;
 }
