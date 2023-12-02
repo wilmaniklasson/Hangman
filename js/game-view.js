@@ -27,6 +27,10 @@ let wordContainer = createNewElement('div', 'word-container');
 
 // game logic functions
 export function newGame(userObject) {
+	
+	const difficulty = userObject.difficulty;
+
+    const numberOfLetters = (difficulty === 'easy') ? 6 : 5;   
 	currentWord = pickNewWord(numberOfLetters);
 	visibleWord = Array(currentWord.length).fill('_');
 
