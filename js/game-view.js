@@ -6,7 +6,7 @@ import { newUserObject } from './start-view.js';
 const gameViewSection = document.querySelector('.game-view-section');
 const scoreViewSection = document.querySelector('.score-view-section');
 const hangingMan = document.querySelector('.image-content');
-const hangmanBody = ['#ground', '#scaffold', '#legs', '#arms', '#body', '#head'];
+const hangmanBody = ['#ground', '#scaffold', '#head', '#body', '#arms', '#legs'];
 
 // create the letter container, and append it to the gameview
 const letterContainer = document.createElement('div');
@@ -136,7 +136,20 @@ function handleGuess(character) {
 		console.log('incorrect guesses: ' + incorrectGuesses);
 		// Make the SVG part visible
 		svgPart.classList.remove('hidden');
-		svgPart.classList.add('paint');
+
+		// is it an ellipse?
+		if (svgPart.tagName.toLowerCase() === 'ellipse') {
+
+			svgPart.classList.add('paint', 'ellipse-painted');
+		}
+		// is it a path with a stroke property?
+		if (svgPart.tagName.toLowerCase() === 'path' && svgPart.getAttribute('stroke')) {
+			svgPart.classList.add('paint');
+		}
+
+		// if not, it's a path without strokes so we animate fill instead
+		else svgPart.classList.add('paint', 'ellipse-painted');
+
 		console.log('class removed: ' + svgPartId);
 
 		// Increment the counter
