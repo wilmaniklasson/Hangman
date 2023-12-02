@@ -8,31 +8,29 @@ const scoreViewSection = document.querySelector('.score-view-section');
 const hangingMan = document.querySelector('.image-content');
 const hangmanBody = ['#ground', '#scaffold', '#legs', '#arms', '#body', '#head'];
 
+// create the letter container, and append it to the gameview
 const letterContainer = document.createElement('div');
-const numberOfLetters = 10;
-const currentWord = pickNewWord(numberOfLetters);
-
-
 letterContainer.className = 'letter-container';
+gameViewSection.append(letterContainer);
+
+const numberOfLetters = 10;
+let currentWord = '';
+let incorrectGuesses = 0;
+let currentUser;
+let match = false;
+let userObjectsArray;
+let visibleWord = Array(currentWord.length).fill('_'); // initialize with underscores
+
 let svgElement = document.querySelector('.hanging-man');
 
-let visibleWord = Array(currentWord.length).fill('_'); // initialize with underscores
-let incorrectGuesses = 0;
-let match = false;
-let currentUser;
-let userObjectsArray;
-
-// gameplay variables
 let wordContainer = createNewElement('div', 'word-container');
-
-
-// ------------------------------------------------------------------------ //
-
-// game loop
-
 
 // game logic functions
 export function newGame() {
+	currentWord = pickNewWord(numberOfLetters);
+
+	// we need to clear the game board before we start a new game
+	clearGameBoard();
 
 	// Create a new user object if it doesn't exist already
 	if (!currentUser) {
@@ -58,12 +56,11 @@ export function newGame() {
 	renderAlphabet(alfabetet);
 	renderWord(visibleWord);
 	console.log("user secrect word: " + currentUser.secretWord);
-
 }
 
 function renderAlphabet(alfabetet) {
 
-	let letterContainer = createNewElement('div', 'letter-container');
+	// let letterContainer = createNewElement('div', 'letter-container');
 
 	// loop through each char in currentWord, append the text node to our newly created element
 	for (let char of alfabetet) {
@@ -106,7 +103,6 @@ function renderWord(visibleWord) {
 	gameViewSection.append(wordContainer);
 
 }
-
 
 function handleGuess(character) {
 	let match = false;
@@ -189,3 +185,12 @@ function pickNewWord(numberOfLetters) {
 	return currentWordList[newWord];
 }
 
+function clearGameBoard() {
+	while (letterContainer.firstChild) {
+		letterContainer.removeChild(letterContainer.firstChild);
+	}
+
+	while (wordContainer.firstChild) {
+		wordContainer.removeChild(wordContainer.firstChild);
+	}
+}
