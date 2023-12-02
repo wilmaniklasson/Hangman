@@ -57,7 +57,7 @@ btnStartGame.addEventListener('click', function (event) {
 		logo.style.display = 'none';
 		hangingMan.classList.remove('hidden');
 		hangingMan.style.display = 'block';
-		newGame();
+		newGame(newUserObject);
 	} else {
 		modal.style.display = 'block';
 	}

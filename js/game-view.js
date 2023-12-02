@@ -26,8 +26,9 @@ let svgElement = document.querySelector('.hanging-man');
 let wordContainer = createNewElement('div', 'word-container');
 
 // game logic functions
-export function newGame() {
+export function newGame(userObject) {
 	currentWord = pickNewWord(numberOfLetters);
+	visibleWord = Array(currentWord.length).fill('_');
 
 	// we need to clear the game board before we start a new game
 	clearGameBoard();
@@ -47,6 +48,8 @@ export function newGame() {
 			secretWord: null,
 		};
 	}
+
+	currentUser = userObject;
 	incorrectGuesses = 0;
 
 	currentUser.secretWord = currentWord;
@@ -108,6 +111,7 @@ function handleGuess(character) {
 	let match = false;
 	let guessedChar = character.innerText;
 	let newVisibleWord = '';
+
 	for (let i = 0; i < currentWord.length; i++) {
 		if (currentWord[i].toUpperCase() === guessedChar.toUpperCase()) {
 			newVisibleWord += currentWord[i].toUpperCase();
@@ -115,7 +119,13 @@ function handleGuess(character) {
 		} else {
 			newVisibleWord += visibleWord[i];
 		}
+
 	}
+
+
+	// we split this because visibleWord is an array, 
+	// so we get an array of characters
+	visibleWord = newVisibleWord.split('');
 
 	if (!match && incorrectGuesses < 6) {
 		// Get the SVG part to show
@@ -130,13 +140,12 @@ function handleGuess(character) {
 		incorrectGuesses++;
 		currentUser.incorrectGuesses = incorrectGuesses;
 		updateGameState();
+		match = false;
 	}
 
 	else {
 		updateGameState();
 	}
-
-	visibleWord = newVisibleWord;
 	renderWord(visibleWord);
 }
 export function updateGameState() {
@@ -147,20 +156,40 @@ export function updateGameState() {
 		hangingMan.style.display = 'none';
 
 		currentUser.lost = true;
+		currentUser.win = false;
+		currentUser.date = new Date().toLocaleDateString();
+		currentUser.time = new Date().toLocaleTimeString();
 
 		// Get userObjectsArray from localStorage
-		let userObjectsArray = JSON.parse(localStorage.getItem('userObjectsArray'));
+		updateUserData();
+	}
 
-		if (!userObjectsArray) {
-			userObjectsArray = [];
-		}
+	if (visibleWord.join('').toUpperCase() === currentWord.toUpperCase()) {
+		scoreViewSection.style.display = 'block';
+		gameViewSection.style.display = 'none';
+		hangingMan.style.display = 'none';
 
-		// Store the updated userObjectsArray back in localStorage
+		currentUser.win = true;
+		currentUser.lost = false;
+		currentUser.date = new Date().toLocaleDateString();
+		currentUser.time = new Date().toLocaleTimeString();
 
-		userObjectsArray.push(JSON.parse(JSON.stringify(currentUser)));
-		localStorage.setItem('userObjectsArray', JSON.stringify(userObjectsArray));
+		// Get userObjectsArray from localStorage
+		updateUserData();
 
 	}
+}
+
+function updateUserData() {
+	let userObjectsArray = JSON.parse(localStorage.getItem('userObjectsArray'));
+
+	if (!userObjectsArray) {
+		userObjectsArray = [];
+	}
+
+	// Store the updated userObjectsArray back in localStorage
+	userObjectsArray.push(JSON.parse(JSON.stringify(currentUser)));
+	localStorage.setItem('userObjectsArray', JSON.stringify(userObjectsArray));
 }
 
 // helper functions
