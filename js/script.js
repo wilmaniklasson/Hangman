@@ -1,6 +1,6 @@
 
 const startViewSection = document.querySelector('.start-view-section');
-const gameViewSection = document.querySelector('.game-view-section');
+const FViewSection = document.querySelector('.game-view-section');
 const scoreViewSection = document.querySelector('.score-view-section');
 const hangingMan = document.querySelector('.hanging-man');
 const gameOverView = document.querySelector('.game-over-view');
