@@ -11,10 +11,7 @@ h2 {
     margin-bottom: 10px;
 }
 
-.hangman-info {
-    font-size: 1.2rem;
-    margin-bottom: 5em;
-}
+
 
 label {
     display: block;
@@ -100,4 +97,34 @@ label {
     margin-right: 10px;
     margin-bottom: 1em;
 
+}
+#logo {
+    max-width: 250px;
+    height: auto;
+    margin: auto; 
+}
+@media (max-width: 500px) {
+	#logo {
+		max-width: 150px; 
+		height: auto;
+		margin: auto; 
+	}
+
+}
+
+
+.hangman-info {
+    text-align: center;
+	padding: 0rem 1rem 0rem 1rem;
+    
+}
+
+.hangman-info h2 {
+	text-align: center;
+    color: #333; 
+}
+
+.hangman-info p {
+    color: #666;
+    margin-bottom: 10px;
 }

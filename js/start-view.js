@@ -10,6 +10,9 @@ const difficultyRadios = document.getElementsByName('difficulty');
 const logo = document.querySelector('#logo');
 const gameOverView = document.querySelector('.game-over-view');
 const hangingMan = document.querySelector('.hanging-man');
+const hangmanInfo = document.querySelector('.hangman-info');
+
+
 // Skapa en array för att hålla reda på användarobjekten
 let userObjectsArray = [];
 
@@ -57,6 +60,7 @@ btnStartGame.addEventListener('click', function (event) {
 		logo.style.display = 'none';
 		hangingMan.classList.remove('hidden');
 		hangingMan.style.display = 'block';
+        hangmanInfo.style.display = 'none';
 		newGame(newUserObject);
 	} else {
 		modal.style.display = 'block';
