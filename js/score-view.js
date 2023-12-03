@@ -4,6 +4,7 @@ import { updateGameState } from './game-view.js';
 let storedData = []
 
 document.addEventListener('DOMContentLoaded', () => {
+	console.log('DOMContentLoaded event fired')
 	let storedData = JSON.parse(localStorage.getItem('userObjectArray')) || [];
 	console.log('stored data:', storedData);
 });
