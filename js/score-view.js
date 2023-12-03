@@ -1,64 +1,44 @@
-import { updateScoreView } from './game-view.js';
-
-// Lista på testdata
-let storedData = []
+let userObjectsArray = [];
 
 document.addEventListener('DOMContentLoaded', () => {
-	let storedData = JSON.parse(localStorage.getItem('userObjectArray')) || [];
-	console.log('stored data:', storedData);
+	// hämta från localStorage, assigna to vår varibel.
+	// behöver inte uppdatera härifrån längre, då vi får update från game-view ;)
+
+	userObjectsArray = JSON.parse(localStorage.getItem('userObjectsArray')) || [];
+	console.log('User Objects Array:', userObjectsArray);
+
+	// din sorterings algoritm här
+	userObjectsArray.sort((a, b) => {
+		const incorrectComparison = a.incorrect - b.incorrect;
+		if (incorrectComparison !== 0) {
+			return incorrectComparison;
+		}
+
+		const aDateTime = new Date(`${a.date}  ${a.time}`);
+		const bDateTime = new Date(`${b.date}  ${b.time}`);
+		return aDateTime - bDateTime;
+	});
+
+	const top10Scores = userObjectsArray.slice(0, 10);
+
+	top10Scores.forEach(score => {
+		addToScoreboard(score);
+	});
 });
 
+const scoreboardBody = document.querySelector('#scoreboardBody');
 
-  const scoreboardBody = document.querySelector('#scoreboardBody')
-  console.log('Scoreboard Body: ', scoreboardBody);
-//   Sorterar antalet minst fel
-  storedData.sort((a, b) => {
-	const incorrectComparison = a.incorrect - b.incorrect;
-	if (incorrectComparison !== 0) {
-		return incorrectComparison
+function addToScoreboard(userObject) {
+	// bygg ut elementen för listan
+	const row = document.createElement("tr");
+
+	for (const key in userObject) {
+		if (userObject.hasOwnProperty(key)) {
+			const cell = document.createElement("td");
+			cell.innerText = userObject[key];
+			row.appendChild(cell);
+		}
 	}
 
-
-// Här sorterar vi etfer tid och datum om antalet fel är samma.	
-const aDateTime = new Date(`${userObjectsArrayA.date}  ${userObjectsArrayA.time}`);
-const bDateTime = new Date(`${userObjectsArrayB.date}  ${userObjectsArrayB.time}`);
-return aDateTime - bDateTime;
-});
-//   Här väljer vi hur många som ska vara med på topplistan
-  const top10Scores = storedData.slice(0, 10);
-
-//   Denna funktion lägger till rader till columner i scoreboarden
-  function addToScoreboard(userObjectsArray) {
-    const row = document.createElement("tr");
-	
-
-// Här skapas celler med innehållet från userObjectsArray
-    for (const key in userObjectsArray) {
-      if (userObjectsArray.hasOwnProperty(key)) {
-        const cell = document.createElement("td");
-        cell.innerText = userObjectsArray[key];
-        row.appendChild(cell);
-      }
-    }
-
-    scoreboardBody.appendChild(row);
-  }
-
-//   Här loopar det igenom listan med resultat och lägger till dom bästa, om inte resultatet är bättre än någon på scoreboarden gör den inget synligt.
-  top10Scores.forEach(score => {
-    addToScoreboard(score);
-  });
-
-  
-
-//Skapar ett objet för användar info
-// const userObject = {
-//   userName: null,
-//   win: null,
-//   Lost: null,
-//   date: null,
-//   time: null,
-//   correct: null,
-//   wordLength: null, 
-//   numberOfFailedGuesses: null
-//   };     
+	scoreboardBody.appendChild(row);
+}
