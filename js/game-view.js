@@ -77,7 +77,7 @@ function handleKeyDownEvent() {
 		let key = event.key.toLowerCase();
 
 		// Check if the key is a letter and if in map
-		if ((key.length === 1 && key >= 'a' && key <= 'z') || key === 'å' || key === 'ä' || key === 'ö' && characterElements.has(key)) {
+		if ((key.length === 1 && key >= 'a' && key <= 'ö') && characterElements.has(key)) {
 
 			// Get the character element
 			let character = characterElements.get(key);
