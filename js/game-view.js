@@ -20,6 +20,7 @@ let currentUser;
 let match = false;
 let userObjectsArray;
 let visibleWord = Array(currentWord.length).fill('_'); // initialize with underscores
+let characterElements = new Map();
 
 let svgElement = document.querySelector('.hanging-man');
 
@@ -65,12 +66,36 @@ export function newGame(userObject) {
 	renderAlphabet(alfabetet);
 	renderWord(visibleWord);
 	console.log("user secrect word: " + currentUser.secretWord);
+
+	handleKeyDownEvent();
+}
+
+// keydown event listener
+function handleKeyDownEvent() {
+	document.addEventListener('keydown', function (event) {
+
+		let key = event.key.toLowerCase();
+
+		// Check if the key is a letter and if in map
+		if (key.length === 1 && key >= 'a' && key <= 'z' && characterElements.has(key)) {
+
+			// Get the character element
+			let character = characterElements.get(key);
+			character.classList.add('destroyed');
+			destroyWithRandomTransform(character);
+
+			// Handle the guess
+			handleGuess(character);
+			renderWord(visibleWord);
+		}
+	});
 }
 
 function renderAlphabet(alfabetet) {
 
-	// let letterContainer = createNewElement('div', 'letter-container');
 
+	// let letterContainer = createNewElement('div', 'letter-container');
+	characterElements.clear();
 	// loop through each char in currentWord, append the text node to our newly created element
 	for (let char of alfabetet) {
 
@@ -90,7 +115,7 @@ function renderAlphabet(alfabetet) {
 			handleGuess(character);
 			renderWord(visibleWord);
 		});
-
+		characterElements.set(char, character);
 		gameViewSection.append(letterContainer);
 	}
 }
@@ -114,6 +139,7 @@ function renderWord(visibleWord) {
 	gameViewSection.append(wordContainer);
 
 }
+
 
 function handleGuess(character) {
 	let match = false;
@@ -143,29 +169,28 @@ function handleGuess(character) {
 
 		// is it an ellipse?
 		if (svgPart.tagName.toLowerCase() === 'ellipse') {
-
 			svgPart.classList.add('paint', 'ellipse-painted');
 		}
+
 		// is it a path with a stroke property?
-		if (svgPart.tagName.toLowerCase() === 'path' && svgPart.getAttribute('stroke')) {
+		else if (svgPart.tagName.toLowerCase() === 'path' && svgPart.getAttribute('stroke')) {
 			svgPart.classList.add('paint');
+			console.log('class added to path: ' + svgPartId + 'paint');
 		}
 
-		// if not, it's a path without strokes so we animate fill instead
-		else svgPart.classList.add('paint', 'ellipse-painted');
-
-		console.log('class removed: ' + svgPartId);
+		// is it the scaffold (the only path without a stroke then)?
+		if (svgPart.id === 'scaffold') {
+			svgPart.classList.add('paint', 'scaffold-painted');
+			console.log('class added to scaffold: ' + svgPartId + 'paint, ellipse-painted');
+		}
 
 		// Increment the counter
 		incorrectGuesses++;
 		currentUser.incorrectGuesses = incorrectGuesses;
-		updateGameState();
 		match = false;
 	}
 
-	else {
-		updateGameState();
-	}
+	updateGameState();
 	renderWord(visibleWord);
 }
 export function updateGameState() {
@@ -199,6 +224,8 @@ export function updateGameState() {
 
 	}
 }
+
+
 
 // helper functions
 function destroyWithRandomTransform(element) {
@@ -260,6 +287,12 @@ function resetHangingMan() {
 	for (let partId of hangmanBody) {
 		let svgPart = document.querySelector(partId);
 		svgPart.classList.add('hidden');
-		svgPart.classList.remove('paint');
+
+		if (svgPart.classList.contains('paint')) {
+			svgPart.classList.remove('paint');
+		}
+		if (svgPart.classList.contains('ellipse-painted')) {
+			svgPart.classList.remove('ellipse-painted');
+		}
 	}
 }
