@@ -1,12 +1,10 @@
-import { updateGameState } from './game-view.js';
-import { newUserObject } from './start-view.js';
+import { updateScoreView } from './game-view.js';
 
-// // Lista på testdata
+// Lista på testdata
 let storedData = []
 
 document.addEventListener('DOMContentLoaded', () => {
-	console.log('DOMContentLoaded event fired')
-	storedData = JSON.parse(localStorage.getItem('key')) || [];
+	let storedData = JSON.parse(localStorage.getItem('userObjectArray')) || [];
 	console.log('stored data:', storedData);
 });
 
@@ -14,8 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const scoreboardBody = document.querySelector('#scoreboardBody')
   console.log('Scoreboard Body: ', scoreboardBody);
 //   Sorterar antalet minst fel
-  storedData.sort((userObjectsArrayA, userObjectsArrayB) => {
-	const incorrectComparison = userObjectsArrayA.incorrect - userObjectsArrayB.incorrect;
+  storedData.sort((a, b) => {
+	const incorrectComparison = a.incorrect - b.incorrect;
 	if (incorrectComparison !== 0) {
 		return incorrectComparison
 	}
@@ -51,9 +49,7 @@ return aDateTime - bDateTime;
     addToScoreboard(score);
   });
 
-  console.log(localStorage);
-  console.log('storedData:', storedData);
-console.log('top10Scores:', top10Scores);
+  
 
 //Skapar ett objet för användar info
 // const userObject = {
