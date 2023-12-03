@@ -2,11 +2,12 @@
 	display: flex;
 	transition: 150ms;
 	transform: scale(1);
-	margin: 0;
-	padding: 2rem;
+	margin: 0 auto;
+	padding-top: 1rem;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
+	height: 100%;
 
 	/* width: 100vh; */
 	/* border: 8px solid pink; */
@@ -126,14 +127,11 @@ paint ellipse {
 	}
 }
 
-
-
 @media (max-width: 630px) {
 	.character-word {
 		margin: 0.2rem;
 		padding: 12px;
 	}
-	
 }
 
 @media (max-width: 560px) {
@@ -145,28 +143,26 @@ paint ellipse {
 		grid-template-columns: repeat(10, minmax(20px, 1fr));
 		gap: 14px;
 	}
-	
 }
-
 
 @media (max-width: 490px) {
 	.character-word {
 		margin: 0.2rem;
 		padding: 7px;
 		font-size: 1.85rem;
-
 	}
 	.letter-container {
 		grid-template-columns: repeat(8, minmax(20px, 1fr));
 		gap: 14px;
 	}
+
 }
 
 @media (max-width: 450px) {
 	.character-word {
 		margin: 0.2rem;
 		padding: 7px;
-		font-size: 1.50rem;
+		font-size: 1.5rem;
 	}
 	.letter-container {
 		grid-template-columns: repeat(7, minmax(20px, 1fr));
@@ -178,16 +174,17 @@ paint ellipse {
 	.character-word {
 		margin: 0.2rem;
 		padding: 7px;
-		font-size: 1.10rem;
-		
+		font-size: 1.1rem;
+	}
+	.character {
+		font-size: 1rem;
+		padding: 4px;
 	}
 	.letter-container {
 		grid-template-columns: repeat(7, minmax(20px, 1fr));
 		gap: 11px;
 	}
 }
-
-
 
 @media (max-width: 450px) {
 	.character-word {

@@ -1,58 +1,58 @@
 #scoreboard {
-  width: 100%;
-  max-width: 800px;
-  margin: auto;
-  font-size: 18px;
-  border-collapse: collapse;
+	width: 100%;
+	max-width: 800px;
+	margin: auto;
+	font-size: 18px;
+	border-collapse: collapse;
 }
 
-#scoreboard th, #scoreboard td {
-  padding: 15px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-  white-space: nowrap; 
-  text-align: center;
+#scoreboard th,
+#scoreboard td {
+	padding: 15px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+	white-space: nowrap;
+	text-align: center;
 }
 
 #scoreboard th {
-  background-color: #F4A261;
-  color: #fff;
+	background-color: #f4a261;
+	color: #fff;
 }
 
 #scoreboard td {
-  background-color: #ecf0f1;
+	background-color: #ecf0f1;
 }
 
 #scoreboard tbody tr:hover {
-  background-color: #d5e7f5;
+	background-color: #d5e7f5;
 }
 
-
-#sortBtn{
-  float: left;
-  padding: 5px 20px 5px 20px;
+#sortBtn {
+	float: left;
+	padding: 5px 20px 5px 20px;
 	font-size: 16px;
-	background-color: #E9C46A;
+	background-color: #e9c46a;
 	border: none;
-  border-radius: 5px 5px 0px 0px ;
+	border-radius: 5px 5px 0px 0px;
 	cursor: pointer;
 	/* border: 2px solid rgba(255, 255, 255, 0.795); */
 	color: white;
 	margin-right: 0.5em;
 }
 .game-over-view {
-  display: none;
-  max-width: 500px;
-  height: auto;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #fff;
-  border-radius: 20px;
-  padding: 2em;
-  border: 5px solid #F4A261;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  margin-bottom: 1em;
+	max-width: 500px;
+	height: auto;
+	margin: auto;
+	/* display: flex; */
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: #fff;
+	border-radius: 20px;
+	padding: 2em;
+	border: 5px solid #f4a261;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	margin-bottom: 1em;
+	display: none;
 }
