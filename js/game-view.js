@@ -146,15 +146,8 @@ function handleGuess(character) {
 	let guessedChar = character.innerText;
 	let newVisibleWord = '';
 
-	for (let i = 0; i < currentWord.length; i++) {
-		if (currentWord[i].toUpperCase() === guessedChar.toUpperCase()) {
-			newVisibleWord += currentWord[i].toUpperCase();
-			match = true;
-		} else {
-			newVisibleWord += visibleWord[i];
-		}
+	({ newVisibleWord, match } = upDateGuessedWord(guessedChar, newVisibleWord, match));
 
-	}
 	// we split this because visibleWord is an array, 
 	// so we get an array of characters
 	visibleWord = newVisibleWord.split('');
@@ -168,21 +161,7 @@ function handleGuess(character) {
 		svgPart.classList.remove('hidden');
 
 		// is it an ellipse?
-		if (svgPart.tagName.toLowerCase() === 'ellipse') {
-			svgPart.classList.add('paint', 'ellipse-painted');
-		}
-
-		// is it a path with a stroke property?
-		else if (svgPart.tagName.toLowerCase() === 'path' && svgPart.getAttribute('stroke')) {
-			svgPart.classList.add('paint');
-			console.log('class added to path: ' + svgPartId + 'paint');
-		}
-
-		// is it the scaffold (the only path without a stroke then)?
-		if (svgPart.id === 'scaffold') {
-			svgPart.classList.add('paint', 'scaffold-painted');
-			console.log('class added to scaffold: ' + svgPartId + 'paint, ellipse-painted');
-		}
+		handleSvgRender(svgPart, svgPartId);
 
 		// Increment the counter
 		incorrectGuesses++;
@@ -193,6 +172,39 @@ function handleGuess(character) {
 	updateGameState();
 	renderWord(visibleWord);
 }
+
+function upDateGuessedWord(guessedChar, newVisibleWord, match) {
+	for (let i = 0; i < currentWord.length; i++) {
+		if (currentWord[i].toUpperCase() === guessedChar.toUpperCase()) {
+			newVisibleWord += currentWord[i].toUpperCase();
+			match = true;
+		} else {
+			newVisibleWord += visibleWord[i];
+		}
+
+	}
+	return { newVisibleWord, match };
+}
+
+function handleSvgRender(svgPart, svgPartId) {
+	if (svgPart.tagName.toLowerCase() === 'ellipse') {
+		svgPart.classList.add('paint', 'ellipse-painted');
+	}
+
+
+	// is it a path with a stroke property?
+	else if (svgPart.tagName.toLowerCase() === 'path' && svgPart.getAttribute('stroke')) {
+		svgPart.classList.add('paint');
+		console.log('class added to path: ' + svgPartId + 'paint');
+	}
+
+	// is it the scaffold (the only path without a stroke then)?
+	if (svgPart.id === 'scaffold') {
+		svgPart.classList.add('paint', 'scaffold-painted');
+		console.log('class added to scaffold: ' + svgPartId + 'paint, ellipse-painted');
+	}
+}
+
 export function updateGameState() {
 
 	if (incorrectGuesses === 6) {
