@@ -77,7 +77,7 @@ function handleKeyDownEvent() {
 		let key = event.key.toLowerCase();
 
 		// Check if the key is a letter and if in map
-		if (key.length === 1 && key >= 'a' && key <= 'z' && characterElements.has(key)) {
+		if ((key.length === 1 && key >= 'a' && key <= 'z') || key === 'å' || key === 'ä' || key === 'ö' && characterElements.has(key)) {
 
 			// Get the character element
 			let character = characterElements.get(key);
@@ -230,9 +230,10 @@ export function updateGameState() {
 // helper functions
 function destroyWithRandomTransform(element) {
 	// Generate random rotation and scale values
-	let rotation = (Math.random() * 30) * (Math.random() < 0.5 ? -1 : 1); // Random rotation from -30 to 30 degrees
-	let scaleX = 1 + Math.random() * 0.5; // Random scale for X 
-	let scaleY = 1 + Math.random() * 0.5; // Random scale for Y 
+	let rotation = (Math.random() * 10) * (Math.random() < 0.5 ? -1 : 1); // Random rotation from -30 to 30 degrees
+	let scaleX = 1 + Math.random() * 0.25; // Random scale for X 
+	let scaleY = 1 + Math.random() * 0.25; // Random scale for Y 
+
 
 	// Apply the random transform to the element
 	element.style.transform = `rotate(${rotation}deg) scaleX(${scaleX}) scaleY(${scaleY})`;
