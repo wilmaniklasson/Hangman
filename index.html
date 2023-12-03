@@ -38,35 +38,31 @@
 					</div>
 				</div>
 
-                <div id="Modal">
-                    <div id="modal-content" class="modal-content">
-                        <button id="closeModalBtn" class="close-modal-btn">
-                            &times;
-                        </button>
-                        <p>Please enter your username:</p>
-                    </div>
-                </div>
-            </header>
-            <div class="game-container">
-                <section class="image-content" id="image-content">
-                    <div class="hangman-info">
-                        <h2>Welcome to Hangman!</h2>
-                        <p class="hangman-info">
-                            Uncover word secrets by guessing hidden letters.
-                            Each letter is initially a mystery, but skillful
-                            guesses reveal clues to the word's true
-                            identity. Can you crack the code and save the
-                            man from hanging?
-                        </p>
-                    </div>
-                    <img src="resources/images/hangman.svg" id="logo" alt="logo">
+				<div id="Modal">
+					<div id="modal-content" class="modal-content">
+						<button id="closeModalBtn" class="close-modal-btn">&times;</button>
+						<p>Please enter your username:</p>
+					</div>
+				</div>
+			</header>
+			<div class="game-container">
+				<section class="image-content" id="image-content">
+					<div class="hangman-info">
+						<h2>Welcome to Hangman!</h2>
+						<p class="hangman-info">
+							Uncover word secrets by guessing hidden letters. Each letter is initially a mystery, but
+							skillful guesses reveal clues to the word's true identity. Can you crack the code and save
+							the man from hanging?
+						</p>
+					</div>
+					<img src="resources/images/hangman.svg" id="logo" alt="logo" />
 
 					<!-- This is the hanging man figure that we will toggle programmatically. -->
 					<figure class="hanging-man hidden">
 						<svg
 							width="100%"
 							height="100%"
-							viewBox="0 0 501 565"
+							viewBox="0 0 500 500"
 							fill="none"
 							xmlns="http://www.w3.org/2000/svg">
 							<ellipse
@@ -124,21 +120,16 @@
 					</figure>
 				</section>
 
-                <section class="game-content">
-                    <div class="start-view-section hidden">
-                        <form>
-                            <label
-                                id="label-user-name-input"
-                                for="user-name-input"
-                                >Enter your name:</label
-                            >
-                            <input
-                                type="text"
-                                id="user-name-input"
-                                name="user-name-input"
-                                placeholder="Username"
-                                required
-                            />
+				<section class="game-content">
+					<div class="start-view-section hidden">
+						<form>
+							<label id="label-user-name-input" for="user-name-input">Enter your name:</label>
+							<input
+								type="text"
+								id="user-name-input"
+								name="user-name-input"
+								placeholder="Username"
+								required />
 
 							<div class="difficulty-container">
 								<label for="easy">Easy</label>
