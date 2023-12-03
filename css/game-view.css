@@ -96,7 +96,7 @@
 }
 
 .destroyed {
-	transition: 150ms;
+	transition: 350ms;
 	scale: 1.25;
 	opacity: 0;
 	pointer-events: none;
