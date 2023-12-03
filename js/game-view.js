@@ -27,10 +27,10 @@ let wordContainer = createNewElement('div', 'word-container');
 
 // game logic functions
 export function newGame(userObject) {
-	
+
 	const difficulty = userObject.difficulty;
 
-    const numberOfLetters = (difficulty === 'easy') ? 6 : 5;   
+	const numberOfLetters = (difficulty === 'easy') ? 6 : 5;
 	currentWord = pickNewWord(numberOfLetters);
 	visibleWord = Array(currentWord.length).fill('_');
 
@@ -173,7 +173,7 @@ export function updateGameState() {
 	if (incorrectGuesses === 6) {
 		scoreViewSection.style.display = 'block';
 		gameViewSection.style.display = 'none';
-		hangingMan.style.display = 'none';
+		hangingMan.style.display = 'block';
 
 		currentUser.lost = true;
 		currentUser.win = false;
