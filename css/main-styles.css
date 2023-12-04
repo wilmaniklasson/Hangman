@@ -128,7 +128,7 @@ h1 {
 	display: flex;
 	flex-direction: column;
 	height: 90vh;
-	margin: 0 auto;
+	margin: 0 0.75rem;
 }
 
 .game-container {
@@ -215,7 +215,6 @@ h1 {
 	height: 100%;
 	overflow: auto;
 	margin-bottom: 5em;
-	
 }
 /*_______________________*/
 
@@ -226,29 +225,29 @@ h1 {
 		flex-direction: row;
 	}
 
-	.image-content, .start-view-section{
+	.image-content,
+	.start-view-section {
 		width: 90%;
 	}
-
 }
 
 @media (max-width: 800px) {
 	.game-container {
 		flex-direction: column;
 	}
-
-	
 }
 
 @media (max-width: 400px) {
 	.game-view-section {
 		padding: 4px;
 	}
-	.image-content, .start-view-section{
+	.image-content,
+	.start-view-section {
 		padding: 0.5rem;
 	}
 
-	.image-content , .start-view-section{
+	.image-content,
+	.start-view-section {
 		width: 100%;
 	}
 }
