@@ -1,5 +1,5 @@
 let userObjectsArray = [];
-function updateScoreboard() {
+export function updateScoreboard() {
 	userObjectsArray = JSON.parse(localStorage.getItem('userObjectsArray')) || [];
 	console.log('User Objects Array:', userObjectsArray);
 
@@ -17,7 +17,7 @@ function updateScoreboard() {
 	});
 }
 document.addEventListener('DOMContentLoaded', () => {
-	
+
 
 	userObjectsArray.sort(sortByIncorrectGuesses);
 	const top10Scores = userObjectsArray.slice(0, 10);
