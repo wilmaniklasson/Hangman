@@ -46,9 +46,6 @@ function toggleSortDate() {
 	});
 }
 
-function sortByMostWon(a, b) {
-	return Number(a.win) - Number(b.win);
-}
 
 function sortByDateTime(a, b) {
 	const aDateTime = new Date(`${a.date}  ${a.time}`);
