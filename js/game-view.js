@@ -6,7 +6,7 @@ import { modal } from './start-view.js';
 // display containers
 const gameViewSection = document.querySelector('.game-view-section');
 const scoreViewSection = document.querySelector('.score-view-section');
-const hangingMan = document.querySelector('.image-content');
+const imageContent = document.querySelector('.image-content');
 const hangmanBody = ['#ground', '#scaffold', '#head', '#body', '#arms', '#legs'];
 
 // create the letter container, and append it to the gameview
@@ -42,6 +42,8 @@ export function newGame(userObject) {
 
 	// we need to clear the game board before we start a new game
 	clearGameBoard();
+	imageContent.style.opacity = '1';
+
 	updateScoreboard();
 
 	// try to find the user in the userObjectsArray
@@ -83,7 +85,7 @@ function handleKeyDownEvent() {
 	document.addEventListener('keydown', function (event) {
 		let key = event.key.toLowerCase();
 
-
+		// TODO: check if username is auto-input, then we have no key so we we need to handle that somehow
 		// Check if the key is a letter and if in map
 		if ((key.length === 1 && key >= 'a' && key <= 'ö') && characterElements.has(key)) {
 
@@ -223,7 +225,7 @@ export function updateGameState() {
 
 	if (incorrectGuesses === 6) {
 		gameViewSection.style.display = 'none';
-		
+
 
 		currentUser.date = new Date().toLocaleDateString();
 		currentUser.time = new Date().toLocaleTimeString();
@@ -239,7 +241,7 @@ export function updateGameState() {
 		gameViewSection.style.display = 'none';
 
 		currentUser.win++;
-		
+
 		currentUser.date = new Date().toLocaleDateString();
 		currentUser.time = new Date().toLocaleTimeString();
 

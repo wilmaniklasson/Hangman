@@ -16,50 +16,51 @@ const closeMenuBtn = document.querySelector('#closeMenuBtn');
 
 // Open the menu
 openMenuBtn.addEventListener('click', function () {
-    menu.style.display = 'block';
+	menu.style.display = 'block';
 });
 
 // "Escape" stäng och öpna meny
 document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') {
-        if (menu.style.display === 'block') {
-            menu.style.display = 'none';
-        } else {
-            menu.style.display = 'block';
-        }
-    }
+	if (event.key === 'Escape') {
+		if (menu.style.display === 'block') {
+			menu.style.display = 'none';
+		} else {
+			menu.style.display = 'block';
+		}
+	}
 });
 
 // Close the menu
 closeMenuBtn.addEventListener('click', function () {
-    menu.style.display = 'none';
+	menu.style.display = 'none';
 });
 
 // Close the menu if the user clicks outside of it
 window.addEventListener('click', function (event) {
-    if (event.target == menu) {
-        menu.style.display = 'none';
-    }
+	if (event.target == menu) {
+		menu.style.display = 'none';
+	}
 });
 
 const NewGameBtn = document.querySelector('#NewGameBtn');
 NewGameBtn.addEventListener('click', function () {
-    menu.style.display = 'none';
-    startViewSection.style.display = 'block';//show start view
-    gameViewSection.style.display = 'none';
-    scoreViewSection.style.display = 'none';
-    hangingMan.style.display = 'none';
-    hangmanInfo.style.display = 'block';
+	menu.style.display = 'none';
+	startViewSection.style.display = 'block';//show start view
+	gameViewSection.style.display = 'none';
+	scoreViewSection.style.display = 'none';
+	hangingMan.style.display = 'none';
+	hangmanInfo.style.display = 'block';
+	imageContent.style.opacity = '1';
 });
 
 
 const ScoreboardBtn = document.querySelector('#ScoreboardBtn');
 ScoreboardBtn.addEventListener('click', function () {
-    menu.style.display = 'none';
-    startViewSection.style.display = 'none';
-    hangingMan.style.display = 'none';
-    gameViewSection.style.display = 'none';
-    scoreViewSection.style.display = 'block'; // show score view
-	// imageContent.style.display = 'none';
+	menu.style.display = 'none';
+	startViewSection.style.display = 'none';
+	hangingMan.style.display = 'none';
+	gameViewSection.style.display = 'none';
+	scoreViewSection.style.display = 'block'; // show score view
 	hangmanInfo.style.display = 'none';
+	imageContent.style.opacity = '0';
 });
