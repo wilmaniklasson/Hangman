@@ -81,21 +81,23 @@ export function newGame(userObject) {
 // keydown event listener
 function handleKeyDownEvent() {
 	document.addEventListener('keydown', function (event) {
-
 		let key = event.key.toLowerCase();
+
 
 		// Check if the key is a letter and if in map
 		if ((key.length === 1 && key >= 'a' && key <= 'ö') && characterElements.has(key)) {
 
-			// Get the character element
-			let character = characterElements.get(key);
-			character.classList.add('destroyed');
-			destroyWithRandomTransform(character);
-			characterElements.delete(key);
+			if (characterElements.has(key)) {
+				// Get the character element
+				let character = characterElements.get(key);
+				character.classList.add('destroyed');
+				destroyWithRandomTransform(character);
+				characterElements.delete(key);
 
-			// Handle the guess
-			handleGuess(character);
-			renderWord(visibleWord);
+				// Handle the guess
+				handleGuess(character);
+				renderWord(visibleWord);
+			}
 		}
 	});
 }
