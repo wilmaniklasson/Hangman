@@ -29,6 +29,8 @@ let wordContainer = createNewElement('div', 'word-container');
 // game logic functions
 export function newGame(userObject) {
 
+	incorrectGuesses = 0;
+	userObjectsArray = JSON.parse(localStorage.getItem('userObjectsArray')) || [];
 	const difficulty = userObject.difficulty;
 
 	const numberOfLetters = (difficulty === 'easy') ? 6 : 5;
@@ -40,12 +42,18 @@ export function newGame(userObject) {
 	// we need to clear the game board before we start a new game
 	clearGameBoard();
 
+	// try to find the user in the userObjectsArray
+	let existingUser = userObjectsArray.find(user => user.userName === userObject.userName);
+	if (existingUser) {
+		currentUser = existingUser;
+		currentUser.incorrectGuesses = 0;
+	}
 	// Create a new user object if it doesn't exist already
-	if (!currentUser) {
+	else {
 		currentUser = {
-			userName: newUserObject.userName,
-			win: null,
-			lost: null,
+			userName: userObject.userName,
+			win: 0,
+			lost: 0,
 			date: null,
 			time: null,
 			correct: null,
@@ -54,13 +62,11 @@ export function newGame(userObject) {
 			difficulty: null,
 			secretWord: null,
 		};
+		userObjectsArray.push(currentUser);
 	}
 
-	currentUser = userObject;
-	incorrectGuesses = 0;
 
 	currentUser.secretWord = currentWord;
-	currentUser.incorrectGuesses = 0;
 	currentUser.wordLength = currentWord.length;
 
 	renderAlphabet(alfabetet);
@@ -83,6 +89,7 @@ function handleKeyDownEvent() {
 			let character = characterElements.get(key);
 			character.classList.add('destroyed');
 			destroyWithRandomTransform(character);
+			characterElements.delete(key);
 
 			// Handle the guess
 			handleGuess(character);
@@ -212,12 +219,10 @@ export function updateGameState() {
 		gameViewSection.style.display = 'none';
 		hangingMan.style.display = 'block';
 
-		currentUser.lost = true;
-		currentUser.win = false;
 		currentUser.date = new Date().toLocaleDateString();
 		currentUser.time = new Date().toLocaleTimeString();
 
-		
+		currentUser.lost++;
 		updateUserData();
 	}
 
@@ -226,7 +231,7 @@ export function updateGameState() {
 		gameViewSection.style.display = 'none';
 		hangingMan.style.display = 'none';
 
-		currentUser.win = true;
+		currentUser.win++;
 		currentUser.lost = false;
 		currentUser.date = new Date().toLocaleDateString();
 		currentUser.time = new Date().toLocaleTimeString();
@@ -254,14 +259,11 @@ function destroyWithRandomTransform(element) {
 }
 
 function updateUserData() {
-	let userObjectsArray = JSON.parse(localStorage.getItem('userObjectsArray'));
+	let userIndex = userObjectsArray.findIndex(user => user.userName === currentUser.userName);
 
-	if (!userObjectsArray) {
-		userObjectsArray = [];
-	}
-
+	// update user object in array
+	userObjectsArray[userIndex] = currentUser;
 	// Store the updated userObjectsArray back in localStorage
-	userObjectsArray.push(JSON.parse(JSON.stringify(currentUser)));
 	localStorage.setItem('userObjectsArray', JSON.stringify(userObjectsArray));
 }
 
