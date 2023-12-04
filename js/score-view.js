@@ -71,7 +71,7 @@ function addToScoreboard(userObject) {
 	dateCell.className = 'date-time';
 
 	const wordsCell = document.createElement('td');
-	let words = document.createTextNode(userObject.words);
+	let words = document.createTextNode(userObject.wordLength);
 
 	const incorrectCell = document.createElement('td');
 	let incorrectGuesses = document.createTextNode(userObject.incorrectGuesses);
