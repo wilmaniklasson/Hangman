@@ -1,46 +1,52 @@
 let userObjectsArray = [];
-document.addEventListener('DOMContentLoaded', () => {
-  // hämta från localStorage, assigna to vår varibel.
-  // behöver inte uppdatera härifrån längre, då vi får update från game-view ;)
+function updateScoreboard() {
+	userObjectsArray = JSON.parse(localStorage.getItem('userObjectsArray')) || [];
+	console.log('User Objects Array:', userObjectsArray);
 
-  userObjectsArray = JSON.parse(localStorage.getItem('userObjectsArray')) || [];
-  console.log('User Objects Array:', userObjectsArray);
-});
+	userObjectsArray.sort(sortByIncorrectGuesses);
 
-userObjectsArray.sort(sortByIncorrectGuesses);
+	const top10Scores = userObjectsArray.slice(0, 10);
 
-const top10Scores = userObjectsArray.slice(0, 10);
-	
-top10Scores.forEach(score => {
+	// Clear the current scoreboard
+	const scoreboardBody = document.querySelector('#scoreboardBody');
+	scoreboardBody.innerHTML = '';
+
+	// Re-render the scoreboard
+	top10Scores.forEach(score => {
 		addToScoreboard(score);
 	});
-	
-	const sortBtn = document.querySelector('#sortBtn');
-	sortBtn.addEventListener('click', () => {
-		userObjectsArray.sort(sortByDateTime);
-		localStorage.setItem('userObjectsArray',JSON.stringify(userObjectsArray));
-		console.log(userObjectsArray);
-		
-		// Clear the current scoreboard
-		const scoreboardBody = document.querySelector('#scoreboardBody');
-		scoreboardBody.innerHTML = '';
-		
-	 // Re-render the scoreboard
-   const top10Scores = userObjectsArray.slice(0, 10);
-   top10Scores.forEach(score => {
-     addToScoreboard(score);
-   });
- });
-	
+}
+document.addEventListener('DOMContentLoaded', () => {
+	// hämta från localStorage, assigna to vår varibel.
+	// behöver inte uppdatera härifrån längre, då vi får update från game-view ;)
+
+	console.log('User Objects Array:', userObjectsArray);
+
+	userObjectsArray.sort(sortByIncorrectGuesses);
+
+	const top10Scores = userObjectsArray.slice(0, 10);
+
+	updateScoreboard();
+});
+
+const sortBtn = document.querySelector('#sortBtn');
+sortBtn.addEventListener('click', () => {
+	userObjectsArray.sort(sortByDateTime);
+	localStorage.setItem('userObjectsArray', JSON.stringify(userObjectsArray));
+	console.log(userObjectsArray);
+
+	updateScoreboard();
+});
+
 function sortByIncorrectGuesses(a, b) {
 	return a.incorrect - b.incorrect;
-  }
+}
 
 function sortByDateTime(a, b) {
 	const aDateTime = new Date(`${a.date}  ${a.time}`);
 	const bDateTime = new Date(`${b.date}  ${b.time}`);
 	return aDateTime - bDateTime;
-  }
+}
 
 function addToScoreboard(userObject) {
 	const scoreboardBody = document.querySelector('#scoreboardBody');
@@ -51,7 +57,7 @@ function addToScoreboard(userObject) {
 	let name = document.createTextNode(userObject.userName);
 
 	const resultCell = document.createElement('td');
-	let result = document.createTextNode(`Wins: ${userOBject.win}, Losses: ${userObject.lost}`);
+	let result = document.createTextNode(`Wins: ${userObject.win}, Losses: ${userObject.lost}`);
 
 	const dateCell = document.createElement('td');
 	const dateTime = new Date(userObject.date + " " + userObject.time);
@@ -106,8 +112,8 @@ function changesortUserObjectsArrayingByDate(sortUserObjectsArrayAscending) {
 
   // sortUserObjectsArrayera omgångarna baserat på datum/tid
   userObjectsArray = userObjectsArray.sortUserObjectsArray((a, b) => {
-    const dateA = new Date(a.date + " " + a.time);
-    const dateB = new Date(b.date + " " + b.time);
-    return sortUserObjectsArrayAscending ? dateA - dateB : dateB - dateA;
+	const dateA = new Date(a.date + " " + a.time);
+	const dateB = new Date(b.date + " " + b.time);
+	return sortUserObjectsArrayAscending ? dateA - dateB : dateB - dateA;
   });
   */
