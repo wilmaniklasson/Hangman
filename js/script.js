@@ -49,10 +49,9 @@ NewGameBtn.addEventListener('click', function () {
     gameViewSection.style.display = 'none';
     scoreViewSection.style.display = 'none';
     hangingMan.style.display = 'none';
-    gameOverView.style.display = 'none';
     hangmanInfo.style.display = 'block';
-    
 });
+
 
 const ScoreboardBtn = document.querySelector('#ScoreboardBtn');
 ScoreboardBtn.addEventListener('click', function () {
@@ -61,6 +60,6 @@ ScoreboardBtn.addEventListener('click', function () {
     hangingMan.style.display = 'none';
     gameViewSection.style.display = 'none';
     scoreViewSection.style.display = 'block'; // show score view
-
+	// imageContent.style.display = 'none';
 	hangmanInfo.style.display = 'none';
 });
