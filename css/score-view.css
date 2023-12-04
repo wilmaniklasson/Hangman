@@ -18,7 +18,7 @@
 }
 
 #scoreboard td {
-  padding: 0;
+  padding: 15px;
   text-align: center;
   background-color: #F4A261;
 }
@@ -37,19 +37,7 @@ table {
 
 
 .game-over-view {
-  display: none;
-  max-width: 500px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #fff;
-  border-radius: 20px;
-  padding: 2em;
-  border: 5px solid #F4A261;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  margin-bottom: 1em;
+ padding: 1em;
 }
 
 
@@ -79,6 +67,8 @@ td .date-time{
 }
 
 
+
+
 @media screen and (max-width: 600px) {
   #scoreboard th,
   #scoreboard td {
@@ -86,10 +76,12 @@ td .date-time{
   }
 
   #scoreboardBody td {
-    padding: 10px;
+    /* padding: 30px; */
     font-size: 0.8rem;
+	padding: 6px;
   }
 
+  
 
 
   #scoreboardBody {

@@ -50,7 +50,6 @@ NewGameBtn.addEventListener('click', function () {
     scoreViewSection.style.display = 'none';
     hangingMan.style.display = 'none';
     gameOverView.style.display = 'none';
-    imageContent.style.display = 'block';
     hangmanInfo.style.display = 'block';
     
 });
@@ -62,7 +61,6 @@ ScoreboardBtn.addEventListener('click', function () {
     hangingMan.style.display = 'none';
     gameViewSection.style.display = 'none';
     scoreViewSection.style.display = 'block'; // show score view
-    gameOverView.style.display = 'block';
-    imageContent.style.display = 'none';
 
+	hangmanInfo.style.display = 'none';
 });

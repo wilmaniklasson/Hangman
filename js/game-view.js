@@ -223,7 +223,7 @@ export function updateGameState() {
 
 	if (incorrectGuesses === 6) {
 		gameViewSection.style.display = 'none';
-		hangingMan.style.display = 'block';
+		
 
 		currentUser.date = new Date().toLocaleDateString();
 		currentUser.time = new Date().toLocaleTimeString();
@@ -237,10 +237,9 @@ export function updateGameState() {
 	if (visibleWord.join('').toUpperCase() === currentWord.toUpperCase()) {
 		scoreViewSection.style.display = 'block';
 		gameViewSection.style.display = 'none';
-		hangingMan.style.display = 'none';
 
 		currentUser.win++;
-		currentUser.lost = false;
+		
 		currentUser.date = new Date().toLocaleDateString();
 		currentUser.time = new Date().toLocaleTimeString();
 

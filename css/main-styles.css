@@ -156,8 +156,8 @@ h1 {
 }
 
 .hanging-man {
-	max-width: 100%;
-	height: 90%;
+	max-width: 90%;
+	height: auto;
 }
 
 .game-content {
@@ -225,6 +225,19 @@ h1 {
 	.game-container {
 		flex-direction: row;
 	}
+
+	.image-content {
+		width: 90%;
+	}
+
+}
+
+@media (max-width: 800px) {
+	.game-container {
+		flex-direction: column;
+	}
+
+	
 }
 
 @media (max-width: 400px) {
@@ -233,6 +246,10 @@ h1 {
 	}
 	.image-content {
 		padding: 0.5rem;
+	}
+
+	.image-content {
+		width: 90%;
 	}
 }
 
