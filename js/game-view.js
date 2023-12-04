@@ -1,6 +1,6 @@
 import { alfabetet } from './svenska-ord.js';
 import { words } from './svenska-ord.js';
-import { newUserObject } from './start-view.js';
+import { updateScoreboard } from './score-view.js';
 
 // display containers
 const gameViewSection = document.querySelector('.game-view-section');
@@ -41,6 +41,7 @@ export function newGame(userObject) {
 
 	// we need to clear the game board before we start a new game
 	clearGameBoard();
+	updateScoreboard();
 
 	// try to find the user in the userObjectsArray
 	let existingUser = userObjectsArray.find(user => user.userName === userObject.userName);
@@ -173,6 +174,7 @@ function handleGuess(character) {
 		incorrectGuesses++;
 		currentUser.incorrectGuesses = incorrectGuesses;
 		match = false;
+		updateUserData();
 	}
 
 	updateGameState();
@@ -221,6 +223,7 @@ export function updateGameState() {
 
 		currentUser.lost++;
 		updateUserData();
+		updateScoreboard();
 		scoreViewSection.style.display = 'block';
 	}
 
@@ -236,6 +239,7 @@ export function updateGameState() {
 
 		// Get userObjectsArray from localStorage
 		updateUserData();
+		updateScoreboard();
 
 	}
 }

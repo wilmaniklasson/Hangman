@@ -34,7 +34,7 @@ sortBtn.addEventListener('click', () => {
 });
 
 function sortByIncorrectGuesses(a, b) {
-	return a.incorrect - b.incorrect;
+	return Number(a.incorrectGuesses) - Number(b.incorrectGuesses);
 }
 
 function sortByDateTime(a, b) {
