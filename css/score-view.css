@@ -1,65 +1,119 @@
+
 #scoreboard {
 	width: 100%;
 	max-width: 800px;
 	margin: auto;
 	font-size: 18px;
-	border-collapse: collapse;
-}
-
-#scoreboard th,
-#scoreboard td {
-	padding: 15px;
-	text-align: left;
-	border-bottom: 1px solid #ddd;
-	white-space: nowrap;
-	text-align: center;
 }
 
 #scoreboard th {
-	background-color: #f4a261;
-	color: #fff;
+  padding: 0;
+  text-align: center;
+  background-color: #F4A261;
+  
+  
+}
+
+
+#incorrectGuessesHeader{
+  border-radius: 0 10px 0 0;
 }
 
 #scoreboard td {
-	background-color: #ecf0f1;
+  padding: 0;
+  text-align: center;
+  background-color: #F4A261;
 }
 
-#scoreboard tbody tr:hover {
-	background-color: #d5e7f5;
+table {
+  border-spacing: 0;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
 }
 
-#sortBtn {
-	float: left;
-	padding: 5px 20px 5px 20px;
-	font-size: 16px;
-	background-color: #e9c46a;
-	border: none;
-	border-radius: 5px 5px 0px 0px;
-	cursor: pointer;
-	/* border: 2px solid rgba(255, 255, 255, 0.795); */
-	color: white;
-	margin-right: 0.5em;
-}
+.scoreboard-header {
+	background-color: #F4A261;
+	padding: 0.5rem;
+	border-radius: 5px 5px 0 0;
+  }
+
+
 .game-over-view {
-	max-width: 500px;
-	height: auto;
-	margin: auto;
-	/* display: flex; */
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	background-color: #fff;
-	border-radius: 20px;
-	padding: 2em;
-	border: 5px solid #f4a261;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-	margin-bottom: 1em;
-	display: none;
+  display: none;
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 2em;
+  border: 5px solid #F4A261;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1em;
 }
 
+
+
+
+#scoreboardBody td {
+  padding: 15px;
+  text-align: center; 
+  background-color: #f9f9f9;
+}
+
+
+#scoreboardBodyContainer {
+  overflow-x: hidden;  
+  margin-top: 1em;
+  padding: 1rem;
+}
+
+#scoreboardBody {
+  white-space: nowrap;   
+    white-space: normal; 
+  
+}
 
 .date-time {
 	font-size: 0.5em;
 	font-weight: bold;
 	margin-bottom: 0.5em;
+}
+
+
+@media screen and (max-width: 600px) {
+  #scoreboard th,
+  #scoreboard td {
+    font-size: 0.8rem;
+  }
+
+  #scoreboardBody td {
+    padding: 10px;
+    font-size: 0.8rem;
+  }
+
+
+
+  #scoreboardBody {
+    white-space: normal; 
+  }
+}
+
+
+#sortBtn{
+	padding: 5px 20px;
+	font-size: 1rem;
+	background-color: #e9c46a;
+	border: none;
+	border-radius: 5px 5px 0px 0px;
+	transition: background-color 0.5s ease;
+}
+
+#sort:hover {
+	background-color: #ebbb43;
+	cursor: pointer;
+	transform: scale(1.1);
+	cursor: pointer;
 }
