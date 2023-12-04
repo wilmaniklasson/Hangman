@@ -28,13 +28,14 @@ let svgElement = document.querySelector('.hanging-man');
 let wordContainer = createNewElement('div', 'word-container');
 
 // game logic functions
-export function newGame(userObject) {
+export function newGame(userObject, numberOfLetters) {
 
+	console.log('numofletters: ' + numberOfLetters);
 	incorrectGuesses = 0;
 	userObjectsArray = JSON.parse(localStorage.getItem('userObjectsArray')) || [];
 	const difficulty = userObject.difficulty;
 
-	const numberOfLetters = (difficulty === 'easy') ? 6 : 5;
+	// numberOfLetters = (difficulty === 'easy') ? 6 : 10;
 	currentWord = pickNewWord(numberOfLetters);
 	visibleWord = Array(currentWord.length).fill('_');
 

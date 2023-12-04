@@ -1,3 +1,4 @@
+let numberOfLetters;
 import { newGame } from './game-view.js';
 //hämtar element
 const startViewSection = document.querySelector('.start-view-section');
@@ -37,6 +38,11 @@ btnStartGame.addEventListener('click', function (event) {
 	if (newUserObject.userName && newUserObject.difficulty) {
 		// Lägg till det nya användarobjektet i arrayen
 		userObjectsArray.push(newUserObject);
+		if (document.getElementById('easy').checked) {
+			numberOfLetters = 10;
+		} else if (document.getElementById('hard').checked) {
+			numberOfLetters = 6;
+		}
 
 		// if objectsarray is null or undefined, create an empty array
 		if (!userObjectsArray) {
@@ -58,7 +64,7 @@ btnStartGame.addEventListener('click', function (event) {
 		hangingMan.classList.remove('hidden');
 		hangingMan.style.display = 'block';
 		hangmanInfo.style.display = 'none';
-		newGame(newUserObject);
+		newGame(newUserObject, numberOfLetters);
 	} else {
 		modal.style.display = 'block';
 	}
