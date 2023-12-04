@@ -56,3 +56,10 @@
 	margin-bottom: 1em;
 	display: none;
 }
+
+
+.date-time {
+	font-size: 0.5em;
+	font-weight: bold;
+	margin-bottom: 0.5em;
+}

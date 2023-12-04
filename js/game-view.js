@@ -217,7 +217,7 @@ export function updateGameState() {
 		currentUser.date = new Date().toLocaleDateString();
 		currentUser.time = new Date().toLocaleTimeString();
 
-		// Get userObjectsArray from localStorage
+		
 		updateUserData();
 	}
 

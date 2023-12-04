@@ -26,19 +26,46 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 });
 
-const scoreboardBody = document.querySelector('#scoreboardBody');
 
 function addToScoreboard(userObject) {
-	// bygg ut elementen för listan
-	const row = document.createElement("tr");
+  const scoreboardBody = document.querySelector('#scoreboardBody');
+  // bygg ut elementen för listan
+  const row = document.createElement("tr");
 
-	for (const key in userObject) {
-		if (userObject.hasOwnProperty(key)) {
-			const cell = document.createElement("td");
-			cell.innerText = userObject[key];
-			row.appendChild(cell);
-		}
-	}
+  const nameCell = document.createElement('td');
+  let name = document.createTextNode(userObject.userName);
 
-	scoreboardBody.appendChild(row);
+  const resultCell = document.createElement('td');
+  let result = document.createTextNode(userObject.win ? 'Won' : 'Lost');
+
+  const dateCell = document.createElement('td');
+  const dateTime = new Date(userObject.date + " " + userObject.time);
+  let date = document.createTextNode(dateTime.toLocaleString()); 
+  date.addclassName = 'date-time';
+
+  const wordsCell = document.createElement('td');
+  let words = document.createTextNode(userObject.words);
+
+  const incorrectCell = document.createElement('td');
+  let incorrectGuesses = document.createTextNode(userObject.incorrectGuesses);
+
+
+  nameCell.appendChild(name);
+  row.appendChild(nameCell);
+
+  resultCell.appendChild(result);
+  row.appendChild(resultCell);
+  scoreboardBody.appendChild(row);
+
+  dateCell.appendChild(date);
+  row.appendChild(dateCell);
+
+  wordsCell.appendChild(words);
+  row.appendChild(wordsCell);
+  
+  incorrectCell.appendChild(incorrectGuesses);
+  row.appendChild(incorrectCell);
 }
+
+
+
