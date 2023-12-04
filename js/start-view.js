@@ -5,7 +5,7 @@ const userNameInput = document.querySelector('#user-name-input');
 const btnStartGame = document.querySelector('#start-game');
 const gameViewSection = document.querySelector('.game-view-section');
 const scoreViewSection = document.querySelector('.score-view-section');
-const modal = document.querySelector('#Modal');
+export const modal = document.querySelector('#Modal');
 const gameOverView = document.querySelector('.game-over-view');
 const hangingMan = document.querySelector('.hanging-man');
 const hangmanInfo = document.querySelector('.hangman-info');
@@ -57,7 +57,7 @@ btnStartGame.addEventListener('click', function (event) {
 		gameViewSection.style.display = 'flex';
 		hangingMan.classList.remove('hidden');
 		hangingMan.style.display = 'block';
-        hangmanInfo.style.display = 'none';
+		hangmanInfo.style.display = 'none';
 		newGame(newUserObject);
 	} else {
 		modal.style.display = 'block';

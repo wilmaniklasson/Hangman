@@ -1,6 +1,7 @@
 import { alfabetet } from './svenska-ord.js';
 import { words } from './svenska-ord.js';
 import { updateScoreboard } from './score-view.js';
+import { modal } from './start-view.js';
 
 // display containers
 const gameViewSection = document.querySelector('.game-view-section');
@@ -149,6 +150,10 @@ function renderWord(visibleWord) {
 }
 
 function handleGuess(character) {
+
+	if (modal.style.display === 'block') {
+		return;
+	}
 	let match = false;
 	let guessedChar = character.innerText;
 	let newVisibleWord = '';
