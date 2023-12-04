@@ -226,7 +226,7 @@ h1 {
 		flex-direction: row;
 	}
 
-	.image-content {
+	.image-content, .start-view-section{
 		width: 90%;
 	}
 
@@ -244,12 +244,12 @@ h1 {
 	.game-view-section {
 		padding: 4px;
 	}
-	.image-content {
+	.image-content, .start-view-section{
 		padding: 0.5rem;
 	}
 
-	.image-content {
-		width: 90%;
+	.image-content , .start-view-section{
+		width: 100%;
 	}
 }
 

@@ -113,8 +113,20 @@ label {
     text-align: center;
     color: #333;
     opacity: 0;
+    animation: fadeIn 2s forwards; 
+   padding: 0 0 4rem 0;
+}
+
+.hangman-info p {
+    color: #585757;
+    margin-bottom: 10px;
+	max-width: 600px;
+    margin: 0 auto;
+	line-height: 2;
     animation: fadeIn 3s forwards; 
 }
+
+
 
 @keyframes fadeIn {
     from {
@@ -126,16 +138,17 @@ label {
 }
 
 
-
-.hangman-info p {
-    color: #585757;
-    margin-bottom: 10px;
-	max-width: 600px;
-    margin: 0 auto;
-	line-height: 2;
+@media (max-width: 450px) {
+	.hangman-info h1 {
+        font-size:1.5rem ;
+        }
 }
 
-
+@media (max-width: 400px) {
+	.hangman-info h1 {
+        font-size:1.2rem ;
+        }
+}
 
 
 
