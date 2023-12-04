@@ -20,6 +20,10 @@ body {
 	/* overflow: hidden; */
 }
 
+a {
+	color: black;
+}
+
 h1 {
 	padding: 1rem;
 	font-size: clamp(2rem, 12vw + 1rem, 2rem);
