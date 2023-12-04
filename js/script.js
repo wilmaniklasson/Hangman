@@ -4,7 +4,6 @@ const gameViewSection = document.querySelector('.game-view-section');
 const scoreViewSection = document.querySelector('.score-view-section');
 const hangingMan = document.querySelector('.hanging-man');
 const gameOverView = document.querySelector('.game-over-view');
-const logo = document.querySelector('#logo');
 const imageContent = document.querySelector('.image-content');
 const hangmanInfo = document.querySelector('.hangman-info');
 
@@ -47,7 +46,6 @@ const NewGameBtn = document.querySelector('#NewGameBtn');
 NewGameBtn.addEventListener('click', function () {
     menu.style.display = 'none';
     startViewSection.style.display = 'block';//show start view
-    logo.style.display = 'block';//show logo
     gameViewSection.style.display = 'none';
     scoreViewSection.style.display = 'none';
     hangingMan.style.display = 'none';
@@ -64,7 +62,6 @@ ScoreboardBtn.addEventListener('click', function () {
     hangingMan.style.display = 'none';
     gameViewSection.style.display = 'none';
     scoreViewSection.style.display = 'block'; // show score view
-    logo.style.display = 'none';
     gameOverView.style.display = 'block';
     imageContent.style.display = 'none';
 

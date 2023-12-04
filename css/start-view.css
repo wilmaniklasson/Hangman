@@ -1,10 +1,11 @@
 form {
     margin-top: 20px;
     color: whitesmoke;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: auto; 
 }
 
 h2 {
@@ -98,33 +99,43 @@ label {
     margin-bottom: 1em;
 
 }
-#logo {
-    max-width: 250px;
-    height: auto;
-    margin: auto; 
-}
-@media (max-width: 500px) {
-	#logo {
-		max-width: 150px; 
-		height: auto;
-		margin: auto; 
-	}
 
-}
 
 
 .hangman-info {
     text-align: center;
 	padding: 0rem 1rem 0rem 1rem;
-    
 }
 
-.hangman-info h2 {
-	text-align: center;
-    color: #333; 
+
+
+.hangman-info h1 {
+    text-align: center;
+    color: #333;
+    opacity: 0;
+    animation: fadeIn 3s forwards; 
 }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
 
 .hangman-info p {
-    color: #666;
+    color: #585757;
     margin-bottom: 10px;
+	max-width: 600px;
+    margin: 0 auto;
+	line-height: 2;
 }
+
+
+
+
+

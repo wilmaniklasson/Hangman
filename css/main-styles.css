@@ -186,6 +186,7 @@ h1 {
 }
 
 .start-view-section {
+	margin: 0;
 	background-color: #264653;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.57);
 	padding: 20px;

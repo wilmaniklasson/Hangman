@@ -6,8 +6,6 @@ const btnStartGame = document.querySelector('#start-game');
 const gameViewSection = document.querySelector('.game-view-section');
 const scoreViewSection = document.querySelector('.score-view-section');
 const modal = document.querySelector('#Modal');
-const difficultyRadios = document.getElementsByName('difficulty');
-const logo = document.querySelector('#logo');
 const gameOverView = document.querySelector('.game-over-view');
 const hangingMan = document.querySelector('.hanging-man');
 const hangmanInfo = document.querySelector('.hangman-info');
@@ -57,7 +55,6 @@ btnStartGame.addEventListener('click', function (event) {
 
 		startViewSection.style.display = 'none';
 		gameViewSection.style.display = 'flex';
-		logo.style.display = 'none';
 		hangingMan.classList.remove('hidden');
 		hangingMan.style.display = 'block';
         hangmanInfo.style.display = 'none';
