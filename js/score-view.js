@@ -13,7 +13,8 @@ export function updateScoreboard() {
 
 	// Re-render the scoreboard
 	top10Scores.forEach(score => {
-		addToScoreboard(score);
+		const row = addToScoreboard(score);
+		scoreboardBody.appendChild(row);
 	});
 }
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,13 +26,23 @@ document.addEventListener('DOMContentLoaded', () => {
 	updateScoreboard();
 });
 
-const sortBtn = document.querySelector('#sortBtn');
-sortBtn.addEventListener('click', () => {
-	userObjectsArray.sort(sortByDateTime);
-	localStorage.setItem('userObjectsArray', JSON.stringify(userObjectsArray));
+let isSortedAscending = false;
 
-	updateScoreboard();
-});
+const sortBtn = document.querySelector('#sortBtn');
+toggleSortDate();
+
+function toggleSortDate() {
+	sortBtn.addEventListener('click', () => {
+		if (isSortedAscending) {
+			userObjectsArray.sort((a, b) => sortByDateTime(b, a)); // sort descending
+		} else {
+			userObjectsArray.sort(sortByDateTime); // sort ascending
+		}
+		isSortedAscending = !isSortedAscending; // flip the boolean
+		localStorage.setItem('userObjectsArray', JSON.stringify(userObjectsArray));
+		updateScoreboard();
+	});
+}
 
 function sortByIncorrectGuesses(a, b) {
 	return Number(a.incorrectGuesses) - Number(b.incorrectGuesses);
@@ -40,7 +51,7 @@ function sortByIncorrectGuesses(a, b) {
 function sortByDateTime(a, b) {
 	const aDateTime = new Date(`${a.date}  ${a.time}`);
 	const bDateTime = new Date(`${b.date}  ${b.time}`);
-	return aDateTime - bDateTime;
+	return bDateTime - aDateTime;
 }
 
 function addToScoreboard(userObject) {
@@ -81,6 +92,7 @@ function addToScoreboard(userObject) {
 	row.appendChild(incorrectCell);
 
 	scoreboardBody.appendChild(row);
+	return row;
 }
 
 
