@@ -147,7 +147,6 @@ function renderWord(visibleWord) {
 
 }
 
-
 function handleGuess(character) {
 	let match = false;
 	let guessedChar = character.innerText;
@@ -198,7 +197,6 @@ function handleSvgRender(svgPart, svgPartId) {
 		svgPart.classList.add('paint', 'ellipse-painted');
 	}
 
-
 	// is it a path with a stroke property?
 	else if (svgPart.tagName.toLowerCase() === 'path' && svgPart.getAttribute('stroke')) {
 		svgPart.classList.add('paint');
@@ -215,7 +213,6 @@ function handleSvgRender(svgPart, svgPartId) {
 export function updateGameState() {
 
 	if (incorrectGuesses === 6) {
-		scoreViewSection.style.display = 'block';
 		gameViewSection.style.display = 'none';
 		hangingMan.style.display = 'block';
 
@@ -224,6 +221,7 @@ export function updateGameState() {
 
 		currentUser.lost++;
 		updateUserData();
+		scoreViewSection.style.display = 'block';
 	}
 
 	if (visibleWord.join('').toUpperCase() === currentWord.toUpperCase()) {
