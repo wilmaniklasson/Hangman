@@ -17,13 +17,9 @@ function updateScoreboard() {
 	});
 }
 document.addEventListener('DOMContentLoaded', () => {
-	// hämta från localStorage, assigna to vår varibel.
-	// behöver inte uppdatera härifrån längre, då vi får update från game-view ;)
-
-	console.log('User Objects Array:', userObjectsArray);
+	
 
 	userObjectsArray.sort(sortByIncorrectGuesses);
-
 	const top10Scores = userObjectsArray.slice(0, 10);
 
 	updateScoreboard();
@@ -33,7 +29,6 @@ const sortBtn = document.querySelector('#sortBtn');
 sortBtn.addEventListener('click', () => {
 	userObjectsArray.sort(sortByDateTime);
 	localStorage.setItem('userObjectsArray', JSON.stringify(userObjectsArray));
-	console.log(userObjectsArray);
 
 	updateScoreboard();
 });
