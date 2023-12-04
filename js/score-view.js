@@ -7,17 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	userObjectsArray = JSON.parse(localStorage.getItem('userObjectsArray')) || [];
 	console.log('User Objects Array:', userObjectsArray);
 
-	// din sorterings algoritm här
-	userObjectsArray.sort((a, b) => {
-		const incorrectComparison = a.incorrect - b.incorrect;
-		if (incorrectComparison !== 0) {
-			return incorrectComparison;
-		}
-
-		const aDateTime = new Date(`${a.date}  ${a.time}`);
-		const bDateTime = new Date(`${b.date}  ${b.time}`);
-		return aDateTime - bDateTime;
-	});
+	// din sortUserObjectsArrayerings algoritm här
+	sortUserObjectsArray();
 
 	const top10Scores = userObjectsArray.slice(0, 10);
 
@@ -26,6 +17,19 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 });
 
+
+function sortUserObjectsArray() {
+  userObjectsArray.sortUserObjectsArray((a, b) => {
+    const incorrectComparison = a.incorrect - b.incorrect;
+    if (incorrectComparison !== 0) {
+      return incorrectComparison;
+    }
+
+    const aDateTime = new Date(`${a.date}  ${a.time}`);
+    const bDateTime = new Date(`${b.date}  ${b.time}`);
+    return aDateTime - bDateTime;
+  });
+}
 
 function addToScoreboard(userObject) {
 	const scoreboardBody = document.querySelector('#scoreboardBody');
@@ -75,3 +79,24 @@ function addToScoreboard(userObject) {
 
 
 
+/*
+// Funktion för att ändra sortUserObjectsArrayeringsordningen baserat på antal gissningar
+function changesortUserObjectsArraying(sortUserObjectsArrayAscending) {
+  fillTableFromLocalStorage(sortUserObjectsArrayAscending);
+}
+
+// Funktion för att ändra sortUserObjectsArrayeringsordningen baserat på datum och tid
+function changesortUserObjectsArrayingByDate(sortUserObjectsArrayAscending) {
+  const tableBody = document.getElementById("scoreboardBody");
+  tableBody.innerHTML = ""; // Rensa tabellen innan sortUserObjectsArrayering
+
+  // Hämta data från localStorage
+  let userObjectsArray = getDataFromLocalStorage();
+
+  // sortUserObjectsArrayera omgångarna baserat på datum/tid
+  userObjectsArray = userObjectsArray.sortUserObjectsArray((a, b) => {
+    const dateA = new Date(a.date + " " + a.time);
+    const dateB = new Date(b.date + " " + b.time);
+    return sortUserObjectsArrayAscending ? dateA - dateB : dateB - dateA;
+  });
+  */
