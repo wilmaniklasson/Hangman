@@ -3,8 +3,7 @@ export function updateScoreboard() {
 	userObjectsArray = JSON.parse(localStorage.getItem('userObjectsArray')) || [];
 	console.log('User Objects Array:', userObjectsArray);
 
-	userObjectsArray.sort(sortByIncorrectGuesses);
-
+	userObjectsArray.sort(sortByMostWon);
 	const top10Scores = userObjectsArray.slice(0, 10);
 
 	// Clear the current scoreboard
@@ -20,7 +19,7 @@ export function updateScoreboard() {
 document.addEventListener('DOMContentLoaded', () => {
 
 
-	userObjectsArray.sort(sortByIncorrectGuesses);
+	userObjectsArray.sort(sortByMostWon);
 	const top10Scores = userObjectsArray.slice(0, 10);
 
 	updateScoreboard();
@@ -31,6 +30,9 @@ let isSortedAscending = false;
 const sortBtn = document.querySelector('#sortBtn');
 toggleSortDate();
 
+function sortByMostWon(a, b) {
+	return b.win - a.win;
+}
 function toggleSortDate() {
 	sortBtn.addEventListener('click', () => {
 		if (isSortedAscending) {
@@ -42,10 +44,6 @@ function toggleSortDate() {
 		localStorage.setItem('userObjectsArray', JSON.stringify(userObjectsArray));
 		updateScoreboard();
 	});
-}
-
-function sortByIncorrectGuesses(a, b) {
-	return Number(a.incorrectGuesses) - Number(b.incorrectGuesses);
 }
 
 function sortByDateTime(a, b) {
@@ -71,7 +69,7 @@ function addToScoreboard(userObject) {
 	dateCell.className = 'date-time';
 
 	const wordsCell = document.createElement('td');
-	let words = document.createTextNode(userObject.words);
+	let words = document.createTextNode(userObject.wordLength);
 
 	const incorrectCell = document.createElement('td');
 	let incorrectGuesses = document.createTextNode(userObject.incorrectGuesses);
