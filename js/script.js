@@ -51,11 +51,12 @@ NewGameBtn.addEventListener('click', function () {
 	scoreViewSection.style.display = 'none';
 	hangingMan.style.display = 'none';
 	hangmanInfo.style.display = 'block';
-	imageContent.style.opacity = '1';
+	imageContent.classList.add('hidden-element');
 	mContainer.remove();
 	letterContainer.display = 'block';
 	// letterContainer.classList.add('grow');
 	letterContainer.classList.remove('destroyed');
+	imageContent.classList.remove('hidden-element');
 });
 
 
@@ -67,5 +68,5 @@ ScoreboardBtn.addEventListener('click', function () {
 	gameViewSection.style.display = 'none';
 	scoreViewSection.style.display = 'block'; // show score view
 	hangmanInfo.style.display = 'none';
-	imageContent.style.opacity = '0';
+	imageContent.classList.add('hidden-element');
 });

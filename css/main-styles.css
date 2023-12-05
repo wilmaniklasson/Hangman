@@ -189,6 +189,14 @@ h1 {
 	justify-self: center;
 }
 
+.hidden-element {
+    visibility: hidden;
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+
 .start-view-section {
 	margin: 0;
 	background-color: #264653;

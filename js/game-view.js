@@ -48,7 +48,7 @@ export function newGame(userObject, numberOfLetters, guesses) {
 
 	// we need to clear the game board before we start a new game
 	clearGameBoard();
-	imageContent.style.opacity = '1';
+	imageContent.classList.remove('hidden-element');
 
 	updateScoreboard();
 
