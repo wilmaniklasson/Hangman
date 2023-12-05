@@ -1,44 +1,125 @@
 let userObjectsArray = [];
-
-document.addEventListener('DOMContentLoaded', () => {
-	// hämta från localStorage, assigna to vår varibel.
-	// behöver inte uppdatera härifrån längre, då vi får update från game-view ;)
-
+export function updateScoreboard() {
 	userObjectsArray = JSON.parse(localStorage.getItem('userObjectsArray')) || [];
 	console.log('User Objects Array:', userObjectsArray);
 
-	// din sorterings algoritm här
-	userObjectsArray.sort((a, b) => {
-		const incorrectComparison = a.incorrect - b.incorrect;
-		if (incorrectComparison !== 0) {
-			return incorrectComparison;
-		}
-
-		const aDateTime = new Date(`${a.date}  ${a.time}`);
-		const bDateTime = new Date(`${b.date}  ${b.time}`);
-		return aDateTime - bDateTime;
-	});
-
+	userObjectsArray.sort(sortByMostWon);
 	const top10Scores = userObjectsArray.slice(0, 10);
 
+	// Clear the current scoreboard
+	const scoreboardBody = document.querySelector('#scoreboardBody');
+	scoreboardBody.innerHTML = '';
+
+	// Re-render the scoreboard
 	top10Scores.forEach(score => {
-		addToScoreboard(score);
+		const row = addToScoreboard(score);
+		scoreboardBody.appendChild(row);
 	});
+}
+document.addEventListener('DOMContentLoaded', () => {
+
+
+	userObjectsArray.sort(sortByMostWon);
+	const top10Scores = userObjectsArray.slice(0, 10);
+
+	updateScoreboard();
 });
 
-const scoreboardBody = document.querySelector('#scoreboardBody');
+let isSortedAscending = false;
+
+const sortBtn = document.querySelector('#sortBtn');
+toggleSortDate();
+
+function sortByMostWon(a, b) {
+	return b.win - a.win;
+}
+function toggleSortDate() {
+	sortBtn.addEventListener('click', () => {
+		if (isSortedAscending) {
+			userObjectsArray.sort((a, b) => sortByDateTime(b, a)); // sort descending
+		} else {
+			userObjectsArray.sort(sortByDateTime); // sort ascending
+		}
+		isSortedAscending = !isSortedAscending; // flip the boolean
+		localStorage.setItem('userObjectsArray', JSON.stringify(userObjectsArray));
+		updateScoreboard();
+	});
+}
+
+
+function sortByDateTime(a, b) {
+	const aDateTime = new Date(`${a.date}  ${a.time}`);
+	const bDateTime = new Date(`${b.date}  ${b.time}`);
+	return bDateTime - aDateTime;
+}
 
 function addToScoreboard(userObject) {
-	// bygg ut elementen för listan
+	const scoreboardBody = document.querySelector('#scoreboardBody');
+	// build elements for the list
 	const row = document.createElement("tr");
 
-	for (const key in userObject) {
-		if (userObject.hasOwnProperty(key)) {
-			const cell = document.createElement("td");
-			cell.innerText = userObject[key];
-			row.appendChild(cell);
-		}
-	}
+	const nameCell = document.createElement('td');
+	let name = document.createTextNode(userObject.userName);
+
+	const resultCell = document.createElement('td');
+	let result = document.createTextNode(`Wins: ${userObject.win}, Losses: ${userObject.lost}`);
+
+	const dateCell = document.createElement('td');
+	const dateTime = new Date(userObject.date + " " + userObject.time);
+	let date = document.createTextNode(dateTime.toLocaleString());
+	dateCell.className = 'date-time';
+
+	const wordsCell = document.createElement('td');
+	let words = document.createTextNode(userObject.wordLength);
+
+	const incorrectCell = document.createElement('td');
+	let incorrectGuesses = document.createTextNode(userObject.incorrectGuesses);
+
+	nameCell.appendChild(name);
+	row.appendChild(nameCell);
+
+	resultCell.appendChild(result);
+	row.appendChild(resultCell);
+
+	dateCell.appendChild(date);
+	row.appendChild(dateCell);
+
+	wordsCell.appendChild(words);
+	row.appendChild(wordsCell);
+
+	incorrectCell.appendChild(incorrectGuesses);
+	row.appendChild(incorrectCell);
 
 	scoreboardBody.appendChild(row);
+	return row;
 }
+
+
+
+
+
+
+
+
+
+/*
+// Funktion för att ändra sortUserObjectsArrayeringsordningen baserat på antal gissningar
+function changesortUserObjectsArraying(sortUserObjectsArrayAscending) {
+  fillTableFromLocalStorage(sortUserObjectsArrayAscending);
+}
+
+// Funktion för att ändra sortUserObjectsArrayeringsordningen baserat på datum och tid
+function changesortUserObjectsArrayingByDate(sortUserObjectsArrayAscending) {
+  const tableBody = document.getElementById("scoreboardBody");
+  tableBody.innerHTML = ""; // Rensa tabellen innan sortUserObjectsArrayering
+
+  // Hämta data från localStorage
+  let userObjectsArray = getDataFromLocalStorage();
+
+  // sortUserObjectsArrayera omgångarna baserat på datum/tid
+  userObjectsArray = userObjectsArray.sortUserObjectsArray((a, b) => {
+	const dateA = new Date(a.date + " " + a.time);
+	const dateB = new Date(b.date + " " + b.time);
+	return sortUserObjectsArrayAscending ? dateA - dateB : dateB - dateA;
+  });
+  */

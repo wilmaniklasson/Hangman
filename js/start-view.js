@@ -1,13 +1,12 @@
-import { newGame } from './game-view.js';
+let numberOfLetters;
+import { imageContent, mContainer, newGame } from './game-view.js';
 //hämtar element
 const startViewSection = document.querySelector('.start-view-section');
 const userNameInput = document.querySelector('#user-name-input');
 const btnStartGame = document.querySelector('#start-game');
 const gameViewSection = document.querySelector('.game-view-section');
 const scoreViewSection = document.querySelector('.score-view-section');
-const modal = document.querySelector('#Modal');
-const difficultyRadios = document.getElementsByName('difficulty');
-const logo = document.querySelector('#logo');
+export const modal = document.querySelector('#Modal');
 const gameOverView = document.querySelector('.game-over-view');
 const hangingMan = document.querySelector('.hanging-man');
 const hangmanInfo = document.querySelector('.hangman-info');
@@ -28,15 +27,15 @@ function loadUserObjects() {
 
 export const newUserObject = {
 	userName: null,
-	win: null,
-	lost: null,
+	win: 0,
+	lost: 0,
 	date: null,
 	time: null,
-	correct: null,
 	wordLength: null,
 	numberOfFailedGuesses: null,
 	difficulty: null,
 	secretWord: null,
+	guesses: 0,
 };
 // När användaren klickar på Start Game-knappen
 btnStartGame.addEventListener('click', function (event) {
@@ -48,6 +47,11 @@ btnStartGame.addEventListener('click', function (event) {
 	if (newUserObject.userName && newUserObject.difficulty) {
 		// Lägg till det nya användarobjektet i arrayen
 		userObjectsArray.push(newUserObject);
+		if (document.getElementById('easy').checked) {
+			numberOfLetters = 10;
+		} else if (document.getElementById('hard').checked) {
+			numberOfLetters = 6;
+		}
 
 		// if objectsarray is null or undefined, create an empty array
 		if (!userObjectsArray) {
@@ -66,13 +70,21 @@ btnStartGame.addEventListener('click', function (event) {
 
 		startViewSection.style.display = 'none';
 		gameViewSection.style.display = 'flex';
-		logo.style.display = 'none';
 		hangingMan.classList.remove('hidden');
 		hangingMan.style.display = 'block';
-        hangmanInfo.style.display = 'none';
-		newGame(newUserObject);
+		hangmanInfo.style.display = 'none';
+		newGame(newUserObject, numberOfLetters);
 	} else {
 		modal.style.display = 'block';
+	}
+	console.log('TRYING REALLY HARD TO REMOVE THIS GODDAMNED MCONTAINER');
+	if (mContainer) {
+		console.log('mContainer exists, attempting to remove...');
+		console.log('mContainer is a child of imageContent:', imageContent.contains(mContainer));
+		mContainer.remove();
+		console.log('mContainer is in the DOM after attempting to remove:', mContainer.isConnected);
+	} else {
+		console.log('mContainer does not exist.');
 	}
 });
 

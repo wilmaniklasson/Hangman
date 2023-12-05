@@ -20,6 +20,10 @@ body {
 	/* overflow: hidden; */
 }
 
+a {
+	color: black;
+}
+
 h1 {
 	padding: 1rem;
 	font-size: clamp(2rem, 12vw + 1rem, 2rem);
@@ -128,7 +132,7 @@ h1 {
 	display: flex;
 	flex-direction: column;
 	height: 90vh;
-	margin: 0 auto;
+	margin: 0 0.75rem;
 }
 
 .game-container {
@@ -156,8 +160,8 @@ h1 {
 }
 
 .hanging-man {
-	max-width: 100%;
-	height: 90%;
+	max-width: 90%;
+	height: auto;
 }
 
 .game-content {
@@ -186,6 +190,7 @@ h1 {
 }
 
 .start-view-section {
+	margin: 0;
 	background-color: #264653;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.57);
 	padding: 20px;
@@ -209,14 +214,11 @@ h1 {
 
 .score-view-section {
 	display: none;
-	padding: 20px;
 	border-radius: 10px;
-	text-align: center;
 	width: 100%;
 	height: 100%;
 	overflow: auto;
 	margin-bottom: 5em;
-	margin-right: 2em;
 }
 /*_______________________*/
 
@@ -226,14 +228,31 @@ h1 {
 	.game-container {
 		flex-direction: row;
 	}
+
+	.image-content,
+	.start-view-section {
+		width: 90%;
+	}
+}
+
+@media (max-width: 800px) {
+	.game-container {
+		flex-direction: column;
+	}
 }
 
 @media (max-width: 400px) {
 	.game-view-section {
 		padding: 4px;
 	}
-	.image-content {
+	.image-content,
+	.start-view-section {
 		padding: 0.5rem;
+	}
+
+	.image-content,
+	.start-view-section {
+		width: 100%;
 	}
 }
 
