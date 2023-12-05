@@ -73,7 +73,7 @@ function addToScoreboard(userObject) {
 	let words = document.createTextNode(userObject.wordLength);
 
 	const incorrectCell = document.createElement('td');
-	let incorrectGuesses = document.createTextNode(userObject.incorrectGuesses);
+	let incorrectGuesses = document.createTextNode(userObject.incorrectGuesses || 0);
 
 	nameCell.appendChild(name);
 	row.appendChild(nameCell);
