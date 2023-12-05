@@ -1,3 +1,4 @@
+import { mContainer, letterContainer } from "./game-view.js";
 
 const startViewSection = document.querySelector('.start-view-section');
 const gameViewSection = document.querySelector('.game-view-section');
@@ -51,6 +52,10 @@ NewGameBtn.addEventListener('click', function () {
 	hangingMan.style.display = 'none';
 	hangmanInfo.style.display = 'block';
 	imageContent.style.opacity = '1';
+	mContainer.remove();
+	letterContainer.display = 'block';
+	letterContainer.classList.add('grow');
+	letterContainer.classList.remove('destroyed');
 });
 
 

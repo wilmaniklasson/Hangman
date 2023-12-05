@@ -1,5 +1,5 @@
 let numberOfLetters;
-import { newGame } from './game-view.js';
+import { imageContent, mContainer, newGame } from './game-view.js';
 //hämtar element
 const startViewSection = document.querySelector('.start-view-section');
 const userNameInput = document.querySelector('#user-name-input');
@@ -18,15 +18,15 @@ let userObjectsArray = [];
 
 export const newUserObject = {
 	userName: null,
-	win: null,
-	lost: null,
+	win: 0,
+	lost: 0,
 	date: null,
 	time: null,
-	correct: null,
 	wordLength: null,
 	numberOfFailedGuesses: null,
 	difficulty: null,
 	secretWord: null,
+	guesses: 0,
 };
 // När användaren klickar på Start Game-knappen
 btnStartGame.addEventListener('click', function (event) {
@@ -67,6 +67,15 @@ btnStartGame.addEventListener('click', function (event) {
 		newGame(newUserObject, numberOfLetters);
 	} else {
 		modal.style.display = 'block';
+	}
+	console.log('TRYING REALLY HARD TO REMOVE THIS GODDAMNED MCONTAINER');
+	if (mContainer) {
+		console.log('mContainer exists, attempting to remove...');
+		console.log('mContainer is a child of imageContent:', imageContent.contains(mContainer));
+		mContainer.remove();
+		console.log('mContainer is in the DOM after attempting to remove:', mContainer.isConnected);
+	} else {
+		console.log('mContainer does not exist.');
 	}
 });
 

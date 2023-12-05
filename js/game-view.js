@@ -4,13 +4,14 @@ import { updateScoreboard } from './score-view.js';
 import { modal } from './start-view.js';
 
 // display containers
+export const imageContent = document.querySelector('.image-content');
+export let mContainer = createNewElement('div', 'message-container');
 const gameViewSection = document.querySelector('.game-view-section');
 const scoreViewSection = document.querySelector('.score-view-section');
-const imageContent = document.querySelector('.image-content');
 const hangmanBody = ['#ground', '#scaffold', '#head', '#body', '#arms', '#legs'];
 
 // create the letter container, and append it to the gameview
-const letterContainer = document.createElement('div');
+export const letterContainer = document.createElement('div');
 letterContainer.className = 'letter-container';
 gameViewSection.append(letterContainer);
 
@@ -30,10 +31,14 @@ let wordContainer = createNewElement('div', 'word-container');
 // game logic functions
 export function newGame(userObject, numberOfLetters) {
 
-	console.log('numofletters: ' + numberOfLetters);
+	// we can use these to animate
+	// gameViewSection.classList.add('grow');
+	// gameViewSection.classList.remove('shrink');
+
 	incorrectGuesses = 0;
 	userObjectsArray = JSON.parse(localStorage.getItem('userObjectsArray')) || [];
 	const difficulty = userObject.difficulty;
+	userObject.guesses = 0;
 
 	// numberOfLetters = (difficulty === 'easy') ? 6 : 10;
 	currentWord = pickNewWord(numberOfLetters);
@@ -61,11 +66,11 @@ export function newGame(userObject, numberOfLetters) {
 			lost: 0,
 			date: null,
 			time: null,
-			correct: null,
 			wordLength: null,
 			numberOfFailedGuesses: null,
 			difficulty: null,
 			secretWord: null,
+			guesses: 0,
 		};
 		userObjectsArray.push(currentUser);
 	}
@@ -187,12 +192,15 @@ function handleGuess(character) {
 		updateUserData();
 	}
 
+	currentUser.guesses++;
 	updateGameState();
 	renderWord(visibleWord);
+
 }
 
 function upDateGuessedWord(guessedChar, newVisibleWord, match) {
 	for (let i = 0; i < currentWord.length; i++) {
+
 		if (currentWord[i].toUpperCase() === guessedChar.toUpperCase()) {
 			newVisibleWord += currentWord[i].toUpperCase();
 			match = true;
@@ -225,8 +233,8 @@ function handleSvgRender(svgPart, svgPartId) {
 export function updateGameState() {
 
 	if (incorrectGuesses === 6) {
+		let result = 'lost';
 		gameViewSection.style.display = 'none';
-
 
 		currentUser.date = new Date().toLocaleDateString();
 		currentUser.time = new Date().toLocaleTimeString();
@@ -235,11 +243,25 @@ export function updateGameState() {
 		updateUserData();
 		updateScoreboard();
 		scoreViewSection.style.display = 'block';
+
+		triggerResult(result);
 	}
 
 	if (visibleWord.join('').toUpperCase() === currentWord.toUpperCase()) {
+		let result = 'won';
+
 		scoreViewSection.style.display = 'block';
-		gameViewSection.style.display = 'none';
+		if (gameViewSection.contains(letterContainer)) {
+			letterContainer.classList.add('destroyed');
+
+			letterContainer.addEventListener('transitionend', function () {
+				
+				//
+			});
+			// gameViewSection.appendChild(wordContainer);
+			// gameViewSection.classList.add('shrink');
+			// gameViewSection.classList.remove('grow');
+		}
 
 		currentUser.win++;
 
@@ -249,11 +271,68 @@ export function updateGameState() {
 		// Get userObjectsArray from localStorage
 		updateUserData();
 		updateScoreboard();
+		// imageContent.innerHTML = '';
+		triggerResult(result);
 
 	}
 }
 
 
+
+function triggerResult(result) {
+
+	// TODO: Make these into an array of objects, then loop through them and create the elementsß
+	mContainer.innerHTML = '';	// imageContent.innerHTML = '';
+
+	// create container for message
+	mContainer.style.display = 'flex';
+	mContainer.style.flexDirection = 'column';
+	mContainer.style.alignItems = 'left';
+	mContainer.style.gap = '1rem';
+	imageContent.appendChild(mContainer);
+
+	if (result === 'lost') {
+
+		// we need to put these inside a div so we can style them, so textnode doesn't work here.
+		let lostNode = createNewElement('div', 'lostNode');
+		lostNode.textContent = 'You lost!';
+		mContainer.appendChild(lostNode);
+
+		let wordNode = createNewElement('div');
+		wordNode.textContent = 'The word was: ' + currentWord.toUpperCase();
+		mContainer.appendChild(wordNode);
+
+		let guessNode = createNewElement('div');
+		guessNode.textContent = 'You guessed ' + currentUser.guesses + ' times.';
+		mContainer.appendChild(guessNode);
+
+		let progressionsNode = createNewElement('div');
+		progressionsNode.textContent = 'You have won ' + currentUser.win + ' times.';
+		mContainer.appendChild(progressionsNode);
+	}
+
+	else {
+
+		// we need to put these inside a div so we can style them, so textnode doesn't work here.
+		let wonNode = createNewElement('div', 'wonNode');
+		wonNode.textContent = 'You won!';
+		mContainer.appendChild(wonNode);
+
+		let wordNode = createNewElement('div');
+		wordNode.textContent = 'The word was: ' + currentWord.toUpperCase();
+		mContainer.appendChild(wordNode);
+
+		let guessNode = createNewElement('div');
+		guessNode.textContent = 'You guessed ' + currentUser.guesses + ' times.';
+		mContainer.appendChild(guessNode);
+
+		let progressionsNode = createNewElement('div');
+		progressionsNode.textContent = 'You have won ' + currentUser.win + ' times.';
+		mContainer.appendChild(progressionsNode);
+
+		svgElement.style.display = 'none';
+	}
+}
 
 // helper functions
 function destroyWithRandomTransform(element) {
@@ -300,6 +379,7 @@ function pickNewWord(numberOfLetters) {
 }
 
 function clearGameBoard() {
+
 	while (letterContainer.firstChild) {
 		letterContainer.removeChild(letterContainer.firstChild);
 	}
