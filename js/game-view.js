@@ -312,7 +312,7 @@ function triggerResult(result) {
 		mContainer.appendChild(wordNode);
 
 		let guessNode = createNewElement('div');
-		guessNode.textContent = 'Du gissade fel ' + currentUser.guesses + ' gånger.';
+		guessNode.textContent = 'Du gissade fel ' + currentUser.incorrectGuesses + ' gånger.';
 		mContainer.appendChild(guessNode);
 
 		let progressionsNode = createNewElement('div');
