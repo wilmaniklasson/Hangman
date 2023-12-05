@@ -296,19 +296,19 @@ function triggerResult(result) {
 
 		// we need to put these inside a div so we can style them, so textnode doesn't work here.
 		let lostNode = createNewElement('div', 'lostNode');
-		lostNode.textContent = 'You lost!';
+		lostNode.textContent = 'Hoppsan, du förlorade!';
 		mContainer.appendChild(lostNode);
 
 		let wordNode = createNewElement('div');
-		wordNode.textContent = 'The word was: ' + currentWord.toUpperCase();
+		wordNode.textContent = 'Order var: ' + currentWord.toUpperCase();
 		mContainer.appendChild(wordNode);
 
 		let guessNode = createNewElement('div');
-		guessNode.textContent = 'You guessed ' + currentUser.guesses + ' times.';
+		guessNode.textContent = 'Du gissade fel ' + currentUser.guesses + ' gånger.';
 		mContainer.appendChild(guessNode);
 
 		let progressionsNode = createNewElement('div');
-		progressionsNode.textContent = 'You have won ' + currentUser.win + ' times.';
+		progressionsNode.textContent = 'Du har vunnit ' + currentUser.win + ' gånger.';
 		mContainer.appendChild(progressionsNode);
 	}
 
@@ -316,19 +316,19 @@ function triggerResult(result) {
 
 		// we need to put these inside a div so we can style them, so textnode doesn't work here.
 		let wonNode = createNewElement('div', 'wonNode');
-		wonNode.textContent = 'You won!';
+		wonNode.textContent = 'Du vann!!';
 		mContainer.appendChild(wonNode);
 
 		let wordNode = createNewElement('div');
-		wordNode.textContent = 'The word was: ' + currentWord.toUpperCase();
+		wordNode.textContent = 'Ordet var: ' + currentWord.toUpperCase();
 		mContainer.appendChild(wordNode);
 
 		let guessNode = createNewElement('div');
-		guessNode.textContent = 'You guessed ' + currentUser.guesses + ' times.';
+		guessNode.textContent = 'Du gissade fel ' + currentUser.guesses + ' gånger.';
 		mContainer.appendChild(guessNode);
 
 		let progressionsNode = createNewElement('div');
-		progressionsNode.textContent = 'You have won ' + currentUser.win + ' times.';
+		progressionsNode.textContent = 'Du har vunnit ' + currentUser.win + ' gånger.';
 		mContainer.appendChild(progressionsNode);
 
 		svgElement.style.display = 'none';
