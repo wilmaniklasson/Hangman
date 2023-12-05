@@ -22,7 +22,7 @@ let currentUser;
 let match = false;
 let userObjectsArray;
 let visibleWord = Array(currentWord.length).fill('_'); // initialize with underscores
-let characterElements = new Map();
+export let characterElements = new Map();
 
 let svgElement = document.querySelector('.hanging-man');
 

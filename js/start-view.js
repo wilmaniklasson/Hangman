@@ -1,5 +1,5 @@
 let numberOfLetters;
-import { imageContent, mContainer, newGame } from './game-view.js';
+import { characterElements, imageContent, mContainer, newGame } from './game-view.js';
 //hämtar element
 const startViewSection = document.querySelector('.start-view-section');
 const userNameInput = document.querySelector('#user-name-input');
@@ -37,6 +37,11 @@ export const newUserObject = {
 	secretWord: null,
 	guesses: 0,
 };
+
+userNameInput.addEventListener('focus', function () {
+	characterElements.clear();
+	console.log('characterElements cleared');
+});
 // När användaren klickar på Start Game-knappen
 btnStartGame.addEventListener('click', function (event) {
 	event.preventDefault();

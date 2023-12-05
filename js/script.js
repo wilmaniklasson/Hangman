@@ -54,7 +54,7 @@ NewGameBtn.addEventListener('click', function () {
 	imageContent.style.opacity = '1';
 	mContainer.remove();
 	letterContainer.display = 'block';
-	letterContainer.classList.add('grow');
+	// letterContainer.classList.add('grow');
 	letterContainer.classList.remove('destroyed');
 });
 
