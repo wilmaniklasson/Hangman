@@ -175,7 +175,7 @@
 	.character-word {
 		margin: 0.2rem;
 		padding: 7px;
-		font-size: 1.85rem;
+		font-size: 1.5rem;
 	}
 	.letter-container {
 		grid-template-columns: repeat(8, minmax(20px, 1fr));
@@ -187,7 +187,7 @@
 	.character-word {
 		margin: 0.2rem;
 		padding: 7px;
-		font-size: 1.5rem;
+		font-size: 1rem;
 	}
 	.letter-container {
 		grid-template-columns: repeat(7, minmax(20px, 1fr));
@@ -199,7 +199,7 @@
 	.character-word {
 		margin: 0.2rem;
 		padding: 7px;
-		font-size: 1.1rem;
+		font-size: 1rem;
 	}
 	.character {
 		font-size: 1rem;
@@ -214,7 +214,7 @@
 @media (max-width: 450px) {
 	.character-word {
 		margin: 0.2rem;
-		padding: 7px;
+		padding: 5px;
 		font-size: 1rem;
 	}
 }

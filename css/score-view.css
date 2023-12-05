@@ -95,7 +95,7 @@ td .date-time{
 	font-size: 1rem;
 	background-color: #e9c46a;
 	border: none;
-	border-radius: 5px 5px 0px 0px;
+	border-radius: 10px 10px 0px 0px;
 	transition: background-color 0.5s ease;
 }
 
