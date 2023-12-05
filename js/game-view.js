@@ -81,7 +81,6 @@ export function newGame(userObject, numberOfLetters, guesses) {
 
 	renderAlphabet(alfabetet);
 	renderWord(visibleWord);
-	console.log("user secrect word: " + currentUser.secretWord);
 	let input = document.getElementById('user-name-input');
 	input.addEventListener('input', function () {
 		if (input.value !== '') {
@@ -185,8 +184,7 @@ function handleGuess(character) {
 		// Get the SVG part to show
 		let svgPartId = hangmanBody[incorrectGuesses];
 		let svgPart = document.querySelector(svgPartId);
-		console.log('incorrect guesses: ' + incorrectGuesses);
-		console.log('guesses: ' + currentUser.guesses);
+		
 		// Make the SVG part visible
 		svgPart.classList.remove('hidden');
 

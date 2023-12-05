@@ -40,7 +40,7 @@ export const newUserObject = {
 
 userNameInput.addEventListener('focus', function () {
 	characterElements.clear();
-	console.log('characterElements cleared');
+	
 });
 // När användaren klickar på Start Game-knappen
 btnStartGame.addEventListener('click', function (event) {
@@ -83,7 +83,7 @@ btnStartGame.addEventListener('click', function (event) {
 	} else {
 		modal.style.display = 'block';
 	}
-	console.log('TRYING REALLY HARD TO REMOVE THIS GODDAMNED MCONTAINER');
+	
 	if (mContainer) {
 		mContainer.remove();
 	} else {
