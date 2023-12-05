@@ -255,13 +255,14 @@ export function updateGameState() {
 			letterContainer.classList.add('destroyed');
 
 			letterContainer.addEventListener('transitionend', function () {
-				
+
 				//
 			});
 			// gameViewSection.appendChild(wordContainer);
 			// gameViewSection.classList.add('shrink');
 			// gameViewSection.classList.remove('grow');
 		}
+		gameViewSection.style.display = 'none';
 
 		currentUser.win++;
 
