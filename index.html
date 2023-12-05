@@ -24,38 +24,37 @@
 		<script src="js/score-view.js" defer type="module"></script>
 		<script src="js/sort.js" defer type="module"></script>
 
-		<title>Hangman javascript</title>
+		<title>Hänga gubbe javascript</title>
 	</head>
 	<body>
 		<div class="main-container">
 			<!-- Hanging Man -->
 			<header class="top-section">
 				<nav class="button-row">
-					<button type="button" id="openMenuBtn">menu</button>
+					<button type="button" id="openMenuBtn">meny</button>
 				</nav>
 				<div id="menu" class="menu">
 					<div id="menu-content" class="menu-content">
 						<button id="closeMenuBtn">&times;</button>
-						<button id="NewGameBtn">New Game</button>
-						<button id="ScoreboardBtn">Scoreboard</button>
+						<button id="NewGameBtn">
+							Nytt spel</button>
+						<button id="ScoreboardBtn">Poängtavla</button>
 					</div>
 				</div>
 
 				<div id="Modal">
 					<div id="modal-content" class="modal-content">
 						<button id="closeModalBtn" class="close-modal-btn">&times;</button>
-						<p>Please enter your username:</p>
+						<p>Vänligen ange ditt användarnamn:</p>
 					</div>
 				</div>
 			</header>
 			<div class="game-container">
 				<section class="image-content" id="image-content">
 					<div class="hangman-info">
-						<h1>Welcome to Hangman!</h1>
+						<h1>Välkommen<br> till Hänga gubbe!</h1>
 						<p class="hangman-info">
-							Uncover word secrets by guessing hidden letters. Each letter is initially a mystery, but
-							skillful guesses reveal clues to the word's true identity. Can you crack the code and save
-							the man from hanging?
+							Avslöja ordhemligheter genom att gissa dolda bokstäver. Varje bokstav är inledningsvis ett mysterium, men skickliga gissningar avslöjar ledtrådar till ordets verkliga identitet. Kan du knäcka koden och rädda mannen från att hänga?
 						</p>
 					</div>
 
@@ -123,23 +122,24 @@
 				<section class="game-content">
 					<div class="start-view-section hidden">
 						<form>
-							<label id="label-user-name-input" for="user-name-input">Enter your name:</label>
+							<label id="label-user-name-input" for="user-name-input">
+								Ange ditt namn:</label>
 							<input
 								type="text"
 								id="user-name-input"
 								name="user-name-input"
-								placeholder="Username"
+								placeholder="Användarnamn"
 								required />
 
 							<div class="difficulty-container">
-								<label for="easy">Easy</label>
+								<label for="easy">Lätt</label>
 								<input type="radio" id="easy" name="difficulty" value="easy" checked />
 
-								<label for="hard">Hard</label>
+								<label for="hard">Svårt</label>
 								<input type="radio" id="hard" name="difficulty" value="hard" />
 							</div>
 
-							<button type="submit" id="start-game">Start Game</button>
+							<button type="submit" id="start-game">Starta spel</button>
 						</form>
 					</div>
 					<div class="game-view-section"></div>
@@ -153,13 +153,14 @@
 								
 				
 							<thead>
-								<button id="sortBtn">Recently played</button>
+								<button id="sortBtn">Senast spelat</button>
 								<tr>
-									<th id="nameHeader">Name</th>
-									<th id="resultHeader">Result</th>
-									<th id="date-timeHeader">Date/Time</th>
-									<th id="wordsHeader">Number of letters</th>
-									<th id="incorrectGuessesHeader">Fail Guesses</th>
+									<th id="nameHeader">Namn</th>
+									<th id="resultHeader">Resultat</th>
+									<th id="date-timeHeader">Datum/Tid</th>
+									<th id="wordsHeader">
+										Antal bokstäver</th>
+									<th id="incorrectGuessesHeader">Felaktiga gissningar</th>
 								</tr>
 							</thead>
 							<tbody id="scoreboardBody">
