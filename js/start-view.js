@@ -19,9 +19,9 @@ let userObjectsArray = [];
 function loadUserObjects() {
 	const storedUserObjects = localStorage.getItem('userObjectsArray');
 	if (storedUserObjects) {
-	  userObjectsArray = JSON.parse(storedUserObjects);
+		userObjectsArray = JSON.parse(storedUserObjects);
 	}
-  }
+}
 
 
 
@@ -78,16 +78,14 @@ btnStartGame.addEventListener('click', function (event) {
 		hangingMan.classList.remove('hidden');
 		hangingMan.style.display = 'block';
 		hangmanInfo.style.display = 'none';
-		newGame(newUserObject, numberOfLetters);
+		let guesses = 0;
+		newGame(newUserObject, numberOfLetters, guesses);
 	} else {
 		modal.style.display = 'block';
 	}
 	console.log('TRYING REALLY HARD TO REMOVE THIS GODDAMNED MCONTAINER');
 	if (mContainer) {
-		console.log('mContainer exists, attempting to remove...');
-		console.log('mContainer is a child of imageContent:', imageContent.contains(mContainer));
 		mContainer.remove();
-		console.log('mContainer is in the DOM after attempting to remove:', mContainer.isConnected);
 	} else {
 		console.log('mContainer does not exist.');
 	}

@@ -1,7 +1,7 @@
 let userObjectsArray = [];
 export function updateScoreboard() {
 	userObjectsArray = JSON.parse(localStorage.getItem('userObjectsArray')) || [];
-	console.log('User Objects Array:', userObjectsArray);
+	// console.log('User Objects Array:', userObjectsArray);
 
 	userObjectsArray.sort(sortByMostWon);
 	const top10Scores = userObjectsArray.slice(0, 10);

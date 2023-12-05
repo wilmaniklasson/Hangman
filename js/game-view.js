@@ -29,7 +29,7 @@ let svgElement = document.querySelector('.hanging-man');
 let wordContainer = createNewElement('div', 'word-container');
 
 // game logic functions
-export function newGame(userObject, numberOfLetters) {
+export function newGame(userObject, numberOfLetters, guesses) {
 
 	// we can use these to animate
 	// gameViewSection.classList.add('grow');
@@ -38,7 +38,7 @@ export function newGame(userObject, numberOfLetters) {
 	incorrectGuesses = 0;
 	userObjectsArray = JSON.parse(localStorage.getItem('userObjectsArray')) || [];
 	const difficulty = userObject.difficulty;
-	userObject.guesses = 0;
+	userObject.guesses = guesses;
 
 	// numberOfLetters = (difficulty === 'easy') ? 6 : 10;
 	currentWord = pickNewWord(numberOfLetters);
@@ -82,34 +82,41 @@ export function newGame(userObject, numberOfLetters) {
 	renderAlphabet(alfabetet);
 	renderWord(visibleWord);
 	console.log("user secrect word: " + currentUser.secretWord);
+	let input = document.getElementById('user-name-input');
+	input.addEventListener('input', function () {
+		if (input.value !== '') {
 
+			handleKeyDownEvent();
+		}
+	});
 	handleKeyDownEvent();
 }
 
 // keydown event listener
 function handleKeyDownEvent() {
 	document.addEventListener('keydown', function (event) {
-		let key = event.key.toLowerCase();
+		// Check if event.key exists
+		if (event.key) {
+			let key = event.key.toLowerCase();
 
-		// TODO: check if username is auto-input, then we have no key so we we need to handle that somehow
-		// Check if the key is a letter and if in map
-		if ((key.length === 1 && key >= 'a' && key <= 'ö') && characterElements.has(key)) {
+			// Check if the key is a letter and if in map
+			if ((key.length === 1 && key >= 'a' && key <= 'ö') && characterElements.has(key)) {
 
-			if (characterElements.has(key)) {
-				// Get the character element
-				let character = characterElements.get(key);
-				character.classList.add('destroyed');
-				destroyWithRandomTransform(character);
-				characterElements.delete(key);
+				if (characterElements.has(key)) {
+					// Get the character element
+					let character = characterElements.get(key);
+					character.classList.add('destroyed');
+					destroyWithRandomTransform(character);
+					characterElements.delete(key);
 
-				// Handle the guess
-				handleGuess(character);
-				renderWord(visibleWord);
+					// Handle the guess
+					handleGuess(character);
+					renderWord(visibleWord);
+				}
 			}
 		}
 	});
 }
-
 function renderAlphabet(alfabetet) {
 
 
@@ -179,6 +186,7 @@ function handleGuess(character) {
 		let svgPartId = hangmanBody[incorrectGuesses];
 		let svgPart = document.querySelector(svgPartId);
 		console.log('incorrect guesses: ' + incorrectGuesses);
+		console.log('guesses: ' + currentUser.guesses);
 		// Make the SVG part visible
 		svgPart.classList.remove('hidden');
 
@@ -220,13 +228,13 @@ function handleSvgRender(svgPart, svgPartId) {
 	// is it a path with a stroke property?
 	else if (svgPart.tagName.toLowerCase() === 'path' && svgPart.getAttribute('stroke')) {
 		svgPart.classList.add('paint');
-		console.log('class added to path: ' + svgPartId + 'paint');
+		// console.log('class added to path: ' + svgPartId + 'paint');
 	}
 
 	// is it the scaffold (the only path without a stroke then)?
 	if (svgPart.id === 'scaffold') {
 		svgPart.classList.add('paint', 'scaffold-painted');
-		console.log('class added to scaffold: ' + svgPartId + 'paint, ellipse-painted');
+		// console.log('class added to scaffold: ' + svgPartId + 'paint, ellipse-painted');
 	}
 }
 
